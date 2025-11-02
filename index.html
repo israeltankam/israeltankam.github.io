@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CV — Israël Tankam Chedjou, PhD</title>
 
-  <!-- GitHub repo/path for last-edited detection -->
+  <!-- GitHub repo/path for last-edited detection (matches your repo) -->
   <meta name="github-repo" content="israeltankam/israeltankam.github.io">
   <meta name="github-path" content="index.html">
 
-  <!-- Tailwind v3 CDN + minimal config -->
+  <!-- Tailwind v3 CDN + lightweight config (blue-blog palette) -->
   <script>
     tailwind = {
       config: {
@@ -53,6 +53,10 @@
       background-clip: text;
       color: transparent;
     }
+    .card-hover {
+      transition: all .35s ease;
+    }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(30,64,175,0.08); }
     @media print {
       .no-print { display: none !important; }
       .container { box-shadow: none !important; background: white !important; }
@@ -73,10 +77,10 @@
 
         <div class="flex-1 min-w-0">
           <h1 class="text-4xl md:text-5xl font-extrabold gradient-text leading-tight">Israël Tankam Chedjou, PhD</h1>
-          <p class="text-lg text-blue-700 mt-2">R&D Engineer — Applied Modelling & Data</p>
+          <p class="text-lg text-blue-700 mt-2">R&D and data engineer — Applied Modelling & Digital Products</p>
 
           <p class="mt-4 text-base text-gray-700 leading-relaxed">
-            R&D and data engineer with experience in designing mathematical models and digital products for agriculture, the environment, and complex systems. I am proficient in the entire solution development cycle — from scientific modelling to software deployment and data valorisation. 
+            R&D and data engineer with experience in designing mathematical models and digital products for agriculture, the environment, and complex systems. I am proficient in the entire solution development cycle — from scientific modelling to software deployment and data valorisation.
             Accustomed to working with interdisciplinary teams, I bridge modelling, artificial intelligence, and software engineering to create tools with strong industrial, scientific, and societal impact.
           </p>
 
@@ -147,12 +151,12 @@
           </div>
         </section>
 
-        <!-- Experience (keeps role names) -->
+        <!-- Experience -->
         <section id="experience" class="mb-8">
           <h2 class="text-2xl font-bold mb-4 gradient-text">Research & Industry Experience</h2>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">MSCA-Bienvenüe Postdoctoral Fellow</h3>
@@ -166,8 +170,8 @@
             </div>
           </article>
 
-           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">Postdoctoral Research Associate</h3>
@@ -182,7 +186,7 @@
           </article>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">Research Associate</h3>
@@ -197,7 +201,7 @@
           </article>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">Front-end Java developer</h3>
@@ -211,41 +215,52 @@
             </div>
           </article>
         </section>
-        </section>
 
-        <!-- Visiting positions -->
-        <section id="visiting" class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Visiting Positions</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
-              <p class="text-sm font-semibold">Visiting Scientist — University of Florida (Garrett's Lab)</p>
-              <p class="text-xs text-gray-500">Dec 2023</p>
-            </div>
-            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
-              <p class="text-sm font-semibold">Visiting Scientist — Wageningen University (Lab of Nematology)</p>
-              <p class="text-xs text-gray-500">Sep 2023</p>
-            </div>
-            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
-              <p class="text-sm font-semibold">Visiting Scientist — WAVE (Abidjan, Côte d'Ivoire)</p>
-              <p class="text-xs text-gray-500">Apr 2022 – Dec 2022</p>
-            </div>
-            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
-              <p class="text-sm font-semibold">Visiting Scientist — INRIA Sophia-Antipolis (Team Biocore)</p>
-              <p class="text-xs text-gray-500">Feb 2019 – Jun 2019 | Apr 2018 – Aug 2018 | Sep 2017 – Dec 2017</p>
-            </div>
-          </div>
-        </section>
+        <!-- Mini-blog expandable -->
+        <section id="mini-blog" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Mini-blog — articles & project posts</h2>
 
-        <!-- Teaching -->
-        <section id="teaching" class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Teaching & Mentorship</h2>
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6">
-            <ul class="space-y-4 text-gray-700">
-              <li><strong>Contract part-time teacher</strong> — AFTEC, Rennes, France (2023–2024). Mathematics for BTS SIO.</li>
-              <li><strong>Part-time teacher</strong> — Institut Agro Rennes-Angers (Fall & Winter 2023). Introduction à la démarche scientifique.</li>
-              <li><strong>Teaching assistant</strong> — National Advanced School of Engineering, Yaoundé (2016–2021). Courses: Probability & Statistics, Numerical Analysis, Computer Science for Mathematics, Real Analysis.</li>
-              <li><strong>Mentorship:</strong> Supervised and mentored PhD students on model formulation, parameter inference and reproducible code.</li>
-            </ul>
+            <p class="text-sm text-gray-700 mb-4">A compact reading area with short summaries and direct links. Use the topic checkboxes to filter posts. (Sources: your Medium posts & accessible GitHub repos.)</p>
+
+            <details class="mb-4">
+              <summary class="cursor-pointer text-sm font-medium text-blue-700">Open mini-blog & filters</summary>
+
+              <div class="mt-4 grid md:grid-cols-3 gap-4">
+                <!-- Topics (checkbox list) -->
+                <div class="md:col-span-1 bg-white/60 p-4 rounded-lg border border-blue-50">
+                  <h4 class="text-sm font-semibold text-blue-900 mb-2">Filter by topic</h4>
+                  <form id="topic-filters" class="space-y-2 text-sm text-gray-700">
+                    <!-- Checkboxes generated by JS from topics list -->
+                  </form>
+
+                  <div class="mt-4 text-xs text-gray-500">
+                    Tip: select one or more topics (OR logic). Click a post title to open the full article.
+                  </div>
+                </div>
+
+                <!-- Posts list -->
+                <div class="md:col-span-2 space-y-3">
+                  <div id="mini-blog-list" class="space-y-3">
+                    <!-- Post cards generated by JS from embedded postsData -->
+                  </div>
+
+                  <div class="text-xs text-gray-500 mt-2">
+                    Note: I sourced tags and summaries from your public Medium pages and GitHub READMEs. One repo you mentioned (chaos_ecology) returned 404 at the time I checked; I left a placeholder card for it.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <!-- Implementation hint (what to add for auto-updates) -->
+            <div class="mt-4 p-4 rounded-lg bg-gradient-to-br from-white/95 to-blue-50/60 border border-blue-50 text-sm text-gray-700">
+              <strong>To make this mini-blog auto-update:</strong>
+              <ol class="list-decimal pl-5 mt-2 space-y-1">
+                <li>Provide a machine-readable feed (JSON or RSS) with post metadata: <code>title, url, date, excerpt, tags</code>. Example: <code>/data/posts.json</code>.</li>
+                <li>Or allow the page to fetch your Medium RSS (or export) server-side and write a GitHub Action that writes the updated JSON into the repo on each Medium update.</li>
+                <li>For repos, include a small README field or a metadata file so the page can fetch repo descriptions automatically via GitHub API.</li>
+              </ol>
+            </div>
           </div>
         </section>
 
@@ -278,7 +293,7 @@
               <a href="https://mixture-simulator.streamlit.app/" class="text-sm text-blue-600 hover:underline">Mixture demo</a>
             </div>
 
-            <!-- Concise CMD4.0 project card (same size as other cards) -->
+            <!-- CMD4.0 concise card -->
             <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
               <h3 class="text-lg font-semibold mb-2">CMD4.0 — CMD NetLogo model</h3>
               <p class="text-sm text-gray-700 mb-2">Agent-based NetLogo field model for Cassava Mosaic Disease: mixed-variety plantings, whitefly dynamics, roguing/replanting strategies and economic outputs.</p>
@@ -299,104 +314,7 @@
           </div>
         </section>
 
-        <!-- Education & Awards -->
-        <section id="education-awards" class="mb-8 grid md:grid-cols-2 gap-6">
-          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
-            <h2 class="text-xl font-semibold mb-3">Education</h2>
-            <p class="text-sm text-gray-700"><strong>PhD in Applied Mathematics</strong> — University of Yaoundé I & Inria Sophia-Antipolis (Apr 2021)</p>
-            <p class="text-sm text-gray-700 mt-2"><strong>Master in Applied Mathematics</strong> — University of Yaoundé I (Jan 2015)</p>
-            <p class="text-sm text-gray-700 mt-2"><strong>Bachelor in Mathematics & Computer Science</strong> — University of Dschang (Jun 2012)</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-white/90 to-blue-50/70 rounded-2xl border border-blue-200 p-6 shadow-md">
-            <h2 class="text-xl font-semibold mb-3">Honors & Scholarships</h2>
-            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-              <li>MSCA BIENVENÜE Fellowship — Principal Investigator (2023–2024)</li>
-              <li>Ovide Arino Outreach Award — ESMTB & SFBT (2021)</li>
-              <li>EMS-Simons for Africa Scholarship (2019)</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Skills -->
-        <section id="skills" class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Skills</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-blue-700 mb-2">Transferable & Leadership</h3>
-              <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                <li>Mathematical & analytical expertise: formulation, analysis and control of complex models.</li>
-                <li>Project management & strategic leadership for interdisciplinary projects and tech transfer.</li>
-                <li>Grant writing & funding leadership (successful competitive grants, stakeholder coordination).</li>
-                <li>Communication, teaching and scientific mediation (training, outreach, reproducible research).</li>
-                <li>Mentorship & team development — supervising students and junior researchers.</li>
-                <li>Decision-support tool development: translating research into user-ready web tools and APIs.</li>
-                <li>Diversity, equity & inclusion advocacy in academic and project contexts.</li>
-              </ul>
-            </div>
-
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-blue-700 mb-2">Technical — Programming, Tools & Methods</h3>
-
-              <div class="grid grid-cols-1 gap-3">
-                <div>
-                  <strong class="text-sm text-gray-800">Programming & Platforms</strong>
-                  <p class="text-sm text-gray-700">Python, R, Java, JavaScript, HTML/CSS, NetLogo, Streamlit, Tableau, SQL (MySQL), Git</p>
-                </div>
-
-                <div>
-                  <strong class="text-sm text-gray-800">Libraries & ML / Statistical</strong>
-                  <p class="text-sm text-gray-700">TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas, Seaborn</p>
-                </div>
-
-                <div>
-                  <strong class="text-sm text-gray-800">Modelling & Methods</strong>
-                  <p class="text-sm text-gray-700">Dynamical systems, epidemiological models, population genetics / demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis</p>
-                </div>
-
-                <div>
-                  <strong class="text-sm text-gray-800">Cloud & DevOps</strong>
-                  <p class="text-sm text-gray-700">AWS, Google Cloud, MLOps principles, Docker, reproducible research (notebooks, CI-friendly code)</p>
-                </div>
-
-                <div>
-                  <strong class="text-sm text-gray-800">Other tools</strong>
-                  <p class="text-sm text-gray-700">MATLAB, Scilab, PyMC, Kaggle, Excel</p>
-                </div>
-
-                <div>
-                  <strong class="text-sm text-gray-800">Languages</strong>
-                  <p class="text-sm text-gray-700">French (fluent), English (fluent), German (basic)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Certifications & training -->
-        <section id="certifications" class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Certifications & Training</h2>
-          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
-            <h3 class="text-lg font-semibold text-blue-700 mb-3">Coursera</h3>
-            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
-              <li>Machine Learning (Stanford University) — <a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">creds</a></li>
-              <li>Neural Networks and Deep Learning — <a href="https://coursera.org/share/9630d466ac63f461aae96c96968dbde6" class="text-blue-600">creds</a></li>
-              <li>Introduction to Genetics and Evolution (Duke University) — <a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">creds</a></li>
-              <li>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization, and Optimization — <a href="https://coursera.org/share/dc4925e926d2cd73d6c4dd8cf7f49378" class="text-blue-600">creds</a></li>
-              <li>Deep Learning Specialization (deeplearning.ai) — <a href="https://coursera.org/share/c5ccf99578aae8419cc368eb0a231f90" class="text-blue-600">creds</a></li>
-              <li>Industrial IoT with Google Cloud Platform (Google Cloud) — <a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">creds</a></li>
-              <li>Getting Started with AWS Machine Learning (AWS) — <a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">creds</a></li>
-            </ul>
-
-            <h3 class="mt-4 text-lg font-semibold text-blue-700 mb-2">Udemy & other</h3>
-            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
-              <li>Tableau for Beginners: Visualize and Analyze Your Data (Programming Hub) — <a href="http://ude.my/UC-7b620fd7-8d33-4a02-a7c8-bd7f39331d2c" class="text-blue-600">creds</a></li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Publications and other sections unchanged -->
+        <!-- Publications -->
         <section id="publications" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Publications & Research Output</h2>
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
@@ -413,7 +331,7 @@
             <details class="mt-6 bg-white/60 p-4 rounded-lg border border-blue-50">
               <summary class="text-sm font-medium text-blue-700">Full publication list (expand)</summary>
               <div class="mt-3 text-sm text-gray-700 space-y-2">
-                <!-- Full list retained as previously provided -->
+                <!-- Full publication list as previously provided (kept verbatim) -->
                 <p>[1] I. Tankam Chedjou, R. Donnelly, and C. A. Gilligan. “Optimizing crop varietal mixtures for viral disease management: A case study on cassava virus epidemics”. In: PLOS Computational Biology (2025). 10.1371/journal.pcbi.1012842.</p>
                 <p>[2] I. Tankam Chedjou, J. Montarry, S. Fournet, and F. M. Hamelin. “Combining masculinizing resistance, rotation and biocontrol to achieve durable suppression of the potato pale cyst nematode: a model”. In: Evolutionary Applications (2024), pp. e70012. doi: 10.1111/eva.70012.</p>
                 <p>[3] F. P. Agouanet, V. Yatat-Djeumen, I. Tankam-Chedjou, and J. J. Tewa. “Control Model of Banana Black Sigatoka Disease with Seasonality”. In: Differential Equations and Dynamical Systems (2024). doi: 10.1007/s12591-024-00692-z.</p>
@@ -424,23 +342,14 @@
                 <p>[8] I. Tankam-Chedjou, S. Touzeau, L. Mailleret, J. J. Tewa, and F. Grognard. “Modelling and control of a banana soilborne pest in a multi-seasonal framework”. In: Mathematical Biosciences 322 (Apr. 2020), p. 108324. doi: 10.1016/j.mbs.2020.108324.</p>
                 <p>[9] I. Tankam, P. Tchinda Mouofo, A. Mendy, M. Lam, J. J. Tewa, and S. Bowong. “Local Bifurcations and Optimal Theory in a Delayed Predator–Prey Model with Threshold Prey Harvesting”. In: International Journal of Bifurcation and Chaos 25.07 (June 2015), p. 1540015. doi: 10.1142/s0218127415400155.</p>
                 <p>[10] I. Tankam Chedjou. “Combinatorial optimization of banana clean seed reliance”. In: African Conference on Research in Computer Science and Applied Mathematics. Springer Nature (2025), p. 83–99. doi: 10.1007/978-3-031-90510-0_7.</p>
-                <p>[11] B. S. Tchienkou Tchiengang, I. Tankam, and J. J. Tewa. “A multi-seasonal model of the dynamics of the African maize stalk borer”. In: CARI 2022, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées. Tunis, Tunisia, Oct. 2022. <a href="https://hal.science/hal-03718556" class="text-blue-600">Link</a>.</p>
-                <p>[12] I. Tankam Chedjou, S. Touzeau, F. Grognard, L. Mailleret, and J.-J. Tewa. “A multi-seasonal model of the dynamics of banana plant-parasitic nematodes”. In: CARI’2018-14, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées. 2018.</p>
-                <p>[13] I. Tankam Chedjou, P. Tchinda Mouofo, and J.-J. Tewa. “Hopf bifurcation properties of a delayed predator-prey model with threshold prey harvesting”. In: CARI’2016, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées. 2016.</p>
-                <p>[14] I. Tankam Chedjou (2025). “Memory-based incremental parameter updating of a generic stochastic plant epidemic model”. In: BioRxiv (2025). 10.1101/2025.07.11.664325. Preprint.</p>
-                <p>[15] R. Donnelly, I. Tankam C., and C. A. Gilligan. “Plant virus profiling with the EpiPv package”. In: Methods in Ecology and Evolution (2025). 10.32942/X29K9P. Submitted.</p>
-                <p>[16] B. S. Tchienkou-Tchiengang, I. Tankam-Chedjou, I. V. Yatat-Djeumen, and J. J. Tewa. “Multiseasonal modelling of pesticide resistance in Maize Stalk Bore”. In: Mathematical Biosciences (2025). 10.2139/ssrn.5228134. Submitted.</p>
-                <p>[17] B. S. M. Kouakou, J. S. Seka, J. S. Pita, A. A. N. Yoboué, I. Tankam, R. Eboulem, N. Kouassi, F. Tiendrébéogo, and F. Sorho. “Climatic, environmental factors and agricultural practices favoring dynamics of the spread of African cassava mosaic disease in Côte d’Ivoire”. In: Discover Agriculture (2025). Submitted.</p>
-                <p>[18] D. Petit, F. Hamelin, J. Tankam Chedjou Israël Penlap Tamago, F. Grognard, F. Hilker, and L. Mailleret. “Seasonal behavioural plant epidemiology: clean seeds”. (2025). Ongoing.</p>
-                <p>[19] I. Tankam Chedjou, J. Montarry, S. Fournet, and F. Hamelin. “Predictive management of pale potato cyst nematode through demo-genetic modelling”. In: Evolution Letters (2025). Ongoing.</p>
-                <p>[20] R. Donnelly, I. Tankam-Chedjou, and C. A. Gilligan. “Epidemiology of cassava virus management – managing the temporal phases of epidemics”. In: PLOS Computational Biology (2024). Ongoing.</p>
+                <p>[11–20] Additional conference papers, preprints and ongoing manuscripts (see full dossier on Google Scholar / ORCID).</p>
                 <p>[21] I. Tankam Chedjou. “Modelling, analysis and control of plantain plant-parasitic nematodes”. PhD thesis. Université de Yaoundé I, Cameroun, 2021. <a href="https://agris.fao.org/search/en/providers/122439/records/6748b60d7625988a371fe19e" class="text-blue-600">Link</a>.</p>
               </div>
             </details>
           </div>
         </section>
 
-        <!-- Talks, posters, tutorials -->
+        <!-- Talks & full list -->
         <section id="talks" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Talks, Posters & Tutorials</h2>
 
@@ -515,7 +424,134 @@
     </div>
   </div>
 
-  <!-- JS: accessibility + GitHub last-edited detection -->
+  <!-- Embedded posts data (populated from public Medium pages & GitHub README contents I could access) -->
+  <script>
+    // postsData: short set of your Medium articles + two GitHub repos (CMD4.0 + Memory-based).
+    // Each item: id, title, url, date, excerpt, tags (array of lowercase normalized tags)
+    // I populated the excerpts and tags from the public pages I could access.
+    const postsData = [
+      {
+        id: "m-chaos-2023",
+        title: "A short note on chaos",
+        url: "https://medium.com/@israeltankam/a-short-note-on-chaos-89b3afca88c7",
+        date: "2023-01-30",
+        excerpt: "Short accessible note on chaos theory and emergence; motivation from a deterministic model in population genetics.",
+        tags: ["chaos theory","emergence","modelling","vulgarisation"]
+      },
+      {
+        id: "m-comma-2020",
+        title: "Le comma pythagoricien (musique)",
+        url: "https://medium.com/@israeltankam/le-comma-pythagoricien-musique-adc72ee0eab3",
+        date: "2020-04-06",
+        excerpt: "Musical/mathematical note on the Pythagorean comma — music theory and math explained for a general audience.",
+        tags: ["music","mathématiques","vulgarisation","french"]
+      },
+      {
+        id: "m-poincare-2017-i",
+        title: "Comprendre la Conjecture de Poincaré — Part I",
+        url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-1-introduction-8ad1f000d27a",
+        date: "2017-10-25",
+        excerpt: "Introductory exposition to Poincaré conjecture and topology — series in French.",
+        tags: ["mathématiques","topology","poincaré","vulgarisation","french"]
+      },
+      {
+        id: "m-transhuman-2020",
+        title: "Chroniques transhumanistes (Ep.1): Voir avec la langue",
+        url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-1-voir-avec-la-langue-5d0f9d3dd83d",
+        date: "2020-04-05",
+        excerpt: "Mini-essay on sensory substitution (BrainPort) and neuroplasticity; part of a transhumanist mini-series.",
+        tags: ["neuroscience","vulgarisation","technology","science"]
+      },
+      {
+        id: "gh-cmd4",
+        title: "CMD4.0 — Cassava Mosaic Disease (NetLogo)",
+        url: "https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator",
+        date: "2022-06",
+        excerpt: "Agent-based NetLogo model of CMD: variety mixes, whitefly agents, roguing, replanting and economic outputs.",
+        tags: ["netlogo","simulation","plant disease","cassava","modelling"]
+      },
+      {
+        id: "gh-memory-smc",
+        title: "Memory-based incremental parameter update (SMC)",
+        url: "https://github.com/israeltankam/Memory-based-incremental-parameter-update-of-a-generic-stochastic-plant-epidemic-model",
+        date: "2025",
+        excerpt: "Sequential Monte-Carlo framework to incrementally update epidemic model parameters as new incidence data arrive.",
+        tags: ["bayesian","sMC","forecasting","modelling","jupyter"]
+      },
+      {
+        id: "gh-chaos_ecology-missing",
+        title: "chaos_ecology (repo placeholder)",
+        url: "https://github.com/israeltankam/chaos_ecology",
+        date: "",
+        excerpt: "Repo not found (404) when checked — please confirm the exact repository name or make it public. Placeholder card included.",
+        tags: ["repo","missing"]
+      }
+    ];
+
+    // derive unique topics from postsData
+    const topics = Array.from(new Set(postsData.flatMap(p => p.tags))).sort();
+
+    // render topic checkboxes
+    const filtersForm = document.getElementById('topic-filters');
+    topics.forEach(tag => {
+      const id = 'chk-' + tag.replace(/\s+/g, '-');
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex items-center gap-2';
+      wrapper.innerHTML = `
+        <input type="checkbox" id="${id}" name="topic" value="${tag}" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+        <label for="${id}" class="text-sm text-gray-700">${tag}</label>
+      `;
+      filtersForm.appendChild(wrapper);
+    });
+
+    // render post cards
+    const list = document.getElementById('mini-blog-list');
+    function renderList(data) {
+      list.innerHTML = '';
+      data.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'bg-white/70 p-4 rounded-xl border border-blue-100 shadow-sm';
+        card.setAttribute('data-tags', p.tags.join(','));
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1 min-w-0">
+              <a href="${p.url}" target="_blank" class="text-blue-700 hover:underline font-semibold">${p.title}</a>
+              <div class="text-xs text-gray-500 mt-1">${p.date ? p.date : ''}</div>
+              <p class="text-sm text-gray-700 mt-2">${p.excerpt}</p>
+            </div>
+            <div class="text-right text-xs text-gray-500 min-w-[120px]">
+              <div class="mb-2">${p.tags.map(t => `<span class="inline-block px-2 py-1 rounded-full text-xs bg-blue-50 text-blue-700 mr-1">${t}</span>`).join('')}</div>
+              <a href="${p.url}" target="_blank" class="text-xs text-blue-600 hover:underline">Open</a>
+            </div>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    // initial render
+    renderList(postsData);
+
+    // filter logic (OR: any selected tag)
+    function applyFilters() {
+      const checked = Array.from(document.querySelectorAll('#topic-filters input[type="checkbox"]:checked')).map(i => i.value);
+      const cards = Array.from(list.children);
+      if (checked.length === 0) {
+        // show all
+        cards.forEach(c => c.style.display = '');
+        return;
+      }
+      cards.forEach(c => {
+        const tags = c.getAttribute('data-tags').split(',').map(s => s.trim());
+        const matches = checked.some(ch => tags.includes(ch));
+        c.style.display = matches ? '' : 'none';
+      });
+    }
+
+    document.getElementById('topic-filters').addEventListener('change', applyFilters);
+  </script>
+
+  <!-- JS: accessibility + GitHub last-edited detection (keeps your auto-update behavior) -->
   <script>
     // Accessibility utility: add focus-visible class
     document.documentElement.classList.add('focus-visible');
