@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CV — Israël Tankam Chedjou, PhD</title>
 
-  <!-- Tailwind Play CDN (v3) + config for custom blue palette -->
+  <!-- Tailwind v3 CDN and a small inline config for the "blue blog" palette -->
   <script>
-    // Tailwind Play CDN configuration
     tailwind = {
       config: {
         theme: {
@@ -21,7 +20,7 @@
                 400: '#60a5fa',
                 500: '#3b82f6',
                 600: '#2563eb',
-                700: '#1e40af',
+                700: '#1e40af'
               },
               indigo: {
                 100: '#eef2ff',
@@ -33,20 +32,17 @@
             },
             boxShadow: {
               'glow-lg': '0 10px 30px rgba(37,99,235,0.12), 0 6px 20px rgba(99,102,241,0.06)'
-            },
-            backdropBlur: {
-              sm: '4px'
             }
           }
         },
-        plugins: [tailwindPlugin => {}]
+        plugins: [ ]
       }
     }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* Gradient text utility for older browsers fallback */
+    /* gradient text utility */
     .gradient-text {
       background-image: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
       -webkit-background-clip: text;
@@ -54,16 +50,36 @@
       color: transparent;
     }
 
-    /* Simple print-friendly tweaks */
+    /* small accessible focus outline */
+    .focus-outline:focus {
+      outline: 3px solid rgba(37,99,235,0.15);
+      outline-offset: 2px;
+      border-radius: .5rem;
+    }
+
+    /* print tweaks */
     @media print {
       .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
       .container { box-shadow: none !important; background: white !important; }
     }
+
+    /* Minor utility for long preformatted lists */
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; font-size: .9rem; }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800">
 
-  <div class="max-w-7xl mx-auto px-6 py-10">
+<!-- 
+  For automatic "last updated" from GitHub:
+  - If you host this file in a GitHub repo, add two attributes on <body>:
+      data-github-repo="owner/repo" 
+      data-github-path="path/to/this-file.html"
+  - Example: data-github-repo="israeltankam/my-cv" data-github-path="cv/index.html"
+  The script below will try several heuristics (data-attributes -> raw.githubusercontent URL -> github.io) and fallback to document.lastModified.
+-->
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800" aria-labelledby="pageTitle">
+
+  <div class="max-w-7xl mx-auto px-6 py-10 container">
     <!-- Header / Hero -->
     <header class="relative bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-glow-lg p-6 md:p-8 mb-8">
       <div class="flex flex-col lg:flex-row items-center gap-6">
@@ -76,7 +92,7 @@
 
         <!-- Main title + summary -->
         <div class="flex-1 min-w-0">
-          <h1 class="text-4xl md:text-5xl font-extrabold gradient-text leading-tight">Israël Tankam Chedjou, PhD</h1>
+          <h1 id="pageTitle" class="text-4xl md:text-5xl font-extrabold gradient-text leading-tight">Israël Tankam Chedjou, PhD</h1>
           <p class="text-lg text-blue-700 mt-2">R&D Engineer — Applied Modelling & Data</p>
 
           <p class="mt-4 text-base text-gray-700 leading-relaxed">
@@ -85,23 +101,25 @@
           </p>
 
           <div class="mt-4 flex flex-wrap items-center gap-3">
-            <a href="mailto:israeltankam@gmail.com" class="px-4 py-2 rounded-xl bg-white/70 border border-blue-200 hover:border-blue-400 text-sm font-medium shadow-sm">israeltankam@gmail.com</a>
+            <a href="mailto:israeltankam@gmail.com" class="px-4 py-2 rounded-xl bg-white/70 border border-blue-200 hover:border-blue-400 text-sm font-medium shadow-sm focus-outline">israeltankam@gmail.com</a>
             <span class="px-3 py-2 rounded-xl bg-blue-50 text-blue-700 text-sm font-medium">Rennes, France</span>
-            <span class="px-3 py-2 rounded-xl bg-white/70 border border-blue-100 text-sm">Updated: <strong class="text-blue-600">02 Nov 2025</strong></span>
+            <span class="px-3 py-2 rounded-xl bg-white/70 border border-blue-100 text-sm">Last update: <time id="last-updated" class="font-semibold text-blue-600" datetime="">—</time></span>
           </div>
         </div>
 
         <!-- CTAs -->
         <div class="flex-shrink-0 flex gap-3 items-center">
-          <a href="https://cvsmart-cassava.streamlit.app/" target="_blank" class="px-5 py-2 rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition">CVSmart</a>
-          <a href="https://grainly.streamlit.app/" target="_blank" class="px-4 py-2 rounded-xl bg-white/60 border border-blue-200 text-blue-700 hover:border-blue-400">Grainly</a>
+          <a href="https://cvsmart-cassava.streamlit.app/" target="_blank" class="px-5 py-2 rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition focus-outline no-print">CVSmart</a>
+          <a href="https://grainly.streamlit.app/" target="_blank" class="px-4 py-2 rounded-xl bg-white/60 border border-blue-200 text-blue-700 hover:border-blue-400 focus-outline no-print">Grainly</a>
         </div>
       </div>
     </header>
 
     <div class="lg:flex lg:gap-8">
       <!-- Sidebar -->
-      <aside class="w-full lg:w-80 hidden lg:block sticky top-6 self-start space-y-6">
+      <aside class="w-full lg:w-80 hidden lg:block sticky top-6 self-start space-y-6" aria-labelledby="sidebarTitle">
+        <h2 id="sidebarTitle" class="sr-only">Sidebar</h2>
+
         <!-- Contact Card -->
         <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-5 shadow-md">
           <h3 class="text-sm font-semibold text-blue-900 mb-3">Contact</h3>
@@ -126,13 +144,13 @@
           </ul>
         </div>
 
-        <!-- Tags / Quick facts -->
+        <!-- Quick facts / awards -->
         <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-5 shadow-md">
           <h3 class="text-sm font-semibold text-blue-900 mb-3">Quick facts</h3>
           <div class="text-sm text-gray-700 space-y-2">
             <p><strong>Fields:</strong> Mathematical Modelling • Plant disease epidemiology • Decision Support Systems</p>
             <p><strong>Languages:</strong> French (fluent), English (fluent), German (basic)</p>
-            <p><strong>Awards:</strong> MSCA BIENVENÜE Fellow (2023–24), Ovide Arino Outreach Award (2021)</p>
+            <p class="text-xs text-gray-500"><strong>Awards:</strong> MSCA BIENVENÜE (2023–24) • Ovide Arino Award (2021) • EMS-Simons for Africa (mobility grant, 2019)</p>
           </div>
         </div>
       </aside>
@@ -147,9 +165,14 @@
               R&D and data engineer with a PhD in Applied Mathematics and experience designing mathematical models and deployable digital products for agriculture, the environment and complex systems. I bridge modelling, AI and software engineering to build decision-support tools with demonstrable industrial and societal impact. I lead projects from core modelling to reproducible research artifacts and interactive demos.
             </p>
 
-            <h3 class="mt-6 text-lg font-semibold text-blue-700">Research interests</h3>
+            <!-- Research statement & fields (user provided) -->
+            <h3 class="mt-6 text-lg font-semibold text-blue-700">Research summary</h3>
             <p class="text-gray-700 leading-relaxed">
-              Mathematical modelling of plant disease dynamics, pest management and demo-genetics for resistance durability; dynamical systems, Bayesian inference, time-series forecasting and decision-support systems for agriculture. Recent applied focuses: potato cyst nematode management, cassava viral epidemics, banana soil-borne pests.
+              <strong>Statement:</strong> My research interests lie at the intersection of mathematical modelling, plant disease dynamics, and sustainable agriculture. I am particularly focused on developing advanced mathematical frameworks to understand and manage the dynamics of viral, fungal, and pest-driven epidemics, with a recent emphasis on population demo-genetics for resistance durability. My work aims to develop, analyse and translate complex mathematical models into practical decision-making tools that empower agricultural stakeholders, enhancing crop resilience and optimizing management strategies. I have experience with various computational methods, including simulation and optimization techniques, which I apply to tackle challenges in pest and plant disease management, particularly for species such as the potato cyst nematode and banana soil-borne pests and cassava viruses. Through interdisciplinary collaboration and innovative modelling approaches, I aspire to contribute to the field by addressing real-world agricultural challenges while advancing our theoretical understanding of disease dynamics.
+            </p>
+
+            <p class="mt-4 text-sm"><strong>Fields:</strong>
+              Mathematical Modelling, Ecological Modelling, Plant disease epidemiology, Dynamical Systems, Biomathematics, Computational Modelling and Simulations, Optimal Control, Optimization, Numerical Analysis, Decision Support System, Computational Biology.
             </p>
           </div>
         </section>
@@ -318,17 +341,17 @@
             <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
               <li><strong>MSCA BIENVENÜE Fellowship</strong> — Principal Investigator (2023–2024)</li>
               <li><strong>Ovide Arino Outreach Award</strong> — ESMTB & SFBT (2021)</li>
-              <li><strong>EMS-Simons for Africa Scholarship</strong> — EMS-Simons Foundation (2019)</li>
+              <li><strong>EMS-Simons for Africa</strong> — Scholarship / mobility grant (2019)</li>
             </ul>
           </div>
         </section>
 
-        <!-- Skills: KEEP role names but expand technical skills from uploaded CV -->
+        <!-- Skills -->
         <section id="skills" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Skills</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Transferable/Leadership (keeps same role naming as in HTML) -->
+            <!-- Transferable/Leadership -->
             <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
               <h3 class="text-lg font-semibold text-blue-700 mb-2">Transferable & Leadership</h3>
               <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
@@ -346,35 +369,35 @@
             <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
               <h3 class="text-lg font-semibold text-blue-700 mb-2">Technical — Programming, Tools & Methods</h3>
 
-              <div class="grid grid-cols-1 gap-3">
+              <div class="grid grid-cols-1 gap-3 text-sm text-gray-700">
                 <div>
                   <strong class="text-sm text-gray-800">Programming & Platforms</strong>
-                  <p class="text-sm text-gray-700">Python, R, Java, JavaScript, HTML/CSS, Java (UI), NetLogo, Streamlit, Tableau, SQL (MySQL), Git</p>
+                  <p>Python, R, Java, JavaScript, HTML/CSS, NetLogo, Streamlit, Tableau, SQL (MySQL), Git</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Libraries & ML / Statistical</strong>
-                  <p class="text-sm text-gray-700">TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas, Seaborn</p>
+                  <p>TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas, Seaborn</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Modelling & Methods</strong>
-                  <p class="text-sm text-gray-700">Dynamical systems, epidemiological models, population genetics/demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis</p>
+                  <p>Dynamical systems, epidemiological models, population genetics / demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Cloud & DevOps</strong>
-                  <p class="text-sm text-gray-700">AWS, Google Cloud, MLOps principles, Docker (experience deploying scripts/apps), reproducible research (notebooks, CI-friendly code)</p>
+                  <p>AWS, Google Cloud, MLOps principles, Docker (deployment experience), reproducible research (notebooks, CI-friendly code)</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Other tools</strong>
-                  <p class="text-sm text-gray-700">MATLAB, Scilab, PyMC, Kaggle, Excel, Buffer polyfills & web deployment best practices</p>
+                  <p>MATLAB, Scilab, Kaggle, Excel, Buffer polyfills & web deployment best practices</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Languages</strong>
-                  <p class="text-sm text-gray-700">French (fluent), English (fluent), German (basic)</p>
+                  <p>French (fluent), English (fluent), German (basic)</p>
                 </div>
               </div>
             </div>
@@ -385,7 +408,7 @@
         <section id="certifications" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Certifications & Training</h2>
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
-            <p class="text-sm text-gray-700"><strong>Coursera:</strong> Machine Learning (Stanford), Deep Learning Specialization (deeplearning.ai), Introduction to Genetics & Evolution (Duke), Industrial IoT (Google Cloud), AWS ML starter.</p>
+            <p class="text-sm text-gray-700"><strong>Coursera:</strong> Machine Learning (Stanford), Deep Learning Specialization (deeplearning.ai), Introduction to Genetics & Evolution (Duke), Industrial IoT (Google Cloud), Getting Started with AWS Machine Learning.</p>
             <p class="text-sm text-gray-700 mt-3"><strong>Udemy:</strong> Tableau for Beginners (Programming Hub).</p>
 
             <h3 class="mt-4 text-sm font-semibold text-blue-700">Additional training</h3>
@@ -393,41 +416,88 @@
           </div>
         </section>
 
-        <!-- Publications (compress but keep full list) -->
+        <!-- Publications: full list in expandable details -->
         <section id="publications" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Publications & Research Output</h2>
 
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
-            <p class="text-sm text-gray-700 mb-3">Selected peer-reviewed publications, book chapters, conference papers and preprints. (Full list available on Google Scholar / ORCID.)</p>
+            <p class="text-sm text-gray-700 mb-3">Full list of peer-reviewed publications, book chapters, conference papers, preprints and submitted manuscripts. Expand to view.</p>
 
-            <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-2">
-              <li>I. Tankam Chedjou, R. Donnelly & C. A. Gilligan (2025). “Optimizing crop varietal mixtures for viral disease management.” <em>PLOS Computational Biology</em>. <a href="https://doi.org/10.1371/journal.pcbi.1012842" class="text-blue-600">doi</a>.</li>
+            <details class="bg-white/60 p-4 rounded-lg border border-blue-50" aria-expanded="false">
+              <summary class="text-sm font-medium text-blue-700">Show full publications list</summary>
 
-              <li>I. Tankam Chedjou, J. Montarry, S. Fournet & F. Hamelin (2024). “Combining masculinizing resistance, rotation and biocontrol…” <em>Evolutionary Applications</em>. <a href="https://doi.org/10.1111/eva.70012" class="text-blue-600">doi</a>.</li>
+              <ol class="list-decimal pl-5 text-sm text-gray-700 mt-4 space-y-2">
+                <li>I. Tankam Chedjou, R. Donnelly, and C. A. Gilligan. “Optimizing crop varietal mixtures for viral disease management: A case study on cassava virus epidemics”. In: <em>PLOS Computational Biology</em> (2025). <a href="https://doi.org/10.1371/journal.pcbi.1012842" class="text-blue-600">10.1371/journal.pcbi.1012842</a>.</li>
 
-              <li>F. P. Agouanet et al. (2024). “Control Model of Banana Black Sigatoka Disease with Seasonality.” <em>Differential Equations and Dynamical Systems</em>. <a href="https://doi.org/10.1007/s12591-024-00692-z" class="text-blue-600">doi</a>.</li>
+                <li>I. Tankam Chedjou, J. Montarry, S. Fournet, and F. Hamelin. “Combining masculinizing resistance, rotation and biocontrol to achieve durable suppression of the potato pale cyst nematode: a model”. In: <em>Evolutionary Applications</em> (2024), pp. e70012. doi: <a href="https://doi.org/10.1111/eva.70012" class="text-blue-600">10.1111/eva.70012</a>.</li>
 
-              <li>Additional articles (Applied Mathematical Modelling, Applied Mathematics and Computation, Mathematical Biosciences, Int. J. Bifurcation and Chaos) and book chapters (Springer, 2025).</li>
+                <li>F. P. Agouanet, V. Yatat-Djeumen, I. Tankam-Chedjou, and J. J. Tewa. “Control Model of Banana Black Sigatoka Disease with Seasonality”. In: <em>Differential Equations and Dynamical Systems</em> (2024), pp. 1–40. doi: <a href="https://doi.org/10.1007/s12591-024-00692-z" class="text-blue-600">10.1007/s12591-024-00692-z</a>.</li>
 
-              <li>Preprints & submissions: memory-based incremental parameter updating (bioRxiv 2025), EpiPv package manuscript (submitted), ongoing demo-genetic and palae nematode modelling papers (2024–2025).</li>
-            </ol>
+                <li>B. S. Tchienkou-Tchiengang, I. Tankam-Chedjou, I. V. Yatat-Djeumen, and J. J. Tewa. “Multi-seasonal modelling of the African maize stalk borer and assessment of crop residue management”. In: <em>Applied Mathematical Modelling</em> (Oct. 2022). doi: <a href="https://doi.org/10.1016/j.apm.2022.09.025" class="text-blue-600">10.1016/j.apm.2022.09.025</a>.</li>
+
+                <li>F. P. Agouanet, I. Tankam-Chedjou, R. M. Etoua, and J. J. Tewa. “Mathematical modelling of Banana Black Sigatoka Disease with delay and Seasonality”. In: <em>Applied Mathematical Modelling</em> 99 (Nov. 2021), pp. 380–399. doi: <a href="https://doi.org/10.1016/j.apm.2021.06.030" class="text-blue-600">10.1016/j.apm.2021.06.030</a>.</li>
+
+                <li>I. Tankam Chedjou, F. Grognard, J. J. Tewa, and S. Touzeau. “When and how to fallow: first steps towards banana crop yield improvement through optimal and sustainable control of a soilborne pest”. In: <em>Journal of Interdisciplinary Methodologies and Issues in Sciences</em> 8 (2021). doi: <a href="https://jimis.episciences.org/" class="text-blue-600">10.18713/JIMIS-120221-8-4</a>.</li>
+
+                <li>I. Tankam-Chedjou, F. Grognard, J. J. Tewa, and S. Touzeau. “Optimal and sustainable management of a soilborne banana pest”. In: <em>Applied Mathematics and Computation</em> 397 (May 2021), p. 125883. doi: <a href="https://doi.org/10.1016/j.amc.2020.125883" class="text-blue-600">10.1016/j.amc.2020.125883</a>.</li>
+
+                <li>I. Tankam-Chedjou, S. Touzeau, L. Mailleret, J. J. Tewa, and F. Grognard. “Modelling and control of a banana soilborne pest in a multi-seasonal framework”. In: <em>Mathematical Biosciences</em> 322 (Apr. 2020), p. 108324. doi: <a href="https://doi.org/10.1016/j.mbs.2020.108324" class="text-blue-600">10.1016/j.mbs.2020.108324</a>.</li>
+
+                <li>I. Tankam, P. Tchinda Mouofo, A. Mendy, M. Lam, J. J. Tewa, and S. Bowong. “Local Bifurcations and Optimal Theory in a Delayed Predator–Prey Model with Threshold Prey Harvesting”. In: <em>International Journal of Bifurcation and Chaos</em> 25.07 (June 2015), p. 1540015. doi: <a href="https://doi.org/10.1142/s0218127415400155" class="text-blue-600">10.1142/s0218127415400155</a>.</li>
+
+                <li><strong>Book chapters</strong>: I. Tankam Chedjou. “Combinatorial optimization of banana clean seed reliance”. In: <em>African Conference on Research in Computer Science and Applied Mathematics</em>. Ed. by K. Barkaoui, N. Gmati, and M. Roche. Cham: Springer Nature Switzerland (2025), p. 83–99. doi: <a href="https://doi.org/10.1007/978-3-031-90510-0_7" class="text-blue-600">10.1007/978-3-031-90510-0_7</a>.</li>
+
+                <li><strong>Conference papers & other entries</strong> — see full list on Google Scholar / ORCID (CARI, ECMTB, EPITAG, MoVi Workshop, ICPP, etc.).</li>
+
+                <li><strong>Preprints & submissions</strong>:
+                  <ul class="list-disc pl-5">
+                    <li>[14] I. Tankam Chedjou (2025). “Memory-based incremental parameter updating of a generic stochastic plant epidemic model”. <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2025.07.11.664325" class="text-blue-600">10.1101/2025.07.11.664325</a>.</li>
+                    <li>[15] R. Donnelly, I. Tankam C., and C. A. Gilligan. “Plant virus profiling with the EpiPv package”. <em>Methods in Ecology and Evolution</em> (2025). Submitted. <a href="https://doi.org/10.32942/X29K9P" class="text-blue-600">10.32942/X29K9P</a>.</li>
+                    <li>[16] B. S. Tchienkou-Tchiengang, I. Tankam-Chedjou, I. V. Yatat-Djeumen, and J. J. Tewa. “Multiseasonal modelling of pesticide resistance in Maize Stalk Bore”. <em>Mathematical Biosciences</em> (2025). Submitted. <a href="https://doi.org/10.2139/ssrn.5228134" class="text-blue-600">10.2139/ssrn.5228134</a>.</li>
+                    <li>[17] B. S. M. Kouakou et al. “Climatic, environmental factors and agricultural practices favoring dynamics of the spread of African cassava mosaic disease in Côte d’Ivoire”. <em>Discover Agriculture</em> (2025). Submitted.</li>
+                  </ul>
+                </li>
+
+                <li><strong>Ongoing & PhD thesis</strong>:
+                  <ul class="list-disc pl-5">
+                    <li>[18] D. Petit et al. “Seasonal behavioural plant epidemiology: clean seeds”. (Ongoing, 2025).</li>
+                    <li>[19] I. Tankam Chedjou et al. “Predictive management of pale potato cyst nematode through demo-genetic modelling”. (Ongoing, 2025).</li>
+                    <li>[20] R. Donnelly, I. Tankam-Chedjou, and C. A. Gilligan. “Epidemiology of cassava virus management – managing the temporal phases of epidemics”. PLOS Comp Bio (2024 ongoing).</li>
+                    <li>[21] PhD thesis: I. Tankam Chedjou. “Modelling, analysis and control of plantain plant-parasitic nematodes”. Université de Yaoundé I, Cameroun, 2021. <a href="https://agris.fao.org/search/en/providers/122439/records/6748b60d7625988a371fe19e" class="text-blue-600">thesis</a>.</li>
+                  </ul>
+                </li>
+              </ol>
+            </details>
           </div>
         </section>
 
-        <!-- Talks & conferences (condensed) -->
+        <!-- Talks & conferences: full list in expandable details -->
         <section id="talks" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Talks, Posters & Tutorials</h2>
+
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
-            <p class="text-sm text-gray-700 mb-3">Invited talks, conferences and workshops (2015–2024), including CARI, ECMTB, MoVi Workshop, EPITAG Workshop, ICPP poster presentations and national outreach events on AI and modelling.</p>
+            <p class="text-sm text-gray-700 mb-3">An extended list of talks, conference presentations, posters and tutorials. Expand to view the full list.</p>
 
             <details class="bg-white/60 p-4 rounded-lg border border-blue-50">
-              <summary class="text-sm font-medium text-blue-700">Selected entries (expand)</summary>
-              <ul class="mt-3 text-sm text-gray-700 list-disc pl-5 space-y-2">
-                <li>17th African CARI conference — Combinatorial optimization of banana clean seed reliance (Nov 2024).</li>
-                <li>6th Symposium of Potato Cyst Nematode Management — Harper Adams (Sept 2024).</li>
-                <li>2nd International Congress of Plant Pathology — Poster on cassava interventions (Aug 2023).</li>
-                <li>Many national & international seminars and tutorials, outreach events on AI for diverse audiences.</li>
-              </ul>
+              <summary class="text-sm font-medium text-blue-700">Show all talks, posters & tutorials</summary>
+
+              <div class="mt-3 text-sm text-gray-700 space-y-2">
+                <p>• Tankam Chedjou, I., Combinatorial optimization of banana clean seed reliance. 17th African Conference on Research in Computer Science and Applied Mathematics: CARI 2024, Nov 2024, Bejaia, Algeria.</p>
+                <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Masculinizing resistance, rotations and biocontrol for durable suppression of potato cyst nematodes: A model. European Responsible Research and Innovation Event, Oct. 10th – 11th 2024, Inria, Rennes, France.</p>
+                <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. 6th Symposium of Potato Cyst Nematode Management, Sept. 10th 2024, Harper Adams University, UK.</p>
+                <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. 13th International Epidemiology Workshop, Apr. 10th 2024, Foz do Iguaçu, Brazil.</p>
+                <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. Forum IGEPP, Mar. 21st 2024, Saint-Jacut-de-la-Mer, France.</p>
+                <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. EPITAG Workshop, Nov. 01st 2023, Dschang, Cameroon.</p>
+                <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. GENOGLOB workshop, Oct. 9th 2023, University of Wageningen, Netherlands.</p>
+                <p>• Donnelly, R., Tankam, I., Gilligan, C. Which intervention when? Cassava viral epidemics and how growers source planting material. Poster. 2nd International Congress of Plant Pathology, Aug. 20th – 25th 2023, Lyon, France.</p>
+                <p>• Tankam, I., Donnelly, R., Stutt, R., Godding, D., Gilligan, C. Optimal cassava variety mixture and mosaic disease epidemiology: Improving prevalence, yield and reward. MoVi Workshop, Mar. 9th 2023, Université de Rennes 1, Rennes, France.</p>
+                <p>• Tankam, I., <a href="https://africanaisociety.wordpress.com/2021/05/01/conference-debat-introductive-a-lintelligence-artificielle-coorganisee-avec-activspaces/" class="text-blue-600">Introductory conference-debate on artificial intelligence</a>, Conference of Artificial Intelligence for laymen and beginners, May 2021, ActivSpaces, Douala, Cameroon.</p>
+                <p>• Tankam Chedjou, I., Touzeau, S., Grognard, F., Tewa, J.J., An Agricultural control of Radopholus similis in banana plantations, Conference Biomaths, Jun 2019, Bedlewo, Poland.</p>
+                <p>• Tankam Chedjou, I., Touzeau, S., Grognard, F., Tewa, J.J., A multi-seasonal model of the dynamics of banana plant-parasitic nematodes, 14th African Conference on Research in Computer Science and Applied Mathematics: CARI 2018, Oct 2018, Stellenbosch, South Africa.</p>
+                <p>• Tankam Chedjou, I., Touzeau, S., Grognard, F., Tewa, J.J., An Agricultural control of Radopholus similis in banana plantations, European Conference on Mathematical and Theoretical Biology: ECMTB 2018, Oct 2018, Lisbon, Portugal.</p>
+                <p>• Tankam, I., Mouofo, P. T., Tewa, J.J., Hopf bifurcation properties of a delayed predator-prey model with threshold prey harvesting, 13th African Conference on Research in Computer Science and Applied Mathematics: CARI 2016, Oct 2016, Hammamet, Tunisia.</p>
+                <p>• Tankam, I., Hemovigile 1.0: A tool to optimally manage blood banks, 5th Days of Medical Informatics SOCIM, Nov 2015, Yaounde, Cameroon.</p>
+              </div>
             </details>
           </div>
         </section>
@@ -435,12 +505,13 @@
         <!-- Memberships & references -->
         <section id="memberships-references" class="mb-12 grid md:grid-cols-2 gap-6">
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
-            <h3 class="text-lg font-semibold mb-3">Professional Memberships</h3>
+            <h3 class="text-lg font-semibold mb-3">Professional Memberships & Projects</h3>
             <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-              <li>African Artificial Intelligence Society (AAIS) — representative & speaker</li>
-              <li>European Society for Mathematical and Theoretical Biology (ESMTB)</li>
-              <li>Société Francophone de Biologie Théorique (SFBT)</li>
-              <li>EPITAG team (epidemiological modelling & control for tropical agriculture)</li>
+              <li>Member of the <strong>MMB Chair (Mathematical Modelling and Biodiversity)</strong> at École Polytechnique, Paris.</li>
+              <li>Representative / affiliated with the <strong>African Artificial Intelligence Society (AAIS)</strong>.</li>
+              <li>Formerly affiliated with the <strong>European Society for Mathematical and Theoretical Biology (ESMTB)</strong>, the <strong>Société Francophone de Biologie Théorique (SFBT)</strong>, and the <strong>Association of Applied Biologists (AAB)</strong>.</li>
+              <li>Principal investigator of the <strong>NEMO</strong> project (MSCA-Bienvenüe).</li>
+              <li>Co-investigator: <strong>NEM-EMERGE</strong> (EU) and <strong>BEEP</strong> (ANR).</li>
             </ul>
           </div>
 
@@ -466,6 +537,39 @@
           </div>
         </section>
 
+        <!-- Credentials & Links (all from the uploaded CV) -->
+        <section id="credentials" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Credentials & Links</h2>
+
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <p class="text-sm text-gray-700 mb-3">Selected links, repositories, project demos and certificates.</p>
+
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2 mono">
+              <li><a href="mailto:israeltankam@gmail.com" class="text-blue-600">israeltankam@gmail.com</a></li>
+              <li><a href="https://github.com/israeltankam" class="text-blue-600">https://github.com/israeltankam</a></li>
+              <li><a href="https://share.streamlit.io/user/israeltankam" class="text-blue-600">https://share.streamlit.io/user/israeltankam</a></li>
+              <li><a href="https://www.linkedin.com/in/isra%C3%ABl-tankam-chedjou-phd-a3ba57126/" class="text-blue-600">LinkedIn profile</a></li>
+              <li><a href="https://cvsmart-cassava.streamlit.app/" class="text-blue-600">CVSmart (demo)</a></li>
+              <li><a href="https://grainly.streamlit.app/" class="text-blue-600">Grainly (demo)</a></li>
+              <li><a href="https://nemo-simulator.streamlit.app/" class="text-blue-600">Nemo (early demo)</a></li>
+              <li><a href="https://mixture-simulator.streamlit.app/" class="text-blue-600">CropMix (demo)</a></li>
+              <li><a href="https://ecoevorxiv.org/repository/view/9081/" class="text-blue-600">EcoEvoRxiv entry</a></li>
+              <li><a href="https://team.inria.fr/epitag/research/israel-tankam/" class="text-blue-600">INRIA profile</a></li>
+              <li><a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">Coursera share</a></li>
+              <li><a href="https://coursera.org/share/9630d466ac63f461aae96c96968dbde6" class="text-blue-600">Coursera share</a></li>
+              <li><a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">Coursera share</a></li>
+              <li><a href="https://coursera.org/share/dc4925e926d2cd73d6c4dd8cf7f49378" class="text-blue-600">Coursera share</a></li>
+              <li><a href="http://ude.my/UC-7b620fd7-8d33-4a02-a7c8-bd7f39331d2c" class="text-blue-600">UDE credential</a></li>
+              <li><a href="https://coursera.org/share/c5ccf99578aae8419cc368eb0a231f90" class="text-blue-600">Coursera share</a></li>
+              <li><a href="https://msca-bienvenue.bretagne.bzh/temoignage/israel-tankam-a-mathematician-working-on-the-practical-applications-of-mathematical-modelling-in-agriculture/" class="text-blue-600">MSCA-Bienvenüe testimonial</a></li>
+              <li><a href="https://esmtb.org/page-18114" class="text-blue-600">ESMTB page</a></li>
+              <li><a href="https://orcid.org/my-orcid?orcid=0000-0003-0310-1897" class="text-blue-600">ORCID</a></li>
+              <li><a href="https://israeltankam.github.io/" class="text-blue-600">Personal website</a></li>
+              <li><a href="https://scholar.google.com/citations?user=odW3dLoAAAAJ&hl=en" class="text-blue-600">Google Scholar</a></li>
+            </ul>
+          </div>
+        </section>
+
         <!-- Footer -->
         <footer class="text-center text-sm text-gray-600 py-6">
           <p>© 2024–2025 — Israël Tankam Chedjou • <a href="https://github.com/israeltankam" class="text-blue-600">GitHub</a> • <a href="https://israeltankam.github.io/" class="text-blue-600">Portfolio</a></p>
@@ -474,10 +578,112 @@
     </div>
   </div>
 
-  <!-- Minimal JS: small accessibility enhancements -->
+  <!-- JS: GitHub-last-commit -> update last-updated time element automatically when hosted on GitHub.
+       Behavior:
+        - Priority 1: use data attributes on <body> (data-github-repo, data-github-path)
+        - Priority 2: detect raw.githubusercontent.com URL format and extract owner/repo/branch/path
+        - Priority 3: detect *.github.io hosting and attempt repo owner inference (best-effort)
+        - Fallback: use document.lastModified
+       Note: Unauthenticated GitHub API calls are rate limited. If you prefer, host a small script/server to provide the date.
+  -->
   <script>
-    // Add keyboard focus outlines for accessibility where necessary
-    document.documentElement.classList.add('focus-visible');
+    (function () {
+      const timeEl = document.getElementById('last-updated');
+      if (!timeEl) return;
+
+      // Helper to set time element (ISO + human readable)
+      function setTime(isoString) {
+        try {
+          const d = new Date(isoString);
+          if (isNaN(d.getTime())) throw new Error('Invalid date');
+          timeEl.textContent = d.toLocaleString('en-GB', { year:'numeric', month:'short', day:'2-digit' });
+          timeEl.setAttribute('datetime', d.toISOString());
+        } catch (e) {
+          // fallback
+          timeEl.textContent = document.lastModified ? new Date(document.lastModified).toLocaleDateString() : '—';
+        }
+      }
+
+      // Try priority 1: data attributes on body
+      const body = document.body;
+      const repoAttr = body.getAttribute('data-github-repo');
+      const pathAttr = body.getAttribute('data-github-path');
+
+      // Utility: call GitHub commits API for a path
+      async function fetchLastCommit(ownerRepo, path) {
+        const endpoint = `https://api.github.com/repos/${ownerRepo}/commits?path=${encodeURIComponent(path)}&per_page=1`;
+        try {
+          const r = await fetch(endpoint, { headers: { Accept: 'application/vnd.github.v3+json' } });
+          if (!r.ok) throw new Error('GitHub API error ' + r.status);
+          const j = await r.json();
+          if (Array.isArray(j) && j.length > 0) {
+            const date = j[0].commit && j[0].commit.author && j[0].commit.author.date;
+            if (date) return date;
+          }
+          throw new Error('No commits found');
+        } catch (err) {
+          console.warn('GitHub fetch failed:', err);
+          return null;
+        }
+      }
+
+      // Try to get last commit using provided attrs
+      (async function tryFetch() {
+        if (repoAttr && pathAttr) {
+          const date = await fetchLastCommit(repoAttr, pathAttr);
+          if (date) return setTime(date);
+        }
+
+        // Priority 2: if hosted on raw.githubusercontent.com (raw file URL), parse it
+        try {
+          const host = window.location.hostname;
+          const pathname = window.location.pathname;
+          if (host === 'raw.githubusercontent.com') {
+            // pathname: /owner/repo/branch/path/to/file.html
+            const parts = pathname.split('/').filter(Boolean);
+            if (parts.length >= 4) {
+              const owner = parts[0], repo = parts[1];
+              // file path is parts.slice(3).join('/')
+              const filePath = parts.slice(3).join('/');
+              const ownerRepo = `${owner}/${repo}`;
+              const date = await fetchLastCommit(ownerRepo, filePath);
+              if (date) return setTime(date);
+            }
+          }
+
+          // Priority 3: if hosted on github.io, try to infer owner and repo
+          if (host.endsWith('.github.io')) {
+            // e.g. https://owner.github.io/repo/path/file.html OR owner.github.io/file.html
+            const owner = host.split('.github.io')[0];
+            // try two repo possibilities: repo = owner.github.io OR repo = the first path segment
+            const pathParts = pathname.split('/').filter(Boolean);
+            // candidate 1: owner/owner.github.io path = (path after root)
+            const candidateRepo1 = `${owner}/${owner}.github.io`;
+            if (pathParts.length > 0) {
+              // candidate 2: owner/<firstPath>
+              const candidateRepo2 = `${owner}/${pathParts[0]}`;
+              // Try candidate2 first (common when site is project page)
+              let date = await fetchLastCommit(candidateRepo2, pathParts.slice(1).join('/') || pathParts[0]);
+              if (date) return setTime(date);
+              date = await fetchLastCommit(candidateRepo1, pathname.replace(/^\//, ''));
+              if (date) return setTime(date);
+            } else {
+              const date = await fetchLastCommit(`${owner}/${owner}.github.io`, pathname.replace(/^\//, ''));
+              if (date) return setTime(date);
+            }
+          }
+        } catch (e) {
+          console.warn('Heuristic GitHub detection failed', e);
+        }
+
+        // Fallback: document.lastModified
+        if (document.lastModified) {
+          setTime(document.lastModified);
+        } else {
+          timeEl.textContent = '—';
+        }
+      })();
+    })();
   </script>
 </body>
 </html>
