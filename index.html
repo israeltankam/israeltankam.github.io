@@ -246,7 +246,7 @@
                   </div>
 
                   <div class="text-xs text-gray-500 mt-2">
-                    Note: I sourced tags and summaries from your public Medium pages and GitHub READMEs. One repo you mentioned (chaos_ecology) returned 404 at the time I checked; I left a placeholder card for it.
+                    Note: tags and summaries were extracted from the text you provided and from public pages.
                   </div>
                 </div>
               </div>
@@ -424,11 +424,9 @@
     </div>
   </div>
 
-  <!-- Embedded posts data (populated from public Medium pages & GitHub README contents I could access) -->
+  <!-- Embedded posts data (populated from public Medium pages & GitHub README contents and your supplied chaos_ecology content) -->
   <script>
-    // postsData: short set of your Medium articles + two GitHub repos (CMD4.0 + Memory-based).
-    // Each item: id, title, url, date, excerpt, tags (array of lowercase normalized tags)
-    // I populated the excerpts and tags from the public pages I could access.
+    // postsData: Medium articles + GitHub repos (CMD4.0, Memory-based, and chaos_ecology content you provided)
     const postsData = [
       {
         id: "m-chaos-2023",
@@ -476,15 +474,15 @@
         url: "https://github.com/israeltankam/Memory-based-incremental-parameter-update-of-a-generic-stochastic-plant-epidemic-model",
         date: "2025",
         excerpt: "Sequential Monte-Carlo framework to incrementally update epidemic model parameters as new incidence data arrive.",
-        tags: ["bayesian","sMC","forecasting","modelling","jupyter"]
+        tags: ["bayesian","smc","forecasting","modelling","jupyter"]
       },
       {
-        id: "gh-chaos_ecology-missing",
-        title: "chaos_ecology (repo placeholder)",
+        id: "gh-chaos-ecology",
+        title: "Phase plane, attractors & chaotic dynamics — chaos_ecology notes",
         url: "https://github.com/israeltankam/chaos_ecology",
-        date: "",
-        excerpt: "Repo not found (404) when checked — please confirm the exact repository name or make it public. Placeholder card included.",
-        tags: ["repo","missing"]
+        date: "2024",
+        excerpt: "Comprehensive tutorial on phase-plane analysis, attractors (fixed points, limit cycles, strange attractors), and chaotic dynamics in ecological ODE models. Includes concrete examples (logistic Lotka–Volterra, Rosenzweig–MacArthur), Python code (solve_ivp, matplotlib animation), and a three-species chaotic model with 3D/2D projections.",
+        tags: ["phase plane","attractors","limit cycles","chaos","lotka-volterra","rosenzweig-macarthur","three-species","python","matplotlib","animation","simulation","dynamical-systems","ecology","predator-prey"]
       }
     ];
 
@@ -494,7 +492,7 @@
     // render topic checkboxes
     const filtersForm = document.getElementById('topic-filters');
     topics.forEach(tag => {
-      const id = 'chk-' + tag.replace(/\s+/g, '-');
+      const id = 'chk-' + tag.replace(/\s+/g, '-').replace(/[^\w-]/g,'');
       const wrapper = document.createElement('div');
       wrapper.className = 'flex items-center gap-2';
       wrapper.innerHTML = `
