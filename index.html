@@ -1,456 +1,484 @@
-<!DOCTYPE html>
+```html
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Israël Tankam Chedjou</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-        .profile-photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-right: 20px;
-            object-fit: cover;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        h2 {
-            font-size: 1.8em;
-            color: #2980b9;
-            border-bottom: 2px solid #2980b9;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-        }
-        a {
-            color: #2980b9;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .contact-info p {
-            margin: 5px 0;
-            font-size: 1.1em;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section-item {
-            margin-bottom: 20px;
-        }
-        .skills ul {
-            list-style-type: square;
-            padding-left: 20px;
-        }
-        .skills li {
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #777;
-            border-top: 1px solid #ddd;
-        }
-        .updated {
-            font-size: 0.9em;
-            color: #555;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV — Israël Tankam Chedjou, PhD</title>
+
+  <!-- Tailwind Play CDN (v3) + config for custom blue palette -->
+  <script>
+    // Tailwind Play CDN configuration
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              blue: {
+                50: '#eef6ff',
+                100: '#dbeeff',
+                200: '#b7ddff',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1e40af',
+              },
+              indigo: {
+                100: '#eef2ff',
+                500: '#6366f1',
+                600: '#4f46e5',
+                700: '#3730a3',
+                900: '#0f172a'
+              }
+            },
+            boxShadow: {
+              'glow-lg': '0 10px 30px rgba(37,99,235,0.12), 0 6px 20px rgba(99,102,241,0.06)'
+            },
+            backdropBlur: {
+              sm: '4px'
+            }
+          }
+        },
+        plugins: [tailwindPlugin => {}]
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Gradient text utility for older browsers fallback */
+    .gradient-text {
+      background-image: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Simple print-friendly tweaks */
+    @media print {
+      .no-print { display: none !important; }
+      .container { box-shadow: none !important; background: white !important; }
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <img src="Photo.jpg" alt="Israël Tankam Chedjou" class="profile-photo">
-            <div>
-                <h1>Israël Tankam Chedjou, PhD</h1>
-                <p class="updated">Mathematical modeller, <span>developer of <a href="https://cvsmart-cassava.streamlit.app/">cvsmart-cassava 🖥️</a> and <a href="https://grainly.streamlit.app/">grainly 🖥️</a> </span></p>
-                <p class="updated">Updated: <span>02/11/2025</span></p>
-            </div>
-        </header>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800">
 
-        <section class="contact-info">
-            <h2>Contact Information</h2>
-            <p><strong>Personal Email:</strong> <a href="mailto:israeltankam@gmail.com">israeltankam@gmail.com</a></p>
-            <p><strong>Phone:</strong> (+33) (0)7 58 2* ** ** (available upon request)</p>
-            <p><strong>Citizenship:</strong> Cameroon</p>
-            <p><strong>Work Email:</strong> <a href="mailto:israel.tankamchedjou@agrocampus-ouest.fr">israel.tankamchedjou@agrocampus-ouest.fr</a></p>
-            <p><strong>Orcid:</strong> <a href="https://orcid.org/0000-0003-0310-1897">0000-0003-0310-1897</a></p>
-            <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?user=odW3dLoAAAAJ&hl=en">https://scholar.google.com/citations?user=odW3dLoAAAAJ&hl=en</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/israeltankam">Israël Tankam</a></p>
-            <p><strong>Streamlit:</strong> <a href="https://share.streamlit.io/user/israeltankam">Israël Tankam</a></p>
-            <p><strong>Kaggle:</strong> <a href="https://www.kaggle.com/israltankam">Israël Tankam</a></p>
-            <p><strong>ResearchGate:</strong> <a href="https://www.researchgate.net/profile/Israel_Tankam_Chedjou">Israël Tankam C.</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/isra%C3%ABl-tankam-chedjou-phd-a3ba57126">Israël Tankam Chedjou, PhD</a></p>
-            <p><strong>Quora:</strong> <a href="https://fr.quora.com/profile/Isra%C3%ABl-Tankam">Israël Tankam</a></p>
-            <p><strong>X (ex Twitter):</strong> <a href="https://twitter.com/israeltankam">@israeltankam</a></p>
-        </section>
-        
-        <section class="section">
-            <h2> Research Interests</h2>
-            <p><strong> Statement:</strong> My research interests lie at the intersection of mathematical modelling, plant disease dynamics, and sustainable agriculture. I am particularly focused on developing advanced mathematical frameworks to understand and manage the dynamics of viral, fungal, and pest-driven epidemics, with a recent emphasis on population demo-genetics for resistance durability. My work aims to develop, analyse and translate complex mathematical models into practical decision-making tools that empower agricultural stakeholders, enhancing crop resilience and optimizing management strategies. I have experience with various computational methods, including simulation and optimization techniques, which I apply to tackle challenges in pest and plant disease management, particularly for species such as the potato cyst nematode and banana soil-borne pests and cassava viruses. Through interdisciplinary collaboration and innovative modelling approaches, I aspire to contribute to the field by addressing real-world agricultural challenges while advancing our theoretical understanding of disease dynamics. 
-            <p><strong> Fields: </strong> Mathematical Modelling, Ecological Modelling, Plant disease epidemiology, Dynamical Systems, Biomathematics, Computational Modelling and Simulations, Optimal Control, Optimization, Numerical Analysis, Decision Support System, Computational Biology</p>
-            <p><strong> Affiliation: </strong> Member of the MMB Chair (Mathematical Modelling and Biodiversity) at École Polytechnique in Paris. Affiliated with the AAIS (African Artificial Intelligence Society) and formerly affiliated with the ESMTB (European Society of Mathematical and Theoretical Biology), the SFBT (French Society for Theoretical Biology) and the AAB (Association of Applied Biologists).
-Principal investigator of the NEMO project (MSCA-Bienvenüe) and co-investigator of the NEM-EMERGE (EU) and BEEP (ANR) projects.</p>
-        
-        </section>
-
-        <section class="section">
-            <h2>Education</h2>
-            <div class="section-item">
-                <p><strong>University of Yaounde I</strong>, Yaounde, Cameroon</p>
-                <p>PhD in Applied Mathematics, Apr 2021</p>
-                <p>Supervisors: J. J. Tewa, F. Grognard, S. Touzeau</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Honors and Scholarships</h2>
-            <div class="section-item">
-                <p><strong>Marie Sklodowska-Curie Actions - BIENVENÜE fellowship</strong> (co-funded by the EU Marie Sklodowska-Curie Actions, Région Bretagne and partner institutions), 2023-2024</p>
-                <p><strong>Ovide Arino Outreach Award</strong> (ESMTB, SFBT), 2021</p>
-                <p><strong>EMS-SIMONS for Africa scholarship</strong> (The EMS-Simons Foundation), 2019</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Research Experience</h2>
-            <div class="section-item">
-                <p><strong>MSCA-Bienvenüe Postdoctoral Fellow</strong>, IGEPP & Institut Agro Rennes-Angers, Rennes, France</p>
-                <p>Supervisor: Frédéric Hamelin (IGEPP & Institut Agro Rennes-Angers), Josselin Montarry (INRAE Le Rheu)</p>
-                <p>Jan 2023 – Jan 2025</p>
-                <p>Project: <a href="https://msca-bienvenue.bretagne.bzh/temoignage/israel-tankam-a-mathematician-working-on-the-practical-applications-of-mathematical-modelling-in-agriculture/">NEMO</a></p>
-            </div>
-            <div class="section-item">
-                <p><strong>Postdoctoral Research Associate</strong>, Epidemiology & Modelling Group, University of Cambridge</p>
-                <p>Supervisor: Professor Chris A. Gilligan (University of Cambridge)</p>
-                <p>Jan 2022 – Dec 2022</p>
-                <p>Focused on optimizing crop variety deployment and disease control strategies to maximize cassava yields and minimize the incidence of Cassava Mosaic Disease.</p>
-            </div>
-            <div class="section-item">
-                <p><strong>Research Associate</strong> at National Advanced School of Engineering & CETIC project, Yaounde, Cameroon</p>
-                <p>Mentor: Professor J. J. Tewa (University of Yaounde I)</p>
-                <p>Jan 2021 – Dec 2021</p>
-                <p>Mentored PhD students in modelling and control of Banana Black Sigatoka Disease and Maize Stalk Borers.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Visiting Positions</h2>
-            <div class="section-item">
-                <p><strong>Visiting Scientist</strong>, University of Florida, Institute of Food and Agricultural Sciences - Garrett's Lab, Dec 2023</p>
-            </div>
-            <div class="section-item">
-                <p><strong>Visiting Scientist</strong>, Wageningen University, Laboratory of Nematology - Project Van Gogh, Sep 2023</p>
-            </div>
-            <div class="section-item">
-                <p><strong>Visiting Scientist</strong>, WAVE, Abidjan, Côte d'Ivoire, Apr 2022 – Dec 2022</p>
-                <p>Mentored PhD students and field experts, especially with regard to the management of their data.</p>
-            </div>
-            <div class="section-item">
-                <p><strong>Visiting Scientist</strong>, INRIA Sophia-Antipolis Méditerranée, Team Biocore, Feb 2019 – Jun 2019 | Apr 2018 – Aug 2018 | Sep 2017 – Dec 2017</p>
-            </div>
-        </section>
-
-        <section class="section">
-    <h2>Teaching Experience</h2>
-
-    <div class="section-item">
-        <p><strong>Contract part-time teacher</strong>, AFTEC, Rennes, France</p>
-        <p> 2023-2024 </p>
-        <p> Mathematics for BTS SIO (IT Services to Organizations, equivalent BTEC Higher National Diploma)</p>
-        <p><strong>Part-time teacher</strong>, L'Institut Agro Rennes-Angers, Rennes, France</p>
-        <p> Fall & Winter 2023 </p>
-        <p> Introduction to the scientific approach (“Initiation à la démarche scientifique”) </p>
-        <p><strong>Teaching Assistant</strong>, Department of Mathematics and Physical Sciences (National Advanced School of Engineering, Yaoundé)</p>
-        <p>Fall 2021, Fall 2020, Fall 2019, Fall 2018, Fall 2016</p>
-        <p>MAT 216: Probability and Statistics</p>
-    </div>
-
-    <div class="section-item">
-        <p>Summer 2020</p>
-        <p>MAT 227: Numerical Analysis</p>
-        <p>INF 222: Computer Sciences for Mathematics</p>
-    </div>
-
-    <div class="section-item">
-        <p>Spring 2017</p>
-        <p>MAT 116: Real Analysis</p>
-    </div>
-</section>
-
-
-        <section class="section">
-    <h2>Industry Experience</h2>
-    <div class="section-item">
-        <p><strong>ROOT-consulting</strong>, Front-end team, Yaounde, Cameroon</p>
-        <p>Front-end Java developer, Sep 2014 – Dec 2015</p>
-        <p>ROOT-consulting was a start-up building software for healthcare.</p>
-        <!-- Uncomment the following if you want to include the additional details about Hemovigile 1.0 -->
-        <!-- <p>Designed, developed and produced the software Hemovigile 1.0 (Java / J2SE - MySQL) for the management of blood banks and donors. Deployed in Yaoundé Central Hospital. Ref (Vice-Chancellor), Pr. Vincent Djientcheu, <a href="mailto:vincent_djientcheu@yahoo.com">vincent_djientcheu@yahoo.com</a>.</p> -->
-    </div>
-</section>
-
-<section class="section">
-    <h2>Industrial Skill Transfer</h2>
-    <div class="section-item">
-        <p><strong>Development of Decision-Making Tools:</strong></p>
-        <p>Led the development of online decision-making tools, implementing mathematical modelling and optimization algorithms to create a user-friendly interface for agriculture stakeholders. Translated complex mathematical concepts into practical solutions, contributing to the startup's agrotech initiatives.
-            
-             
-<ul>
-    <li><a href="https://cvsmart-cassava.streamlit.app/">CVSMART</a> – a web app for spatially explicit stochastic modelling of Cassava Mosaic Disease, with on‑demand decision support.</li>
-    <li><a href="https://grainly.streamlit.app/">Grainly</a> – a simulation and prediction web app powered by the STICS crop model for cereal yield forecasting and scenario analysis.</li>
-    <li>EpiPv R package – tools for Bayesian estimation of insect‑borne plant virus transmission parameters from laboratory access‑period assays.</li>
-    <li><a href="https://nemo-simulator.streamlit.app/">Nemo-simulator (early version)</a> – for optimal and sustainable potato cyst nematode control (part of project NEMO, ordered by: <a href="https://www.inov3pt.fr/">inov3PT</a>, early version openly available).</li>
-    <li><a href="https://mixture-simulator.streamlit.app/">CropMix</a> – for optimal cassava variety mixtures to balance yield and mosaic disease control, in collaboration with PlantSci Cambridge.</li>
-    <li>A simple <a href="https://github.com/israeltankam/potato-blight-detection-app">potato blight detector and management guide</a> based on a pre‑trained ResNet‑50 network (Plant Village dataset) and rule‑based recommendations.</li>
-    <li><a href="https://dss-seir.streamlit.app/">A toy model</a> for disease and income simulation with roguing optimization in plant disease epidemiology.</li>
-</ul>
-
-    </div>
-
-    <p> Co-developped the EpiPv R package for estimating and visualizing key parameters of plant viral epidemics, facilitating epidemic risk analysis. </p>
-</section>
-
-<section class="section">
-    <h2>Talks, Posters, and Tutorials</h2>
-    <div class="section-item">
-        <p>• Tankam Chedjou, I., Combinatorial optimization of banana clean seed reliance. 17th African Conference on Research in Computer Science and Applied Mathematics: CARI 2024, Nov 2024, Bejaia, Algeria.</p>
-        <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Masculinizing resistance, rotations and biocontrol for durable suppression of potato cyst nematodes: A model. European Responsible Research and Innovation Event, Oct. 10th – 11th 2024, Inria, Rennes, France.</p>
-        <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. 6th Symposium of Potato Cyst Nematode Management, Sept. 10th 2024, Harper Adams University, UK.</p>
-        <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. 13th International Epidemiology Workshop, Apr. 10th 2024, Foz do Iguaçu, Brazil.</p>
-        <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. Forum IGEPP, Mar. 21st 2024, Saint-Jacut-de-la-Mer, France.</p>
-        <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. <a href="https://team.inria.fr/epitag/workshop-dschang-2023/">EPITAG Workshop</a>, Nov. 01st 2023, Dschang, Cameroon.</p>
-        <p>• Tankam-Chedjou, I., Montarry, J., Fournet, S., & Hamelin, F.M. Combining masculinizing resistance, rotations and biocontrol to achieve durable suppression of potato cyst nematodes: A model. GENOGLOB workshop, Oct. 9th 2023, University of Wageningen, Netherlands.</p>
-        <p>• Donnelly, R., Tankam, I., Gilligan, C. Which intervention when? Cassava viral epidemics and how growers source planting material. Poster. 2nd International Congress of Plant Pathology, Aug. 20th – 25th 2023, Lyon, France.</p>
-        <p>• Tankam, I., Donnelly, R., Stutt, R., Godding, D., Gilligan, C. Optimal cassava variety mixture and mosaic disease epidemiology: Improving prevalence, yield and reward. MoVi Workshop, Mar. 9th 2023, Université de Rennes 1, Rennes, France.</p>
-        <p>• Tankam, I., <a href="https://africanaisociety.wordpress.com/2021/05/01/conference-debat-introductive-a-lintelligence-artificielle-coorganisee-avec-activspaces/">Introductory conference-debate on artificial intelligence</a>, Conference of Artificial Intelligence for laymen and beginners, May 2021, ActivSpaces, Douala, Cameroon.</p>
-        <p>• Tankam Chedjou, I., Touzeau, S., Grognard, F., Tewa, J.J., An Agricultural control of Radopholus similis in banana plantations, Conference Biomaths, Jun 2019, Bedlewo, Poland.</p>
-        <p>• Tankam Chedjou, I., Touzeau, S., Grognard, F., Tewa, J.J., A multi-seasonal model of the dynamics of banana plant-parasitic nematodes, 14th African Conference on Research in Computer Science and Applied Mathematics: CARI 2018, Oct 2018, Stellenbosch, South Africa.</p>
-        <p>• Tankam Chedjou, I., Touzeau, S., Grognard, F., Tewa, J.J., An Agricultural control of Radopholus similis in banana plantations, European Conference on Mathematical and Theoretical Biology: ECMTB 2018, Oct 2018, Lisbon, Portugal.</p>
-        <p>• Tankam, I., Mouofo, P. T., Tewa, J.J., Hopf bifurcation properties of a delayed predator-prey model with threshold prey harvesting, 13th African Conference on Research in Computer Science and Applied Mathematics: CARI 2016, Oct 2016, Hammamet, Tunisia.</p>
-        <p>• Tankam, I., Hemovigile 1.0: A tool to optimally manage blood banks, 5th Days of Medical Informatics SOCIM, on the theme “Software and medical practice in Cameroon”, Société Camerounaise d’Informatique Médicale (Cameroon Society of Medical Informatics), Nov 2015, Yaounde, Cameroon.</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Skills</h2>
-    <div class="section-item">
-    <p><strong>Transferable and Leadership skills</strong></p>
-    <ol>
-        <li><strong>Mathematical and Analytical Expertise</strong></li> 
-        I develop complex models to solve problems, with applications beyond agriculture.
-        
-        <li><strong>Programming and Computational Skills</strong></li> 
-        I create simulation tools using Python, Java, and MATLAB, applicable to software development and data analysis.
-        
-        <li><strong>Data Analysis and Statistical Skills</strong></li> 
-        I analyze large datasets and derive insights, which might be valuable in applied data science.
-        
-        <li><strong>Project Management and Strategic Leadership</strong></li> 
-        I lead interdisciplinary and complex projects ensuring successful outcomes that might be helpful in technology transfer.
-        
-        <li><strong>Grant Writing and Funding Leadership</strong></li> 
-        I have secured competitive grants, showcasing my ability to develop compelling proposals and acquire resources.
-        
-        <li><strong>Communication and Teaching</strong></li> 
-        I simplify complex ideas for diverse audiences, which is essential for roles in leadership, training, and collaboration with stakeholders..
-        
-        <li><strong>Mentorship and Team Development</strong></li> 
-        I mentor and support team growth, fostering productive and collaborative environments.
-        
-        <li><strong>Diversity, Equity, and Inclusion Advocacy</strong></li> 
-        I promote inclusive and equitable work environments that value diverse perspectives and collaboration.
-        
-        <li><strong>Decision-Making Tools Development</strong></li> 
-        I translate research into practical tools, applicable in industries or extension services.
-        
-        <li><strong>Problem-Solving and Innovation</strong></li> 
-        I solve complex challenges through innovative approaches, key for roles in technology development, consultancy and research.
-    </ol>
-</div>
-
-    <div class="section-item">
-        <p><strong>Programming & Dev and Data Technologies</strong></p>
-        <p>Beginner in: AWS, Google Cloud, C#, MySQL, R </p>
-        <p>Proficient in: Python, Java, NetLogo, Tableau, JavaScript, Kaggle, TensorFlow, Keras, Scikit-learn, PHP, Pytorch </p>
-        <p>Familiar with: MATLAB, Scilab, Maple, Streamlit, PyMC, Git </p>
-    </div>
-    <div class="section-item">
-        <p><strong>Languages</strong></p>
-        <p>French (native/fluent), English (fluent)</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Certifications</h2>
-    <div class="section-item">
-        <p><strong>On Coursera</strong></p>
-            <p>• Introduction to Genetics and Evolution (Duke University) </p>
-            <p>• Machine Learning (Stanford University) </p>
-            <p>• Neural Networks and Deep Learning </p>
-            <p>• Improving Deep Neural Networks: Hyperparameter Tuning, Regularization, and Optimization </p>
-            <p>• Structuring Machine Learning Projects </p>
-            <p>• Convolutional Neural Networks </p>
-            <p>• Sequence Models </p>
-            <p>• Deep Learning Specialization (<a href="https://www.deeplearning.ai">deeplearning.ai</a>) </p>
-            <p>• Industrial IoT with Google Cloud Platform (Google Cloud) </p>
-            <p>• Getting Started with AWS Machine Learning (AWS)</p>
-        <p><strong>On Udemy</strong></p>
-            <p>• Tableau for Beginners (Programming Hub)</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Additional Training</h2>
-    <div class="section-item">
-        <p><strong>Formation Médiation Scientifique</strong> (Training in Scientific Mediation), Université de Rennes, Jan 2023 - April 2023</p>
-        <p><u>Acquired skills:</u></p>
-        <p>• Clear and concise communication of complex scientific concepts </p>
-        <p>• Effective storytelling to engage and connect with diverse audiences </p>
-        <p>• Creation of visually appealing and informative materials (infographics, presentations) </p>
-        <p>• Strong critical thinking skills for evaluating scientific claims and combating misinformation </p>
-        <p>• Empathy and active listening to understand and address audience perspectives </p>
-        <p>• Collaboration and networking for multidisciplinary knowledge sharing </p>
-        <p>• Adaptability to evolving scientific developments for accurate and relevant information dissemination.</p>
-        <p><u>Completion Project:</u> Quelles alternatives aux pesticides ? (What alternatives to pesticides?)</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Professional Memberships</h2>
-    <div class="section-item">
-        <p><strong>• African Artificial Intelligence Society (AAIS)</strong>, Sep 2020 – Present</p>
-        <p>Keynote speaker at several seminars and conferences, mentoring, and communication.</p>
-        <p><strong>• European Society for Mathematics and Theoretical Biology (ESMTB)</strong>, Sep 2021 – Dec 2022</p>
-        <p>Affiliated after winning the Ovide Arino Outreach Award.</p>
-        <p><strong>• Société Francophone de Biologie Théorique (SFBT)</strong>, Sep 2021 – Dec 2022</p>
-        <p>Affiliated after winning the Ovide Arino Outreach Award.</p>
-        <p><strong>• Team-project EPITAG (EPIdemiological Modelling and Control for Tropical Agriculture)</strong>, Jan 2017 – Dec 2021</p>
-        <p>Published several papers and attended several conferences as a Cameroonian researcher with a background in dynamical systems and control and an interest in crop diseases.</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Other Interests</h2>
-    <div class="section-item">
-        <p>Music (guitar, voice), <a href="https://medium.com/@israeltankam">Writing Popular Science</a>, Painting, Drawing, Fitness, Othello, Recreational Mathematics, Reading.</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>References</h2>
-    <div class="section-item">
-        <p><strong>Frédéric Hamelin</strong>, Associate Professor, Institut Agro Rennes-Angers</p>
-        <p>Email: <a href="mailto:frederic.hamelin@institut-agro.fr">frederic.hamelin@institut-agro.fr</a></p>
-        <p>Phone: (+33) 6 14... (available upon request) </p>
-    </div>
-    <div class="section-item">
-        <p><strong>Chris Gilligan</strong>, Professor, University of Cambridge</p>
-        <p>Email: <a href="mailto:cag1@cam.ac.uk">cag1@cam.ac.uk</a></p>
-        <p>Phone: (+44) 759...  (available upon request) </p>
-    </div>
-    <div class="section-item">
-        <p><strong>Josselin Montarry</strong>, Senior Researcher, INRAE</p>
-        <p>Email: <a href="mailto:josselin.montarry@inrae.fr">josselin.montarry@inrae.fr</a></p>
-        <p>Phone: (+33) 2 23...  (available upon request) </p>
-    </div>
-    <div class="section-item">
-        <p><strong>Frédéric Grognard</strong>, Senior Researcher, Inria</p>
-        <p>Email: <a href="mailto:frederic.grognard@inria.fr">frederic.grognard@inria.fr</a></p>
-        <p>Phone: (+33) 4 92...  (available upon request) </p>
-    </div>
-    <div class="section-item">
-        <p><strong>Suzanne Touzeau</strong>, Senior Researcher, Inria & Inrae Sophia-Antipolis</p>
-        <p>Email: <a href="mailto:suzanne.touzeau@inria.fr">suzanne.touzeau@inria.fr</a></p>
-        <p>Phone: (+33) 6 81...  (available upon request) </p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Publication List</h2>
-    <div class="section-item">
-        <p>[1] I. Tankam Chedjou, R. Donnelly, and C. A. Gilligan. “Optimizing crop varietal mixtures for viral disease management: A case study on cassava virus epidemics”. In: <em>Plos Computational Biology</em> (2025). <a href="https://doi.org/10.1371/journal.pcbi.1012842">10.1371/journal.pcbi.1012842</a>.</p>
-        <p>[2] I. Tankam Chedjou, J. Montarry, S. Fournet, and F. Hamelin. “Combining masculinizing resistance, rotation and biocontrol to achieve durable suppression of the potato pale cyst nematode: a model”. In: <em>Evolutionary Applications</em> (2024), pp. e70012. doi: <a href="https://doi.org/10.1111/eva.70012">10.1111/eva.70012</a>.</p>
-        <p>[3] F. P. Agouanet, V. Yatat-Djeumen, I. Tankam-Chedjou, and J. J. Tewa. “Control Model of Banana Black Sigatoka Disease with Seasonality”. In: <em>Differential Equations and Dynamical Systems</em> (2024), pp. 1–40. doi: <a href="https://doi.org/10.1007/s12591-024-00692-z">10.1007/s12591-024-00692-z</a>.</p>
-        <p>[4] B. S. Tchienkou-Tchiengang, I. Tankam-Chedjou, I. V. Yatat-Djeumen, and J. J. Tewa. “Multi-seasonal modelling of the African maize stalk borer and assessment of crop residue management”. In: <em>Applied Mathematical Modelling</em> (Oct. 2022). doi: <a href="https://doi.org/10.1016/j.apm.2022.09.025">10.1016/j.apm.2022.09.025</a>.</p>
-        <p>[5] F. P. Agouanet, I. Tankam-Chedjou, R. M. Etoua, and J. J. Tewa. “Mathematical modelling of Banana Black Sigatoka Disease with delay and Seasonality”. In: <em>Applied Mathematical Modelling</em> 99 (Nov. 2021), pp. 380–399. doi: <a href="https://doi.org/10.1016/j.apm.2021.06.030">10.1016/j.apm.2021.06.030</a>.</p>
-        <p>[6] I. Tankam Chedjou, F. Grognard, J. J. Tewa, and S. Touzeau. “When and how to fallow: first steps towards banana crop yield improvement through optimal and sustainable control of a soilborne pest”. In: <em>Journal of Interdisciplinary Methodologies and Issues in Sciences</em> 8 (2021). doi: <a href="https://jimis.episciences.org/">10.18713/JIMIS-120221-8-4</a>.</p>
-        <p>[7] I. Tankam-Chedjou, F. Grognard, J. J. Tewa, and S. Touzeau. “Optimal and sustainable management of a soilborne banana pest”. In: <em>Applied Mathematics and Computation</em> 397 (May 2021), p. 125883. doi: <a href="https://doi.org/10.1016/j.amc.2020.125883">10.1016/j.amc.2020.125883</a>.</p>
-        <p>[8] I. Tankam-Chedjou, S. Touzeau, L. Mailleret, J. J. Tewa, and F. Grognard. “Modelling and control of a banana soilborne pest in a multi-seasonal framework”. In: <em>Mathematical Biosciences</em> 322 (Apr. 2020), p. 108324. doi: <a href="https://doi.org/10.1016/j.mbs.2020.108324">10.1016/j.mbs.2020.108324</a>.</p>
-        <p>[9] I. Tankam, P. Tchinda Mouofo, A. Mendy, M. Lam, J. J. Tewa, and S. Bowong. “Local Bifurcations and Optimal Theory in a Delayed Predator–Prey Model with Threshold Prey Harvesting”. In: <em>International Journal of Bifurcation and Chaos</em> 25.07 (June 2015), p. 1540015. doi: <a href="https://doi.org/10.1142/s0218127415400155">10.1142/s0218127415400155</a>.</p>
-    </div>
-    <h3>Book Chapters</h3>
-    <div class="section-item">
-        <p>[10] I. Tankam Chedjou. “Combinatorial optimization of banana clean seed reliance”. In: <em>African Conference on Research in Computer Science and Applied Mathematics</em>.  Ed. by K. Barkaoui, N. Gmati, and M. Roche. Cham: Springer Nature Switzerland (2025), p. 83–99. doi: <a href="https://doi.org/10.1007/978-3-031-90510-0_7">10.1007/978-3-031-90510-0_7</a>.</p>
-    </div>
-    <h3>Conference Papers</h3>
-    <div class="section-item">
-        <p>[11] B. S. Tchienkou Tchiengang, I. Tankam, and J. J. Tewa. “A multi-seasonal model of the dynamics of the African maize stalk borer”. In: <em>CARI 2022, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées</em>. Tunis, Tunisia, Oct. 2022. <a href="https://hal.science/hal-03718556">Link</a>.</p>
-        <p>[12] I. Tankam Chedjou, S. Touzeau, F. Grognard, L. Mailleret, and J.-J. Tewa. “A multi-seasonal model of the dynamics of banana plant-parasitic nematodes”. In: <em>CARI’2018-14, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées</em>. 2018.</p>
-        <p>[13] I. Tankam Chedjou, P. Tchinda Mouofo, and J.-J. Tewa. “Hopf bifurcation properties of a delayed predator-prey model with threshold prey harvesting”. In: <em>CARI’2016, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées</em>. 2016.</p>
-    </div>
-    <h3> Preprints </h3>
-    <div class="section-item">
-        <p>[14] I. Tankam Chedjou (2025). “Memory‑based incremental parameter updating of a generic stochastic plant epidemic model”. In: <em>BioRxiv</em> (2025). <a href="https://doi.org/10.1101/2025.07.11.664325">10.1101/2025.07.11.664325</a>. Preprint.</p>
-
-    </div>
-    <h3>Submitted</h3>
-    <div class="section-item">
-        <p>[15] R. Donnelly, I. Tankam C., and C. A. Gilligan. “Plant virus profiling with the EpiPv package”. In: <em>Methods in Ecology and Evolution</em> (2025). <a href="https://doi.org/10.32942/X29K9P">10.32942/X29K9P</a>. Submitted.</p>
-        <p>[16] B. S. Tchienkou-Tchiengang, I. Tankam-Chedjou, I. V. Yatat-Djeumen, and J. J. Tewa. “Multiseasonal modelling of pesticide resistance in Maize Stalk Bore”. In: <em>Mathematical Biosciences</em> (2025). <a href="https://doi.org/10.2139/ssrn.5228134">10.2139/ssrn.5228134</a>. Submitted.</p>
-        <p>[17] B. S. M. Kouakou, J. S. Seka, J. S. Pita, A. A. N. Yoboué, I. Tankam, R. Eboulem, N. Kouassi, F. Tiendrébéogo, and F. Sorho. “Climatic, environmental factors and agricultural practices favoring dynamics of the spread of African cassava mosaic disease in Côte d’Ivoire”. In: <em>Discover Agriculture</em>em> (2025). Submitted.</p>
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <!-- Header / Hero -->
+    <header class="relative bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-glow-lg p-6 md:p-8 mb-8">
+      <div class="flex flex-col lg:flex-row items-center gap-6">
+        <!-- Avatar -->
+        <div class="flex-shrink-0">
+          <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl md:text-2xl">
+            IT
+          </div>
         </div>
 
-    <h3>Ongoing</h3>
-    <div class="section-item">
-        <p>[18] D. Petit, F. Hamelin, J. Tankam Chedjou Israël Penlap Tamago, F. Grognard, F. Hilker, and L. Mailleret.  “Seasonal behavioural plant epidemiology: clean seeds”. In: <em> </em> (2025). Ongoing.</p>
-        <p>[19] I. Tankam Chedjou, J. Montarry, S. Fournet, and F. Hamelin. “Predictive management of pale potato cyst nematode through demo-genetic modelling”. In: <em>Evolution Letters</em> (2025). Ongoing.</p>
-        <p>[20] R. Donnelly, I. Tankam-Chedjou, and C. A. Gilligan. “Epidemiology of cassava virus management – managing the temporal phases of epidemics”. In: <em>Plos Computational Biology</em> (2024). Ongoing.</p>
-    </div>
+        <!-- Main title + summary -->
+        <div class="flex-1 min-w-0">
+          <h1 class="text-4xl md:text-5xl font-extrabold gradient-text leading-tight">Israël Tankam Chedjou, PhD</h1>
+          <p class="text-lg text-blue-700 mt-2">R&D Engineer — Applied Modelling & Data</p>
 
-    <h3>PhD Thesis</h3>
-    <div class="section-item">
-        <p>[21] I. Tankam Chedjou. “Modelling, analysis and control of plantain plant-parasitic nematodes”. <a href="https://agris.fao.org/search/en/providers/122439/records/6748b60d7625988a371fe19e">PhD thesis</a>. Université de Yaoundé I, Cameroun, 2021.</p>
-    </div>
-</section>
+          <p class="mt-4 text-base text-gray-700 leading-relaxed">
+            Mathematical modeller and R&D engineer designing decision-support software for plant health, pest management and agronomic optimisation.
+            I translate advanced mathematical models into production-ready tools (Python, Streamlit, web) for industry, research and public institutions.
+          </p>
 
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <a href="mailto:israeltankam@gmail.com" class="px-4 py-2 rounded-xl bg-white/70 border border-blue-200 hover:border-blue-400 text-sm font-medium shadow-sm">israeltankam@gmail.com</a>
+            <span class="px-3 py-2 rounded-xl bg-blue-50 text-blue-700 text-sm font-medium">Rennes, France</span>
+            <span class="px-3 py-2 rounded-xl bg-white/70 border border-blue-100 text-sm">Updated: <strong class="text-blue-600">02 Nov 2025</strong></span>
+          </div>
+        </div>
 
-        <footer class="footer">
-            <p>© 2024 Israël Tankam Chedjou</p>
+        <!-- CTAs -->
+        <div class="flex-shrink-0 flex gap-3 items-center">
+          <a href="https://cvsmart-cassava.streamlit.app/" target="_blank" class="px-5 py-2 rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition">CVSmart</a>
+          <a href="https://grainly.streamlit.app/" target="_blank" class="px-4 py-2 rounded-xl bg-white/60 border border-blue-200 text-blue-700 hover:border-blue-400">Grainly</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="lg:flex lg:gap-8">
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-80 hidden lg:block sticky top-6 self-start space-y-6">
+        <!-- Contact Card -->
+        <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-5 shadow-md">
+          <h3 class="text-sm font-semibold text-blue-900 mb-3">Contact</h3>
+          <div class="text-sm text-gray-700 space-y-2">
+            <p><strong>Email:</strong> <a href="mailto:israeltankam@gmail.com" class="text-blue-600">israeltankam@gmail.com</a></p>
+            <p><strong>Phone:</strong> (+33) (0)7 58 2* ** ** (available on request)</p>
+            <p><strong>Citizenship:</strong> Cameroon</p>
+            <p><strong>Work email:</strong> <a href="mailto:israel.tankamchedjou@agrocampus-ouest.fr" class="text-blue-600">israel.tankamchedjou@agrocampus-ouest.fr</a></p>
+            <p><strong>ORCID:</strong> <a href="https://orcid.org/0000-0003-0310-1897" class="text-blue-600">0000-0003-0310-1897</a></p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bg-gradient-to-br from-white/90 to-blue-50/70 rounded-xl border border-blue-200 p-5 shadow-md">
+          <h3 class="text-sm font-semibold text-blue-900 mb-3">Profiles & Projects</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://github.com/israeltankam" class="text-blue-600 hover:underline">GitHub</a></li>
+            <li><a href="https://share.streamlit.io/user/israeltankam" class="text-blue-600 hover:underline">Streamlit apps</a></li>
+            <li><a href="https://scholar.google.com/citations?user=odW3dLoAAAAJ&hl=en" class="text-blue-600 hover:underline">Google Scholar</a></li>
+            <li><a href="https://team.inria.fr/epitag/research/israel-tankam/" class="text-blue-600 hover:underline">Inria profile</a></li>
+            <li><a href="https://israeltankam.github.io/" class="text-blue-600 hover:underline">Personal site</a></li>
+          </ul>
+        </div>
+
+        <!-- Tags / Quick facts -->
+        <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-5 shadow-md">
+          <h3 class="text-sm font-semibold text-blue-900 mb-3">Quick facts</h3>
+          <div class="text-sm text-gray-700 space-y-2">
+            <p><strong>Fields:</strong> Mathematical Modelling • Plant disease epidemiology • Decision Support Systems</p>
+            <p><strong>Languages:</strong> French (fluent), English (fluent), German (basic)</p>
+            <p><strong>Awards:</strong> MSCA BIENVENÜE Fellow (2023–24), Ovide Arino Outreach Award (2021)</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 min-w-0">
+        <!-- Professional summary + Research interests -->
+        <section id="summary" class="mb-8">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg p-6 md:p-8">
+            <h2 class="text-2xl font-bold mb-3">Professional Summary</h2>
+            <p class="text-gray-700 leading-relaxed">
+              R&D and data engineer with a PhD in Applied Mathematics and experience designing mathematical models and deployable digital products for agriculture, the environment and complex systems. I bridge modelling, AI and software engineering to build decision-support tools with demonstrable industrial and societal impact. I lead projects from core modelling to reproducible research artifacts and interactive demos.
+            </p>
+
+            <h3 class="mt-6 text-lg font-semibold text-blue-700">Research interests</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Mathematical modelling of plant disease dynamics, pest management and demo-genetics for resistance durability; dynamical systems, Bayesian inference, time-series forecasting and decision-support systems for agriculture. Recent applied focuses: potato cyst nematode management, cassava viral epidemics, banana soil-borne pests.
+            </p>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4 gradient-text">Research & Industry Experience</h2>
+
+          <!-- Each role retains original role names from provided HTML CV -->
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">MSCA-Bienvenüe Postdoctoral Fellow</h3>
+                  <p class="text-sm text-blue-600">IGEPP & Institut Agro Rennes-Angers — Jan 2023 – Jan 2025</p>
+                  <p class="mt-2 text-gray-700">Principal investigator on the NEMO project. Architected and implemented Nemo-simulator (core modelling → prototype → demo) to support cultivar deployment decisions. Built interactive Streamlit demos, API documentation and stakeholder-ready scenario tools.</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Supervisors:</strong> Frédéric Hamelin, Josselin Montarry
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Postdoctoral Research Associate</h3>
+                  <p class="text-sm text-blue-600">Epidemiology & Modelling Group, University of Cambridge — Jan 2022 – Dec 2022</p>
+                  <p class="mt-2 text-gray-700">Developed production-ready forecasting pipelines for cassava viral disease spread and variety mixture optimisation. Integrated multi-source ingestion pipelines and co-developed the <em>EpiPv</em> R package for plant virus profiling.</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Supervisor:</strong> Prof. Chris A. Gilligan
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Research Associate</h3>
+                  <p class="text-sm text-blue-600">National Advanced School of Engineering & CETIC project, Yaoundé — Jan 2021 – Dec 2021</p>
+                  <p class="mt-2 text-gray-700">Led mathematical modelling for banana Black Sigatoka and maize stalk borer projects. Designed validation/calibration protocols, implemented simulation and parameter estimation pipelines, and mentored PhD students on reproducible modelling practices.</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Mentor:</strong> Prof. J. J. Tewa
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Front-end Java developer</h3>
+                  <p class="text-sm text-blue-600">ROOT-consulting, Yaoundé — Sep 2014 – Dec 2015</p>
+                  <p class="mt-2 text-gray-700">Designed Java UI components and database integration for a blood-bank management product. Improved responsiveness, refactored legacy modules and wrote unit tests to support deployment and handover.</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Project:</strong> Hemovigile (management tool for blood banks)
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Visiting positions -->
+        <section id="visiting" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Visiting Positions</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — University of Florida (Garrett's Lab)</p>
+              <p class="text-xs text-gray-500">Dec 2023</p>
+            </div>
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — Wageningen University (Lab of Nematology)</p>
+              <p class="text-xs text-gray-500">Sep 2023</p>
+            </div>
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — WAVE (Abidjan, Côte d'Ivoire)</p>
+              <p class="text-xs text-gray-500">Apr 2022 – Dec 2022</p>
+            </div>
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — INRIA Sophia-Antipolis (Team Biocore)</p>
+              <p class="text-xs text-gray-500">Feb 2019 – Jun 2019 | Apr 2018 – Aug 2018 | Sep 2017 – Dec 2017</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Teaching -->
+        <section id="teaching" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Teaching & Mentorship</h2>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6">
+            <ul class="space-y-4 text-gray-700">
+              <li>
+                <strong>Contract part-time teacher</strong> — AFTEC, Rennes, France (2023–2024). Mathematics for BTS SIO.
+              </li>
+              <li>
+                <strong>Part-time teacher</strong> — Institut Agro Rennes-Angers (Fall & Winter 2023). Introduction à la démarche scientifique.
+              </li>
+              <li>
+                <strong>Teaching assistant</strong> — National Advanced School of Engineering, Yaoundé (2016–2021). Courses: Probability & Statistics, Numerical Analysis, Computer Science for Mathematics, Real Analysis.
+              </li>
+              <li>
+                <strong>Mentorship:</strong> Supervised and mentored PhD students on model formulation, parameter inference and reproducible code.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Projects and industrial skill transfer -->
+        <section id="projects" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Selected Products & Industrial Transfer</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">CVSmart-Cassava</h3>
+              <p class="text-sm text-gray-700 mb-2">Interactive web app for epidemiological monitoring of cassava viral diseases and decision support.</p>
+              <a href="https://cvsmart-cassava.streamlit.app/" class="text-sm text-blue-600 hover:underline">Open demo</a>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">Grainly</h3>
+              <p class="text-sm text-gray-700 mb-2">Web-based crop growth simulator integrating the STICS model for scenario analysis and yield forecasting.</p>
+              <a href="https://grainly.streamlit.app/" class="text-sm text-blue-600 hover:underline">Open demo</a>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">Nemo Simulator</h3>
+              <p class="text-sm text-gray-700 mb-2">Simulator for planning and deployment of nematode-resistant potato varieties (NEMO project).</p>
+              <a href="https://nemo-simulator.streamlit.app/" class="text-sm text-blue-600 hover:underline">Early demo</a>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">CropMix & EpiPv</h3>
+              <p class="text-sm text-gray-700 mb-2">Varietal mixture optimisation tool & R package for plant virus parameter estimation (Bayesian tools for epidemic profiling).</p>
+              <a href="https://mixture-simulator.streamlit.app/" class="text-sm text-blue-600 hover:underline">Mixture demo</a>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm col-span-full">
+              <h3 class="text-lg font-semibold mb-2">Other tools</h3>
+              <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Potato blight detector (ResNet-50) — GitHub demo (transfer of ML models to decision support).</li>
+                <li>Toy DSS-SEIR Streamlit apps for epidemic & roguing optimisation simulations.</li>
+                <li>Production-ready ingestion & forecasting pipelines for multi-source agronomic data.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education & Awards -->
+        <section id="education-awards" class="mb-8 grid md:grid-cols-2 gap-6">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <h2 class="text-xl font-semibold mb-3">Education</h2>
+            <p class="text-sm text-gray-700"><strong>PhD in Applied Mathematics</strong> — University of Yaoundé I & Inria Sophia-Antipolis (Apr 2021)</p>
+            <p class="text-sm text-gray-700 mt-2"><strong>Master in Applied Mathematics</strong> — University of Yaoundé I (Jan 2015)</p>
+            <p class="text-sm text-gray-700 mt-2"><strong>Bachelor in Mathematics & Computer Science</strong> — University of Dschang (Jun 2012)</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-white/90 to-blue-50/70 rounded-2xl border border-blue-200 p-6 shadow-md">
+            <h2 class="text-xl font-semibold mb-3">Honors & Scholarships</h2>
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+              <li><strong>MSCA BIENVENÜE Fellowship</strong> — Principal Investigator (2023–2024)</li>
+              <li><strong>Ovide Arino Outreach Award</strong> — ESMTB & SFBT (2021)</li>
+              <li><strong>EMS-Simons for Africa Scholarship</strong> — EMS-Simons Foundation (2019)</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Skills: KEEP role names but expand technical skills from uploaded CV -->
+        <section id="skills" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Skills</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Transferable/Leadership (keeps same role naming as in HTML) -->
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-blue-700 mb-2">Transferable & Leadership</h3>
+              <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                <li>Mathematical & analytical expertise: formulation, analysis and control of complex models.</li>
+                <li>Project management & strategic leadership for interdisciplinary projects and tech transfer.</li>
+                <li>Grant writing & funding leadership (successful competitive grants, stakeholder coordination).</li>
+                <li>Communication, teaching and scientific mediation (training, outreach, reproducible research).</li>
+                <li>Mentorship & team development — supervising students and junior researchers.</li>
+                <li>Decision-support tool development: translating research into user-ready web tools and APIs.</li>
+                <li>Diversity, equity & inclusion advocacy in academic and project contexts.</li>
+              </ul>
+            </div>
+
+            <!-- Technical -->
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-blue-700 mb-2">Technical — Programming, Tools & Methods</h3>
+
+              <div class="grid grid-cols-1 gap-3">
+                <div>
+                  <strong class="text-sm text-gray-800">Programming & Platforms</strong>
+                  <p class="text-sm text-gray-700">Python, R, Java, JavaScript, HTML/CSS, Java (UI), NetLogo, Streamlit, Tableau, SQL (MySQL), Git</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Libraries & ML / Statistical</strong>
+                  <p class="text-sm text-gray-700">TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas, Seaborn</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Modelling & Methods</strong>
+                  <p class="text-sm text-gray-700">Dynamical systems, epidemiological models, population genetics/demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Cloud & DevOps</strong>
+                  <p class="text-sm text-gray-700">AWS, Google Cloud, MLOps principles, Docker (experience deploying scripts/apps), reproducible research (notebooks, CI-friendly code)</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Other tools</strong>
+                  <p class="text-sm text-gray-700">MATLAB, Scilab, PyMC, Kaggle, Excel, Buffer polyfills & web deployment best practices</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Languages</strong>
+                  <p class="text-sm text-gray-700">French (fluent), English (fluent), German (basic)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications & training -->
+        <section id="certifications" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Certifications & Training</h2>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <p class="text-sm text-gray-700"><strong>Coursera:</strong> Machine Learning (Stanford), Deep Learning Specialization (deeplearning.ai), Introduction to Genetics & Evolution (Duke), Industrial IoT (Google Cloud), AWS ML starter.</p>
+            <p class="text-sm text-gray-700 mt-3"><strong>Udemy:</strong> Tableau for Beginners (Programming Hub).</p>
+
+            <h3 class="mt-4 text-sm font-semibold text-blue-700">Additional training</h3>
+            <p class="text-sm text-gray-700">Formation Médiation Scientifique — Université de Rennes (Jan–Apr 2023). Focus: science communication, storytelling, infographics and audience engagement.</p>
+          </div>
+        </section>
+
+        <!-- Publications (compress but keep full list) -->
+        <section id="publications" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Publications & Research Output</h2>
+
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <p class="text-sm text-gray-700 mb-3">Selected peer-reviewed publications, book chapters, conference papers and preprints. (Full list available on Google Scholar / ORCID.)</p>
+
+            <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-2">
+              <li>I. Tankam Chedjou, R. Donnelly & C. A. Gilligan (2025). “Optimizing crop varietal mixtures for viral disease management.” <em>PLOS Computational Biology</em>. <a href="https://doi.org/10.1371/journal.pcbi.1012842" class="text-blue-600">doi</a>.</li>
+
+              <li>I. Tankam Chedjou, J. Montarry, S. Fournet & F. Hamelin (2024). “Combining masculinizing resistance, rotation and biocontrol…” <em>Evolutionary Applications</em>. <a href="https://doi.org/10.1111/eva.70012" class="text-blue-600">doi</a>.</li>
+
+              <li>F. P. Agouanet et al. (2024). “Control Model of Banana Black Sigatoka Disease with Seasonality.” <em>Differential Equations and Dynamical Systems</em>. <a href="https://doi.org/10.1007/s12591-024-00692-z" class="text-blue-600">doi</a>.</li>
+
+              <li>Additional articles (Applied Mathematical Modelling, Applied Mathematics and Computation, Mathematical Biosciences, Int. J. Bifurcation and Chaos) and book chapters (Springer, 2025).</li>
+
+              <li>Preprints & submissions: memory-based incremental parameter updating (bioRxiv 2025), EpiPv package manuscript (submitted), ongoing demo-genetic and palae nematode modelling papers (2024–2025).</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Talks & conferences (condensed) -->
+        <section id="talks" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Talks, Posters & Tutorials</h2>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <p class="text-sm text-gray-700 mb-3">Invited talks, conferences and workshops (2015–2024), including CARI, ECMTB, MoVi Workshop, EPITAG Workshop, ICPP poster presentations and national outreach events on AI and modelling.</p>
+
+            <details class="bg-white/60 p-4 rounded-lg border border-blue-50">
+              <summary class="text-sm font-medium text-blue-700">Selected entries (expand)</summary>
+              <ul class="mt-3 text-sm text-gray-700 list-disc pl-5 space-y-2">
+                <li>17th African CARI conference — Combinatorial optimization of banana clean seed reliance (Nov 2024).</li>
+                <li>6th Symposium of Potato Cyst Nematode Management — Harper Adams (Sept 2024).</li>
+                <li>2nd International Congress of Plant Pathology — Poster on cassava interventions (Aug 2023).</li>
+                <li>Many national & international seminars and tutorials, outreach events on AI for diverse audiences.</li>
+              </ul>
+            </details>
+          </div>
+        </section>
+
+        <!-- Memberships & references -->
+        <section id="memberships-references" class="mb-12 grid md:grid-cols-2 gap-6">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <h3 class="text-lg font-semibold mb-3">Professional Memberships</h3>
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+              <li>African Artificial Intelligence Society (AAIS) — representative & speaker</li>
+              <li>European Society for Mathematical and Theoretical Biology (ESMTB)</li>
+              <li>Société Francophone de Biologie Théorique (SFBT)</li>
+              <li>EPITAG team (epidemiological modelling & control for tropical agriculture)</li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-white/90 to-blue-50/70 rounded-2xl border border-blue-200 p-6 shadow-md">
+            <h3 class="text-lg font-semibold mb-3">References</h3>
+            <div class="text-sm text-gray-700 space-y-3">
+              <div>
+                <strong>Frédéric Hamelin</strong> — Associate Professor, Institut Agro Rennes-Angers<br />
+                <a href="mailto:frederic.hamelin@institut-agro.fr" class="text-blue-600">frederic.hamelin@institut-agro.fr</a>
+              </div>
+
+              <div>
+                <strong>Chris A. Gilligan</strong> — Professor, University of Cambridge<br />
+                <a href="mailto:cag1@cam.ac.uk" class="text-blue-600">cag1@cam.ac.uk</a>
+              </div>
+
+              <div>
+                <strong>Josselin Montarry</strong> — Senior Researcher, INRAE<br />
+                <a href="mailto:josselin.montarry@inrae.fr" class="text-blue-600">josselin.montarry@inrae.fr</a>
+              </div>
+            </div>
+            <p class="mt-3 text-xs text-gray-500">Phone numbers are available upon request.</p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-sm text-gray-600 py-6">
+          <p>© 2024–2025 — Israël Tankam Chedjou • <a href="https://github.com/israeltankam" class="text-blue-600">GitHub</a> • <a href="https://israeltankam.github.io/" class="text-blue-600">Portfolio</a></p>
         </footer>
+      </main>
     </div>
-    <script>
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString();
-    </script>
+  </div>
+
+  <!-- Minimal JS: small accessibility enhancements -->
+  <script>
+    // Add keyboard focus outlines for accessibility where necessary
+    document.documentElement.classList.add('focus-visible');
+  </script>
 </body>
 </html>
+```
