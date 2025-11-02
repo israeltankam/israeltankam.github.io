@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CV — Israël Tankam Chedjou, PhD</title>
 
-  <!-- GitHub repo/path for last-edited detection (matches your repo) -->
+  <!-- GitHub repo/path for last-edited detection (your repo) -->
   <meta name="github-repo" content="israeltankam/israeltankam.github.io">
   <meta name="github-path" content="index.html">
 
-  <!-- Tailwind v3 CDN + lightweight config (blue-blog palette) -->
+  <!-- Tailwind v3 CDN + minimal config (blue-blog palette) -->
   <script>
     tailwind = {
       config: {
@@ -36,9 +36,7 @@
             boxShadow: {
               'glow-lg': '0 10px 30px rgba(37,99,235,0.12), 0 6px 20px rgba(99,102,241,0.06)'
             },
-            backdropBlur: {
-              sm: '4px'
-            }
+            backdropBlur: { sm: '4px' }
           }
         }
       }
@@ -53,14 +51,11 @@
       background-clip: text;
       color: transparent;
     }
-    .card-hover {
-      transition: all .35s ease;
-    }
-    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(30,64,175,0.08); }
     @media print {
       .no-print { display: none !important; }
       .container { box-shadow: none !important; background: white !important; }
     }
+    details summary { cursor: pointer; }
   </style>
 </head>
 
@@ -77,7 +72,7 @@
 
         <div class="flex-1 min-w-0">
           <h1 class="text-4xl md:text-5xl font-extrabold gradient-text leading-tight">Israël Tankam Chedjou, PhD</h1>
-          <p class="text-lg text-blue-700 mt-2">R&D and data engineer — Applied Modelling & Digital Products</p>
+          <p class="text-lg text-blue-700 mt-2">R&D Engineer — Applied Modelling & Data</p>
 
           <p class="mt-4 text-base text-gray-700 leading-relaxed">
             R&D and data engineer with experience in designing mathematical models and digital products for agriculture, the environment, and complex systems. I am proficient in the entire solution development cycle — from scientific modelling to software deployment and data valorisation.
@@ -118,8 +113,7 @@
             <li><a href="https://github.com/israeltankam" class="text-blue-600 hover:underline">GitHub</a></li>
             <li><a href="https://share.streamlit.io/user/israeltankam" class="text-blue-600 hover:underline">Streamlit apps</a></li>
             <li><a href="https://scholar.google.com/citations?user=odW3dLoAAAAJ&hl=en" class="text-blue-600 hover:underline">Google Scholar</a></li>
-            <li><a href="https://team.inria.fr/epitag/research/israel-tankam/" class="text-blue-600 hover:underline">Inria profile</a></li>
-            <li><a href="https://israeltankam.github.io/" class="text-blue-600 hover:underline">Personal site</a></li>
+            <li><a href="https://israeltankam.github.io/" class="text-blue-600 hover:underline">Portfolio</a></li>
           </ul>
         </div>
 
@@ -151,12 +145,12 @@
           </div>
         </section>
 
-        <!-- Experience -->
+        <!-- Experience (keeps role names) -->
         <section id="experience" class="mb-8">
           <h2 class="text-2xl font-bold mb-4 gradient-text">Research & Industry Experience</h2>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">MSCA-Bienvenüe Postdoctoral Fellow</h3>
@@ -171,7 +165,7 @@
           </article>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">Postdoctoral Research Associate</h3>
@@ -186,7 +180,7 @@
           </article>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">Research Associate</h3>
@@ -201,7 +195,7 @@
           </article>
 
           <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 card-hover">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
                   <h3 class="text-xl font-semibold">Front-end Java developer</h3>
@@ -216,51 +210,39 @@
           </article>
         </section>
 
-        <!-- Mini-blog expandable -->
-        <section id="mini-blog" class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Mini-blog — articles & project posts</h2>
-
-          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6">
-            <p class="text-sm text-gray-700 mb-4">A compact reading area with short summaries and direct links. Use the topic checkboxes to filter posts. (Sources: your Medium posts & accessible GitHub repos.)</p>
-
-            <details class="mb-4">
-              <summary class="cursor-pointer text-sm font-medium text-blue-700">Open mini-blog & filters</summary>
-
-              <div class="mt-4 grid md:grid-cols-3 gap-4">
-                <!-- Topics (checkbox list) -->
-                <div class="md:col-span-1 bg-white/60 p-4 rounded-lg border border-blue-50">
-                  <h4 class="text-sm font-semibold text-blue-900 mb-2">Filter by topic</h4>
-                  <form id="topic-filters" class="space-y-2 text-sm text-gray-700">
-                    <!-- Checkboxes generated by JS from topics list -->
-                  </form>
-
-                  <div class="mt-4 text-xs text-gray-500">
-                    Tip: select one or more topics (OR logic). Click a post title to open the full article.
-                  </div>
-                </div>
-
-                <!-- Posts list -->
-                <div class="md:col-span-2 space-y-3">
-                  <div id="mini-blog-list" class="space-y-3">
-                    <!-- Post cards generated by JS from embedded postsData -->
-                  </div>
-
-                  <div class="text-xs text-gray-500 mt-2">
-                    Note: tags and summaries were extracted from the text you provided and from public pages.
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            <!-- Implementation hint (what to add for auto-updates) -->
-            <div class="mt-4 p-4 rounded-lg bg-gradient-to-br from-white/95 to-blue-50/60 border border-blue-50 text-sm text-gray-700">
-              <strong>To make this mini-blog auto-update:</strong>
-              <ol class="list-decimal pl-5 mt-2 space-y-1">
-                <li>Provide a machine-readable feed (JSON or RSS) with post metadata: <code>title, url, date, excerpt, tags</code>. Example: <code>/data/posts.json</code>.</li>
-                <li>Or allow the page to fetch your Medium RSS (or export) server-side and write a GitHub Action that writes the updated JSON into the repo on each Medium update.</li>
-                <li>For repos, include a small README field or a metadata file so the page can fetch repo descriptions automatically via GitHub API.</li>
-              </ol>
+        <!-- Visiting positions -->
+        <section id="visiting" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Visiting Positions</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — University of Florida (Garrett's Lab)</p>
+              <p class="text-xs text-gray-500">Dec 2023</p>
             </div>
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — Wageningen University (Lab of Nematology)</p>
+              <p class="text-xs text-gray-500">Sep 2023</p>
+            </div>
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — WAVE (Abidjan, Côte d'Ivoire)</p>
+              <p class="text-xs text-gray-500">Apr 2022 – Dec 2022</p>
+            </div>
+            <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
+              <p class="text-sm font-semibold">Visiting Scientist — INRIA Sophia-Antipolis (Team Biocore)</p>
+              <p class="text-xs text-gray-500">Feb 2019 – Jun 2019 | Apr 2018 – Aug 2018 | Sep 2017 – Dec 2017</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Teaching -->
+        <section id="teaching" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Teaching & Mentorship</h2>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6">
+            <ul class="space-y-4 text-gray-700">
+              <li><strong>Contract part-time teacher</strong> — AFTEC, Rennes, France (2023–2024). Mathematics for BTS SIO.</li>
+              <li><strong>Part-time teacher</strong> — Institut Agro Rennes-Angers (Fall & Winter 2023). Introduction à la démarche scientifique.</li>
+              <li><strong>Teaching assistant</strong> — National Advanced School of Engineering, Yaoundé (2016–2021). Courses: Probability & Statistics, Numerical Analysis, Computer Science for Mathematics, Real Analysis.</li>
+              <li><strong>Mentorship:</strong> Supervised and mentored PhD students on model formulation, parameter inference and reproducible code.</li>
+            </ul>
           </div>
         </section>
 
@@ -293,10 +275,10 @@
               <a href="https://mixture-simulator.streamlit.app/" class="text-sm text-blue-600 hover:underline">Mixture demo</a>
             </div>
 
-            <!-- CMD4.0 concise card -->
+            <!-- CMD4.0 concise card (same size as other cards) -->
             <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
-              <h3 class="text-lg font-semibold mb-2">CMD4.0 — CMD NetLogo model</h3>
-              <p class="text-sm text-gray-700 mb-2">Agent-based NetLogo field model for Cassava Mosaic Disease: mixed-variety plantings, whitefly dynamics, roguing/replanting strategies and economic outputs.</p>
+              <h3 class="text-lg font-semibold mb-2">CMD4.0 — Cassava Mosaic Disease NetLogo model</h3>
+              <p class="text-sm text-gray-700 mb-2">Agent-based NetLogo field model (patches = cassava plants, agents = whiteflies) for CMD: variety mixes, roguing, replanting, vector dynamics and economic outputs.</p>
               <div class="flex items-center justify-between">
                 <a href="https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator" class="text-sm text-blue-600 hover:underline" target="_blank">GitHub repo</a>
                 <span class="text-xs text-gray-500">Created: Jun 2022</span>
@@ -314,7 +296,104 @@
           </div>
         </section>
 
-        <!-- Publications -->
+        <!-- Education & Awards -->
+        <section id="education-awards" class="mb-8 grid md:grid-cols-2 gap-6">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <h2 class="text-xl font-semibold mb-3">Education</h2>
+            <p class="text-sm text-gray-700"><strong>PhD in Applied Mathematics</strong> — University of Yaoundé I (Apr 2021)</p>
+            <p class="text-sm text-gray-700 mt-2"><strong>Master in Applied Mathematics</strong> — University of Yaoundé I (Jan 2015)</p>
+            <p class="text-sm text-gray-700 mt-2"><strong>Bachelor in Mathematics & Computer Science</strong> — University of Dschang (Jun 2012)</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-white/90 to-blue-50/70 rounded-2xl border border-blue-200 p-6 shadow-md">
+            <h2 class="text-xl font-semibold mb-3">Honors & Scholarships</h2>
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+              <li>MSCA BIENVENÜE Fellowship — Principal Investigator (2023–2024)</li>
+              <li>Ovide Arino Outreach Award — ESMTB & SFBT (2021)</li>
+              <li>EMS-Simons for Africa Scholarship (2019)</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Skills</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-blue-700 mb-2">Transferable & Leadership</h3>
+              <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                <li>Mathematical & analytical expertise: formulation, analysis and control of complex models.</li>
+                <li>Project management & strategic leadership for interdisciplinary projects and tech transfer.</li>
+                <li>Grant writing & funding leadership (successful competitive grants, stakeholder coordination).</li>
+                <li>Communication, teaching and scientific mediation (training, outreach, reproducible research).</li>
+                <li>Mentorship & team development — supervising students and junior researchers.</li>
+                <li>Decision-support tool development: translating research into user-ready web tools and APIs.</li>
+                <li>Diversity, equity & inclusion advocacy in academic and project contexts.</li>
+              </ul>
+            </div>
+
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-blue-700 mb-2">Technical — Programming, Tools & Methods</h3>
+
+              <div class="grid grid-cols-1 gap-3">
+                <div>
+                  <strong class="text-sm text-gray-800">Programming & Platforms</strong>
+                  <p class="text-sm text-gray-700">Python, R, Java, JavaScript, HTML/CSS, NetLogo, Streamlit, Tableau, MySQL, Git</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Libraries & ML / Statistical</strong>
+                  <p class="text-sm text-gray-700">TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Modelling & Methods</strong>
+                  <p class="text-sm text-gray-700">Dynamical systems, epidemiological models, population genetics / demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Cloud & DevOps</strong>
+                  <p class="text-sm text-gray-700">AWS, Google Cloud, MLOps principles, Docker, reproducible research (notebooks, CI-friendly code)</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Other tools</strong>
+                  <p class="text-sm text-gray-700">MATLAB, Scilab, Streamlit, Kaggle, Excel</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Languages</strong>
+                  <p class="text-sm text-gray-700">French (fluent), English (fluent), German (basic)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications & training (with creds links) -->
+        <section id="certifications" class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Certifications & Training</h2>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <h3 class="text-lg font-semibold text-blue-700 mb-3">Coursera</h3>
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <li>Machine Learning (Stanford University) — <a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">creds</a></li>
+              <li>Neural Networks and Deep Learning — <a href="https://coursera.org/share/9630d466ac63f461aae96c96968dbde6" class="text-blue-600">creds</a></li>
+              <li>Introduction to Genetics and Evolution (Duke University) — <a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">creds</a></li>
+              <li>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization, and Optimization — <a href="https://coursera.org/share/dc4925e926d2cd73d6c4dd8cf7f49378" class="text-blue-600">creds</a></li>
+              <li>Deep Learning Specialization (deeplearning.ai) — <a href="https://coursera.org/share/c5ccf99578aae8419cc368eb0a231f90" class="text-blue-600">creds</a></li>
+              <li>Industrial IoT with Google Cloud Platform (Google Cloud) — <a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">creds</a></li>
+              <li>Getting Started with AWS Machine Learning (AWS) — <a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">creds</a></li>
+            </ul>
+
+            <h3 class="mt-4 text-lg font-semibold text-blue-700 mb-2">Udemy & other</h3>
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <li>Tableau for Beginners: Visualize and Analyze Your Data (Programming Hub) — <a href="http://ude.my/UC-7b620fd7-8d33-4a02-a7c8-bd7f39331d2c" class="text-blue-600">creds</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Publications and other sections -->
         <section id="publications" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Publications & Research Output</h2>
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
@@ -331,7 +410,7 @@
             <details class="mt-6 bg-white/60 p-4 rounded-lg border border-blue-50">
               <summary class="text-sm font-medium text-blue-700">Full publication list (expand)</summary>
               <div class="mt-3 text-sm text-gray-700 space-y-2">
-                <!-- Full publication list as previously provided (kept verbatim) -->
+                <!-- Full list retained in explicit form; items 11–20 are shown explicitly per request -->
                 <p>[1] I. Tankam Chedjou, R. Donnelly, and C. A. Gilligan. “Optimizing crop varietal mixtures for viral disease management: A case study on cassava virus epidemics”. In: PLOS Computational Biology (2025). 10.1371/journal.pcbi.1012842.</p>
                 <p>[2] I. Tankam Chedjou, J. Montarry, S. Fournet, and F. M. Hamelin. “Combining masculinizing resistance, rotation and biocontrol to achieve durable suppression of the potato pale cyst nematode: a model”. In: Evolutionary Applications (2024), pp. e70012. doi: 10.1111/eva.70012.</p>
                 <p>[3] F. P. Agouanet, V. Yatat-Djeumen, I. Tankam-Chedjou, and J. J. Tewa. “Control Model of Banana Black Sigatoka Disease with Seasonality”. In: Differential Equations and Dynamical Systems (2024). doi: 10.1007/s12591-024-00692-z.</p>
@@ -342,14 +421,26 @@
                 <p>[8] I. Tankam-Chedjou, S. Touzeau, L. Mailleret, J. J. Tewa, and F. Grognard. “Modelling and control of a banana soilborne pest in a multi-seasonal framework”. In: Mathematical Biosciences 322 (Apr. 2020), p. 108324. doi: 10.1016/j.mbs.2020.108324.</p>
                 <p>[9] I. Tankam, P. Tchinda Mouofo, A. Mendy, M. Lam, J. J. Tewa, and S. Bowong. “Local Bifurcations and Optimal Theory in a Delayed Predator–Prey Model with Threshold Prey Harvesting”. In: International Journal of Bifurcation and Chaos 25.07 (June 2015), p. 1540015. doi: 10.1142/s0218127415400155.</p>
                 <p>[10] I. Tankam Chedjou. “Combinatorial optimization of banana clean seed reliance”. In: African Conference on Research in Computer Science and Applied Mathematics. Springer Nature (2025), p. 83–99. doi: 10.1007/978-3-031-90510-0_7.</p>
-                <p>[11–20] Additional conference papers, preprints and ongoing manuscripts (see full dossier on Google Scholar / ORCID).</p>
+
+                <!-- Explicitly list items 11–20 (not compressed) -->
+                <p>[11] B. S. Tchienkou Tchiengang, I. Tankam, and J. J. Tewa. “A multi-seasonal model of the dynamics of the African maize stalk borer”. In: CARI 2022, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées. Tunis, Tunisia, Oct. 2022. <a href="https://hal.science/hal-03718556" class="text-blue-600">Link</a>.</p>
+                <p>[12] I. Tankam Chedjou, S. Touzeau, F. Grognard, L. Mailleret, and J.-J. Tewa. “A multi-seasonal model of the dynamics of banana plant-parasitic nematodes”. In: CARI’2018-14, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées. 2018.</p>
+                <p>[13] I. Tankam Chedjou, P. Tchinda Mouofo, and J.-J. Tewa. “Hopf bifurcation properties of a delayed predator-prey model with threshold prey harvesting”. In: CARI’2016, Colloque Africain sur la Recherche en Informatique et en Mathématiques Appliquées. 2016.</p>
+                <p>[14] I. Tankam Chedjou (2025). “Memory-based incremental parameter updating of a generic stochastic plant epidemic model”. In: BioRxiv (2025). 10.1101/2025.07.11.664325. Preprint.</p>
+                <p>[15] R. Donnelly, I. Tankam C., and C. A. Gilligan. “Plant virus profiling with the EpiPv package”. In: Methods in Ecology and Evolution (2025). 10.32942/X29K9P. Submitted.</p>
+                <p>[16] B. S. Tchienkou-Tchiengang, I. Tankam-Chedjou, I. V. Yatat-Djeumen, and J. J. Tewa. “Multiseasonal modelling of pesticide resistance in Maize Stalk Bore”. In: Mathematical Biosciences (2025). 10.2139/ssrn.5228134. Submitted.</p>
+                <p>[17] B. S. M. Kouakou, J. S. Seka, J. S. Pita, A. A. N. Yoboué, I. Tankam, R. Eboulem, N. Kouassi, F. Tiendrébéogo, and F. Sorho. “Climatic, environmental factors and agricultural practices favoring dynamics of the spread of African cassava mosaic disease in Côte d’Ivoire”. In: Discover Agriculture (2025). Submitted.</p>
+                <p>[18] D. Petit, F. Hamelin, J. Tankam Chedjou Israël Penlap Tamago, F. Grognard, F. Hilker, and L. Mailleret. “Seasonal behavioural plant epidemiology: clean seeds”. (2025). Ongoing.</p>
+                <p>[19] I. Tankam Chedjou, J. Montarry, S. Fournet, and F. Hamelin. “Predictive management of pale potato cyst nematode through demo-genetic modelling”. In: Evolution Letters (2025). Ongoing.</p>
+                <p>[20] R. Donnelly, I. Tankam-Chedjou, and C. A. Gilligan. “Epidemiology of cassava virus management – managing the temporal phases of epidemics”. In: PLOS Computational Biology (2024). Ongoing.</p>
+
                 <p>[21] I. Tankam Chedjou. “Modelling, analysis and control of plantain plant-parasitic nematodes”. PhD thesis. Université de Yaoundé I, Cameroun, 2021. <a href="https://agris.fao.org/search/en/providers/122439/records/6748b60d7625988a371fe19e" class="text-blue-600">Link</a>.</p>
               </div>
             </details>
           </div>
         </section>
 
-        <!-- Talks & full list -->
+        <!-- Talks, posters, tutorials -->
         <section id="talks" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Talks, Posters & Tutorials</h2>
 
@@ -417,6 +508,36 @@
           </div>
         </section>
 
+        <!-- Mini-blog (end of page) -->
+        <section id="mini-blog" class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Mini-blog — Short summaries & links</h2>
+          <p class="text-sm text-gray-700 mb-3">A compact, filterable list of your public writing (Medium) and small repo writeups. Use the checkboxes to filter by topic.</p>
+
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+            <div class="mb-4">
+              <label class="text-sm font-semibold text-blue-900 block mb-2">Filter by topic</label>
+              <div id="topics" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="mb-4">
+              <input type="text" id="mini-search" placeholder="Search title / excerpt..." class="w-full p-2 rounded-lg border border-blue-100 bg-white/90" />
+            </div>
+
+            <div id="posts" class="space-y-4"></div>
+
+            <details class="mt-6">
+              <summary class="text-sm text-blue-700 font-medium">What to add to make this mini-blog richer</summary>
+              <div class="mt-3 text-sm text-gray-700">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li>Add canonical tags/short excerpts to each Medium article (already included here where available).</li>
+                  <li>For GitHub repos, add a README excerpt or `post.json` describing a repo article to automate ingestion.</li>
+                  <li>You may later add thumbnails and dates (already present where available).</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+
         <footer class="text-center text-sm text-gray-600 py-6">
           <p>© 2024–2025 — Israël Tankam Chedjou • <a href="https://github.com/israeltankam" class="text-blue-600">GitHub</a> • <a href="https://israeltankam.github.io/" class="text-blue-600">Portfolio</a></p>
         </footer>
@@ -424,137 +545,205 @@
     </div>
   </div>
 
-  <!-- Embedded posts data (populated from public Medium pages & GitHub README contents and your supplied chaos_ecology content) -->
+  <!-- JS: mini-blog data + topics + GitHub last-edited detection -->
   <script>
-    // postsData: Medium articles + GitHub repos (CMD4.0, Memory-based, and chaos_ecology content you provided)
-    const postsData = [
+    // ======= POSTS DATA (Medium articles + repo notes) =======
+    // Each entry: title, url, date, tags (array), excerpt, source
+    const POSTS = [
       {
-        id: "m-chaos-2023",
+        title: "A short note on genetic drift",
+        url: "https://medium.com/@israeltankam/a-short-note-on-genetic-drift-ddac11aaa17e",
+        date: "May 3, 2023",
+        tags: ["population genetics","genetic drift","evolution"],
+        excerpt: "Genetic drift refers to changes in allele frequencies due to random sampling events — particularly important in small populations.",
+        source: "Medium"
+      },
+      {
+        title: "A short note on effective population size in population genetics",
+        url: "https://medium.com/@israeltankam/a-short-note-on-effective-population-size-in-population-genetics-ed3258e28b9f",
+        date: "Mar 21, 2023",
+        tags: ["population genetics","Ne","evolution"],
+        excerpt: "Effective population size (Ne) explains the strength of genetic drift and differences between census size and evolutionary dynamics.",
+        source: "Medium"
+      },
+      {
+        title: "A short note on the Red Queen Hypothesis",
+        url: "https://medium.com/@israeltankam/a-short-note-on-the-red-queen-hypothesis-or-why-you-are-screwed-if-you-stop-running-on-a-treadmill-3ffd3ac02293",
+        date: "Feb 12, 2023",
+        tags: ["evolution","co-evolution","red queen"],
+        excerpt: "The Red Queen Hypothesis explains why species must continually adapt to persist when interacting antagonistically with co-evolving species.",
+        source: "Medium"
+      },
+      {
+        title: "A short note on Hitchhiking in population genetics",
+        url: "https://medium.com/@israeltankam/hitchhiking-in-population-genetics-6ec7b88870c3",
+        date: "Sep 8, 2023",
+        tags: ["selection","hitchhiking","population genetics"],
+        excerpt: "Hitchhiking occurs when an allele increases in frequency because it is linked to a positively selected variant.",
+        source: "Medium"
+      },
+      {
+        title: "A short note on the durability of pest-resistant crop varieties",
+        url: "https://medium.com/@israeltankam/a-short-note-on-the-durability-of-pest-resistant-crop-varieties-c6ef435257d3",
+        date: "Feb 9, 2023",
+        tags: ["agriculture","resistance durability","plant health"],
+        excerpt: "Durability of resistance depends on evolutionary pressure; model-based deployment (mixtures, rotations) can increase longevity.",
+        source: "Medium"
+      },
+      {
+        title: "A note on population genetics and some associated models",
+        url: "https://medium.com/@israeltankam/a-note-on-population-genetics-and-some-related-models-f82004fae610",
+        date: "Feb 5, 2023",
+        tags: ["population genetics","models"],
+        excerpt: "A short guided tour of classic population genetics models and the assumptions behind them.",
+        source: "Medium"
+      },
+      {
         title: "A short note on chaos",
         url: "https://medium.com/@israeltankam/a-short-note-on-chaos-89b3afca88c7",
-        date: "2023-01-30",
-        excerpt: "Short accessible note on chaos theory and emergence; motivation from a deterministic model in population genetics.",
-        tags: ["chaos theory","emergence","modelling","vulgarisation"]
+        date: "Jan 30, 2023",
+        tags: ["chaos","dynamical systems","education"],
+        excerpt: "Overview of chaos: sensitive dependence on initial conditions, attractors, and how simple deterministic systems can appear unpredictable.",
+        source: "Medium"
       },
       {
-        id: "m-comma-2020",
+        title: "Comprendre la Conjecture de Poincaré — Partie I",
+        url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-1-introduction-8ad1f000d27a",
+        date: "Oct 25, 2017",
+        tags: ["maths","poincaré","vulgarisation"],
+        excerpt: "Introduction to the Poincaré conjecture written for an engaged general audience.",
+        source: "Medium"
+      },
+      {
+        title: "Comprendre la Conjecture de Poincaré — Partie II",
+        url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-ii-ressemblances-topologiques-aae5f12fccbc",
+        date: "Oct 25, 2017",
+        tags: ["maths","topology","vulgarisation"],
+        excerpt: "Topological intuition and examples to gently approach Poincaré's statement.",
+        source: "Medium"
+      },
+      {
+        title: "Comprendre la Conjecture de Poincaré — Partie III",
+        url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-iii-le-groupe-fondamental-fb440e1c84fd",
+        date: "Apr 17, 2018",
+        tags: ["maths","topology","vulgarisation"],
+        excerpt: "Further exposition on fundamental groups and contractibility.",
+        source: "Medium"
+      },
+      {
         title: "Le comma pythagoricien (musique)",
         url: "https://medium.com/@israeltankam/le-comma-pythagoricien-musique-adc72ee0eab3",
-        date: "2020-04-06",
-        excerpt: "Musical/mathematical note on the Pythagorean comma — music theory and math explained for a general audience.",
-        tags: ["music","mathématiques","vulgarisation","french"]
+        date: "Apr 6, 2020",
+        tags: ["music","vulgarisation"],
+        excerpt: "An accessible note about the Pythagorean comma and tuning in music.",
+        source: "Medium"
       },
       {
-        id: "m-poincare-2017-i",
-        title: "Comprendre la Conjecture de Poincaré — Part I",
-        url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-1-introduction-8ad1f000d27a",
-        date: "2017-10-25",
-        excerpt: "Introductory exposition to Poincaré conjecture and topology — series in French.",
-        tags: ["mathématiques","topology","poincaré","vulgarisation","french"]
-      },
-      {
-        id: "m-transhuman-2020",
-        title: "Chroniques transhumanistes (Ep.1): Voir avec la langue",
+        title: "Chroniques transhumanistes (Ep. 1)",
         url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-1-voir-avec-la-langue-5d0f9d3dd83d",
-        date: "2020-04-05",
-        excerpt: "Mini-essay on sensory substitution (BrainPort) and neuroplasticity; part of a transhumanist mini-series.",
-        tags: ["neuroscience","vulgarisation","technology","science"]
+        date: "Apr 5, 2020",
+        tags: ["essays","philosophy","technology"],
+        excerpt: "First episode in a short series reflecting on transhumanism and perception.",
+        source: "Medium"
       },
       {
-        id: "gh-cmd4",
-        title: "CMD4.0 — Cassava Mosaic Disease (NetLogo)",
-        url: "https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator",
-        date: "2022-06",
-        excerpt: "Agent-based NetLogo model of CMD: variety mixes, whitefly agents, roguing, replanting and economic outputs.",
-        tags: ["netlogo","simulation","plant disease","cassava","modelling"]
+        title: "Un monde de pâquerettes!",
+        url: "https://medium.com/@israeltankam/un-monde-de-p%C3%A2querettes-e8d78fe55aeb",
+        date: "Jan 12, 2019",
+        tags: ["essay","vulgarisation"],
+        excerpt: "A short essay with a playful tone.",
+        source: "Medium"
       },
+
+      // GitHub repos as "posts"
       {
-        id: "gh-memory-smc",
-        title: "Memory-based incremental parameter update (SMC)",
+        title: "Memory-based incremental parameter update (repo)",
         url: "https://github.com/israeltankam/Memory-based-incremental-parameter-update-of-a-generic-stochastic-plant-epidemic-model",
-        date: "2025",
-        excerpt: "Sequential Monte-Carlo framework to incrementally update epidemic model parameters as new incidence data arrive.",
-        tags: ["bayesian","smc","forecasting","modelling","jupyter"]
+        date: "repo",
+        tags: ["software","sequential-MC","inference","epidemic-modelling"],
+        excerpt: "Sequential-Monte Carlo framework to incrementally update parameters of a stochastic plant epidemic model (notebooks included).",
+        source: "GitHub"
       },
       {
-        id: "gh-chaos-ecology",
-        title: "Phase plane, attractors & chaotic dynamics — chaos_ecology notes",
-        url: "https://github.com/israeltankam/chaos_ecology",
-        date: "2024",
-        excerpt: "Comprehensive tutorial on phase-plane analysis, attractors (fixed points, limit cycles, strange attractors), and chaotic dynamics in ecological ODE models. Includes concrete examples (logistic Lotka–Volterra, Rosenzweig–MacArthur), Python code (solve_ivp, matplotlib animation), and a three-species chaotic model with 3D/2D projections.",
-        tags: ["phase plane","attractors","limit cycles","chaos","lotka-volterra","rosenzweig-macarthur","three-species","python","matplotlib","animation","simulation","dynamical-systems","ecology","predator-prey"]
+        title: "CMD4.0 — Cassava Mosaic Disease (repo)",
+        url: "https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator",
+        date: "Created: Jun 2022",
+        tags: ["software","NetLogo","cassava","epidemiology"],
+        excerpt: "Agent-based NetLogo model for CMD (varieties, whitefly vectors, roguing, replanting, economic outputs).",
+        source: "GitHub"
       }
     ];
 
-    // derive unique topics from postsData
-    const topics = Array.from(new Set(postsData.flatMap(p => p.tags))).sort();
+    // Note: the chaos_ecology repo (https://github.com/israeltankam/chaos_ecology) was inaccessible / returned an error when checked.
+    const UNAVAILABLE_REPOS = [
+      { repo: "https://github.com/israeltankam/chaos_ecology", note: "Repository returned an error or is not public." }
+    ];
 
-    // render topic checkboxes
-    const filtersForm = document.getElementById('topic-filters');
-    topics.forEach(tag => {
-      const id = 'chk-' + tag.replace(/\s+/g, '-').replace(/[^\w-]/g,'');
-      const wrapper = document.createElement('div');
-      wrapper.className = 'flex items-center gap-2';
-      wrapper.innerHTML = `
-        <input type="checkbox" id="${id}" name="topic" value="${tag}" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
-        <label for="${id}" class="text-sm text-gray-700">${tag}</label>
-      `;
-      filtersForm.appendChild(wrapper);
+    // ======= Build topics list from POSTS tags =======
+    const topicsSet = new Set();
+    POSTS.forEach(p => (p.tags || []).forEach(t => topicsSet.add(t)));
+    const topics = Array.from(topicsSet).sort();
+
+    // Render topics checkboxes
+    const topicsContainer = document.getElementById('topics');
+    topics.forEach(t => {
+      const id = 'topic-' + t.replace(/\s+/g,'-');
+      const wrapper = document.createElement('label');
+      wrapper.className = 'inline-flex items-center gap-2 bg-white/70 px-3 py-1 rounded-full border border-blue-100';
+      wrapper.innerHTML = `<input type="checkbox" data-topic="${t}" id="${id}" class="topic-checkbox"><span class="text-sm text-gray-700">${t}</span>`;
+      topicsContainer.appendChild(wrapper);
     });
 
-    // render post cards
-    const list = document.getElementById('mini-blog-list');
-    function renderList(data) {
-      list.innerHTML = '';
-      data.forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'bg-white/70 p-4 rounded-xl border border-blue-100 shadow-sm';
-        card.setAttribute('data-tags', p.tags.join(','));
-        card.innerHTML = `
-          <div class="flex items-start justify-between gap-3">
+    // Post rendering function
+    function renderPosts(filteredPosts) {
+      const container = document.getElementById('posts');
+      container.innerHTML = '';
+      if (filteredPosts.length === 0) {
+        container.innerHTML = '<p class="text-sm text-gray-500">No posts match the current filters.</p>';
+        return;
+      }
+      filteredPosts.forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'bg-white/80 p-4 rounded-xl border border-blue-100 shadow-sm';
+        el.innerHTML = `
+          <div class="flex justify-between items-start">
             <div class="flex-1 min-w-0">
-              <a href="${p.url}" target="_blank" class="text-blue-700 hover:underline font-semibold">${p.title}</a>
-              <div class="text-xs text-gray-500 mt-1">${p.date ? p.date : ''}</div>
-              <p class="text-sm text-gray-700 mt-2">${p.excerpt}</p>
+              <a href="${p.url}" target="_blank" class="text-blue-700 font-semibold hover:underline text-lg">${p.title}</a>
+              <p class="text-xs text-gray-500 mt-1">${p.source} • ${p.date}</p>
+              <p class="text-sm text-gray-700 mt-3">${p.excerpt}</p>
+              <p class="mt-3 text-xs"><strong>Tags:</strong> ${ (p.tags||[]).map(t => `<span class="inline-block bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full mr-1 text-xs">${t}</span>`).join(' ') }</p>
             </div>
-            <div class="text-right text-xs text-gray-500 min-w-[120px]">
-              <div class="mb-2">${p.tags.map(t => `<span class="inline-block px-2 py-1 rounded-full text-xs bg-blue-50 text-blue-700 mr-1">${t}</span>`).join('')}</div>
-              <a href="${p.url}" target="_blank" class="text-xs text-blue-600 hover:underline">Open</a>
+            <div class="ml-4 shrink-0 text-right">
+              <a href="${p.url}" target="_blank" class="inline-block px-3 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-medium hover:scale-105 transform transition">Read</a>
             </div>
           </div>
         `;
-        list.appendChild(card);
+        container.appendChild(el);
       });
     }
+
+    // Filter logic
+    function applyFilters() {
+      const search = document.getElementById('mini-search').value.toLowerCase().trim();
+      const checked = Array.from(document.querySelectorAll('.topic-checkbox:checked')).map(c => c.dataset.topic);
+      let list = POSTS.slice();
+      if (checked.length) {
+        list = list.filter(p => (p.tags || []).some(t => checked.includes(t)));
+      }
+      if (search) {
+        list = list.filter(p => (p.title + ' ' + p.excerpt + ' ' + (p.tags||[]).join(' ')).toLowerCase().includes(search));
+      }
+      renderPosts(list);
+    }
+
+    // Event listeners
+    document.getElementById('mini-search').addEventListener('input', applyFilters);
+    document.querySelectorAll('.topic-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
     // initial render
-    renderList(postsData);
+    renderPosts(POSTS);
 
-    // filter logic (OR: any selected tag)
-    function applyFilters() {
-      const checked = Array.from(document.querySelectorAll('#topic-filters input[type="checkbox"]:checked')).map(i => i.value);
-      const cards = Array.from(list.children);
-      if (checked.length === 0) {
-        // show all
-        cards.forEach(c => c.style.display = '');
-        return;
-      }
-      cards.forEach(c => {
-        const tags = c.getAttribute('data-tags').split(',').map(s => s.trim());
-        const matches = checked.some(ch => tags.includes(ch));
-        c.style.display = matches ? '' : 'none';
-      });
-    }
-
-    document.getElementById('topic-filters').addEventListener('change', applyFilters);
-  </script>
-
-  <!-- JS: accessibility + GitHub last-edited detection (keeps your auto-update behavior) -->
-  <script>
-    // Accessibility utility: add focus-visible class
-    document.documentElement.classList.add('focus-visible');
-
-    // Update last-edited using GitHub commits if meta tags present; otherwise fallback to document.lastModified
+    // ======= GitHub last-edited detection (keeps your previous logic) =======
     (async function updateLastEdited() {
       const lastEditedEl = document.getElementById('last-edited');
       if (!lastEditedEl) return;
