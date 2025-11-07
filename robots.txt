@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://israeltankam.github.io/sitemap.xml
