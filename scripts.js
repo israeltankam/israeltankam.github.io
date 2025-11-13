@@ -7,9 +7,9 @@
     const container = document.getElementById('miniblog-import');
     if (!container) return;
     try {
-      const res = await fetch('miniblog.html');
+      const res = await fetch('blog/miniblog.html');
       if (!res.ok) {
-        container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (miniblog.html).</p>';
+        container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (blog/miniblog.html).</p>';
         return;
       }
       const html = await res.text();
@@ -17,7 +17,7 @@
 
       // then append miniblog.js as a <script> so it runs in page context
       const script = document.createElement('script');
-      script.src = 'miniblog.js';
+      script.src = 'blog/miniblog.js';
       script.defer = false;
       document.body.appendChild(script);
     } catch (e) {
