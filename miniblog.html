@@ -1,0 +1,23 @@
+<!-- miniblog.html
+     This fragment contains the mini-blog markup. It's imported dynamically into index.html.
+     Keep it in the repository root or update the path in scripts.js if moved.
+-->
+<section id="mini-blog" class="mb-12">
+  <div class="list-disc pl-5 space-y-1">
+    <h2 class="text-2xl font-bold mb-4">My mini-blog: Short summaries & links</h2>
+    <p class="text-sm text-gray-700 mb-3">A compact, filterable list of my public writing (Medium) and small repo writeups. Use the checkboxes to filter by topic.</p>
+
+    <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-md">
+      <div class="mb-4">
+        <label class="text-sm font-semibold text-blue-900 block mb-2">Filter by topic</label>
+        <div id="topics" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="mb-4">
+        <input type="text" id="mini-search" placeholder="Search title / excerpt..." class="w-full p-2 rounded-lg border border-blue-100 bg-white/90" />
+      </div>
+
+      <div id="posts" class="space-y-4"></div>
+    </div>
+  </div>
+</section>
