@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini-blog — Israël Tankam Chedjou</title>
+
+  <!-- Tailwind config same as index to keep identical style -->
+  <script>
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              blue: {
+                50: '#eef6ff',
+                100: '#dbeeff',
+                200: '#b7ddff',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1e40af'
+              },
+              indigo: {
+                100: '#eef2ff',
+                500: '#6366f1',
+                600: '#4f46e5',
+                700: '#3730a3',
+                900: '#0f172a'
+              }
+            },
+            boxShadow: {
+              'glow-lg': '0 10px 30px rgba(37,99,235,0.12), 0 6px 20px rgba(99,102,241,0.06)'
+            },
+            backdropBlur: { sm: '4px' }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Reuse the main stylesheet at repo root -->
+  <link rel="stylesheet" href="../styles.css" />
+
+  <style>
+    /* page-specific tweaks */
+    body { background: linear-gradient(180deg,#eef6ff 0%, #eef2ff 100%); }
+    .topbar { max-width: 980px; margin: 28px auto; padding: 16px; }
+  </style>
+</head>
+
+<body class="min-h-screen text-gray-800">
+  <div class="topbar">
+    <div class="flex items-center justify-between bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-blue-100 shadow-glow-lg">
+      <div>
+        <h1 class="text-xl font-bold gradient-text">Mini-blog — Israël Tankam Chedjou</h1>
+        <p class="text-sm text-gray-600">Short summaries & links — same style as the CV site</p>
+      </div>
+      <div class="text-sm">
+        <a href="../index.html" class="px-3 py-2 rounded-lg border border-blue-100 bg-white/70 text-blue-700 hover:underline">Back to CV</a>
+        <a href="https://github.com/israeltankam" target="_blank" class="px-3 py-2 ml-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-4xl mx-auto px-6 pb-12">
+    <!-- container where miniblog.html will be injected -->
+    <div id="miniblog-container" class="mb-8"></div>
+
+    <footer class="text-center text-sm text-gray-600 mt-10">
+      <p>© 2024–2025 — Israël Tankam Chedjou • <a href="../israeltankam.github.io/" class="text-blue-600">Portfolio</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // Load miniblog.html (local) and then miniblog.js (local)
+    (async function loadMiniBlogFragment() {
+      const container = document.getElementById('miniblog-container');
+      if (!container) return;
+      try {
+        const res = await fetch('miniblog.html');
+        if (!res.ok) {
+          container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (miniblog.html).</p>';
+          return;
+        }
+        const html = await res.text();
+        container.innerHTML = html;
+
+        // append the miniblog script so it runs and attaches handlers
+        const s = document.createElement('script');
+        s.src = 'miniblog.js';
+        document.body.appendChild(s);
+      } catch (err) {
+        console.warn('Could not load miniblog fragment', err);
+        container.innerHTML = '<p class="text-sm text-red-600">Could not load mini-blog (see console).</p>';
+      }
+    })();
+  </script>
+</body>
+</html>
