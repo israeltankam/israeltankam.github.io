@@ -1,0 +1,21 @@
+/* styles.css - custom styles extracted from original file */
+
+/* gradient text used for headings */
+.gradient-text {
+  background-image: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* print rules */
+@media print {
+  .no-print { display: none !important; }
+  .container { box-shadow: none !important; background: white !important; }
+}
+
+/* small UI niceties */
+details summary { cursor: pointer; }
+
+/* Add any future small tweaks here (example: smaller font for footer) */
+footer { font-size: 0.95rem; }
