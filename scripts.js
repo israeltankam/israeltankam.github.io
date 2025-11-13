@@ -1,0 +1,86 @@
+// scripts.js
+// General page scripts: load miniblog fragment and miniblog.js, and GitHub last-edited detection.
+
+(async function () {
+  // 1) Dynamically load the mini-blog HTML fragment and then its script.
+  async function loadMiniblog() {
+    const container = document.getElementById('miniblog-import');
+    if (!container) return;
+    try {
+      const res = await fetch('miniblog.html');
+      if (!res.ok) {
+        container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (miniblog.html).</p>';
+        return;
+      }
+      const html = await res.text();
+      container.innerHTML = html;
+
+      // then append miniblog.js as a <script> so it runs in page context
+      const script = document.createElement('script');
+      script.src = 'miniblog.js';
+      script.defer = false;
+      document.body.appendChild(script);
+    } catch (e) {
+      console.warn('Failed to load miniblog', e);
+      container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (see console).</p>';
+    }
+  }
+
+  // 2) GitHub last-edited detection (keeps previous logic)
+  async function updateLastEdited() {
+    const lastEditedEl = document.getElementById('last-edited');
+    if (!lastEditedEl) return;
+
+    const metaRepo = document.querySelector('meta[name="github-repo"]')?.getAttribute('content');
+    const metaPath = document.querySelector('meta[name="github-path"]')?.getAttribute('content');
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleString('en-GB', { year:'numeric', month:'short', day:'2-digit' });
+    }
+
+    if (metaRepo && metaPath) {
+      try {
+        const [owner, repo] = metaRepo.split('/');
+        const path = metaPath;
+        const api = `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(path)}&per_page=1`;
+        const res = await fetch(api);
+        if (res.ok) {
+          const commits = await res.json();
+          if (Array.isArray(commits) && commits.length > 0) {
+            const date = commits[0].commit.committer.date || commits[0].commit.author.date;
+            lastEditedEl.innerHTML = `Last edited: <strong class="text-blue-600">${formatDate(date)}</strong>`;
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn('GitHub last-edited check failed', e);
+      }
+    }
+
+    // Fallback: use document.lastModified
+    const docDate = document.lastModified;
+    if (docDate) {
+      const parsed = new Date(docDate);
+      if (!isNaN(parsed)) {
+        lastEditedEl.innerHTML = `Last edited: <strong class="text-blue-600">${formatDate(parsed.toISOString())}</strong>`;
+        return;
+      }
+    }
+
+    // Final fallback: show today's date
+    const now = new Date();
+    lastEditedEl.innerHTML = `Last edited: <strong class="text-blue-600">${formatDate(now.toISOString())}</strong>`;
+  }
+
+  // Run loader + last-edited on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMiniblog();
+      updateLastEdited();
+    });
+  } else {
+    loadMiniblog();
+    updateLastEdited();
+  }
+})();
