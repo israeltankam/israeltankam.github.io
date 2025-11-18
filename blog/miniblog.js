@@ -66,7 +66,7 @@
       title: "Comprendre la Conjecture de Poincaré — Partie I",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-1-introduction-8ad1f000d27a",
       date: "Oct 25, 2017",
-      tags: ["maths","poincaré","vulgarisation"],
+      tags: ["maths","poincaré","vulgarisation","français"],
       excerpt: "Introduction to the Poincaré conjecture written for an engaged general audience.",
       source: "Medium"
     },
@@ -74,7 +74,7 @@
       title: "Comprendre la Conjecture de Poincaré — Partie II",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-ii-ressemblances-topologiques-aae5f12fccbc",
       date: "Oct 25, 2017",
-      tags: ["maths","topology","vulgarisation"],
+      tags: ["maths","topology","vulgarisation","français"],
       excerpt: "Topological intuition and examples to gently approach Poincaré's statement.",
       source: "Medium"
     },
@@ -82,7 +82,7 @@
       title: "Comprendre la Conjecture de Poincaré — Partie III",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-iii-le-groupe-fondamental-fb440e1c84fd",
       date: "Apr 17, 2018",
-      tags: ["maths","topology","vulgarisation"],
+      tags: ["maths","topology","vulgarisation","français"],
       excerpt: "Further exposition on fundamental groups and contractibility.",
       source: "Medium"
     },
@@ -90,7 +90,7 @@
       title: "Le comma pythagoricien (musique)",
       url: "https://medium.com/@israeltankam/le-comma-pythagoricien-musique-adc72ee0eab3",
       date: "Apr 6, 2020",
-      tags: ["music","vulgarisation"],
+      tags: ["music","vulgarisation","français"],
       excerpt: "An accessible note about the Pythagorean comma and tuning in music.",
       source: "Medium"
     },
@@ -98,7 +98,7 @@
       title: "Chroniques transhumanistes (Ep. 1)",
       url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-1-voir-avec-la-langue-5d0f9d3dd83d",
       date: "Apr 5, 2020",
-      tags: ["essays","philosophy","technology"],
+      tags: ["essays","philosophy","technology","français"],
       excerpt: "First episode in a short series reflecting on transhumanism and perception.",
       source: "Medium"
     },
@@ -106,7 +106,7 @@
       title: "Un monde de pâquerettes!",
       url: "https://medium.com/@israeltankam/un-monde-de-p%C3%A2querettes-e8d78fe55aeb",
       date: "Jan 12, 2019",
-      tags: ["essay","vulgarisation"],
+      tags: ["essay","vulgarisation","français"],
       excerpt: "A short essay with a playful tone.",
       source: "Medium"
     },
