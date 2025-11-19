@@ -126,7 +126,6 @@
       excerpt: "An accessible note about the Pythagorean comma and tuning in music.",
       source: "Medium"
     },
-    // Each entry: title, url, date, tags (array), excerpt, source
     {
       title: "Chroniques transhumanistes (Ep. 2) : Sourd ou malentendant ? Pas de problème",
       url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-2-sourd-ou-malentendant-pas-de-probl%C3%A8me-8d14db00f689",
@@ -134,8 +133,7 @@
       tags: ["philosophy","technology","français","neurotechnology"],
       excerpt: "Second episode in a short series reflecting on transhumanism and perception: Introduction vulgarisée au fonctionnement de l'audition et présentation de l'implant cochléaire comme solution pour les personnes sourdes ou fortement malentendantes.",
       source: "Medium"
-    }
-
+    },
     {
       title: "Chroniques transhumanistes (Ep. 1)",
       url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-1-voir-avec-la-langue-5d0f9d3dd83d",
