@@ -7,6 +7,14 @@
   // Each entry: title, url, date, tags (array), excerpt, source
   const POSTS = [
     {
+      title: "Big insights from small data in Plant Disease Epidemiology",
+      url: "https://medium.com/@israeltankam/big-insights-from-small-data-in-plant-disease-epidemiology-9977186b97ee",
+      date: "November 19, 2025",
+      tags: ["agriculture","small data","plant health","modelling","predictive modelling","big data","hybrid model","data"],
+      excerpt: "In plant disease epidemiology, limited observations are the norm. I outline how modern statistical and modelling approaches can transform these constrained datasets into powerful, actionable predictions for crop protection.",
+      source: "Medium"
+    },
+    {
       title: "A short note on genetic drift",
       url: "https://medium.com/@israeltankam/a-short-note-on-genetic-drift-ddac11aaa17e",
       date: "May 3, 2023",
@@ -18,7 +26,7 @@
       title: "A short note on effective population size in population genetics",
       url: "https://medium.com/@israeltankam/a-short-note-on-effective-population-size-in-population-genetics-ed3258e28b9f",
       date: "Mar 21, 2023",
-      tags: ["population genetics","Ne","evolution"],
+      tags: ["population genetics","Ne","evolution", "genetic drift"],
       excerpt: "Effective population size (Ne) explains the strength of genetic drift and differences between census size and evolutionary dynamics.",
       source: "Medium"
     },
@@ -34,7 +42,7 @@
       title: "A short note on Hitchhiking in population genetics",
       url: "https://medium.com/@israeltankam/hitchhiking-in-population-genetics-6ec7b88870c3",
       date: "Sep 8, 2023",
-      tags: ["selection","hitchhiking","population genetics"],
+      tags: ["selection","hitchhiking","population genetics", "evolution"],
       excerpt: "Hitchhiking occurs when an allele increases in frequency because it is linked to a positively selected variant.",
       source: "Medium"
     },
@@ -42,7 +50,7 @@
       title: "A short note on the durability of pest-resistant crop varieties",
       url: "https://medium.com/@israeltankam/a-short-note-on-the-durability-of-pest-resistant-crop-varieties-c6ef435257d3",
       date: "Feb 9, 2023",
-      tags: ["agriculture","resistance durability","plant health"],
+      tags: ["agriculture","resistance durability","plant health", "evolution"],
       excerpt: "Durability of resistance depends on evolutionary pressure; model-based deployment (mixtures, rotations) can increase longevity.",
       source: "Medium"
     },
@@ -50,7 +58,7 @@
       title: "A note on population genetics and some associated models",
       url: "https://medium.com/@israeltankam/a-note-on-population-genetics-and-some-related-models-f82004fae610",
       date: "Feb 5, 2023",
-      tags: ["population genetics","models"],
+      tags: ["population genetics","models","modelling"],
       excerpt: "A short guided tour of classic population genetics models and the assumptions behind them.",
       source: "Medium"
     },
@@ -66,7 +74,7 @@
       title: "Comprendre la Conjecture de Poincaré — Partie I",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-1-introduction-8ad1f000d27a",
       date: "Oct 25, 2017",
-      tags: ["maths","poincaré","vulgarisation","français"],
+      tags: ["maths","poincaré","vulgarisation","français","education"],
       excerpt: "Introduction to the Poincaré conjecture written for an engaged general audience.",
       source: "Medium"
     },
@@ -74,7 +82,7 @@
       title: "Comprendre la Conjecture de Poincaré — Partie II",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-ii-ressemblances-topologiques-aae5f12fccbc",
       date: "Oct 25, 2017",
-      tags: ["maths","topology","vulgarisation","français"],
+      tags: ["maths","topology","poincaré","vulgarisation","français","education"],
       excerpt: "Topological intuition and examples to gently approach Poincaré's statement.",
       source: "Medium"
     },
@@ -82,7 +90,7 @@
       title: "Comprendre la Conjecture de Poincaré — Partie III",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-iii-le-groupe-fondamental-fb440e1c84fd",
       date: "Apr 17, 2018",
-      tags: ["maths","topology","vulgarisation","français"],
+      tags: ["maths","topology","poincaré","vulgarisation","français","education"],
       excerpt: "Further exposition on fundamental groups and contractibility.",
       source: "Medium"
     },
@@ -106,7 +114,7 @@
       title: "Un monde de pâquerettes!",
       url: "https://medium.com/@israeltankam/un-monde-de-p%C3%A2querettes-e8d78fe55aeb",
       date: "Jan 12, 2019",
-      tags: ["essay","vulgarisation","français"],
+      tags: ["essay","vulgarisation","français","modelling"],
       excerpt: "A short essay with a playful tone.",
       source: "Medium"
     },
@@ -122,7 +130,7 @@
       title: "Memory-based incremental parameter update (repo)",
       url: "https://github.com/israeltankam/Memory-based-incremental-parameter-update-of-a-generic-stochastic-plant-epidemic-model",
       date: "repo",
-      tags: ["software","sequential-MC","inference","epidemic-modelling"],
+      tags: ["software","sequential-MC","inference","epidemic modelling","modelling","plant health"],
       excerpt: "Sequential-Monte Carlo framework to incrementally update parameters of a stochastic plant epidemic model (notebooks included).",
       source: "GitHub"
     },
@@ -130,12 +138,12 @@
       title: "CMD4.0 — Cassava Mosaic Disease (repo)",
       url: "https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator",
       date: "Created: Jun 2022",
-      tags: ["software","NetLogo","cassava","epidemiology"],
+      tags: ["software","NetLogo","cassava","epidemiology","plant health","simulation"],
       excerpt: "Agent-based NetLogo model for CMD (varieties, whitefly vectors, roguing, replanting, economic outputs).",
       source: "GitHub"
     },
     {
-      title: "chaos_ecology (notebook) — Course & simulations on chaotic dynamics",
+      title: "Chaos in ecology (notebook) — Course & simulations on chaotic dynamics",
       url: "https://github.com/israeltankam/chaos_ecology",
       date: "repo (notebook)",
       tags: ["chaos","dynamical systems","notebook","course","ecology"],
