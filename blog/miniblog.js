@@ -15,6 +15,22 @@
       source: "Medium"
     },
     {
+      title: "Chaos in ecology (notebook) — Course & simulations on chaotic dynamics",
+      url: "https://github.com/israeltankam/chaos_ecology",
+      date: "repo (notebook)",
+      tags: ["chaos","dynamical systems","notebook","course","ecology"],
+      excerpt: "Course notebook and simulation tools on chaos in ecological models; associated with a lecture at University of Bern.",
+      source: "GitHub"
+    },
+    {
+      title: "Memory-based incremental parameter update (repo)",
+      url: "https://github.com/israeltankam/Memory-based-incremental-parameter-update-of-a-generic-stochastic-plant-epidemic-model",
+      date: "repo",
+      tags: ["software","sequential-MC","inference","epidemic modelling","modelling","plant health"],
+      excerpt: "Sequential-Monte Carlo framework to incrementally update parameters of a stochastic plant epidemic model (notebooks included).",
+      source: "GitHub"
+    },
+    {
       title: "A short note on genetic drift",
       url: "https://medium.com/@israeltankam/a-short-note-on-genetic-drift-ddac11aaa17e",
       date: "May 3, 2023",
@@ -71,6 +87,14 @@
       source: "Medium"
     },
     {
+      title: "CMD4.0 — Cassava Mosaic Disease (repo)",
+      url: "https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator",
+      date: "Created: Jun 2022",
+      tags: ["software","NetLogo","cassava","epidemiology","plant health","simulation"],
+      excerpt: "Agent-based NetLogo model for CMD (varieties, whitefly vectors, roguing, replanting, economic outputs).",
+      source: "GitHub"
+    },
+    {
       title: "Comprendre la Conjecture de Poincaré — Partie I",
       url: "https://medium.com/@israeltankam/comprendre-la-conjecture-de-poincar%C3%A9-partie-1-introduction-8ad1f000d27a",
       date: "Oct 25, 2017",
@@ -102,11 +126,21 @@
       excerpt: "An accessible note about the Pythagorean comma and tuning in music.",
       source: "Medium"
     },
+    // Each entry: title, url, date, tags (array), excerpt, source
+    {
+      title: "Chroniques transhumanistes (Ep. 2) : Sourd ou malentendant ? Pas de problème",
+      url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-2-sourd-ou-malentendant-pas-de-probl%C3%A8me-8d14db00f689",
+      date: "Nov 19, 2025",
+      tags: ["philosophy","technology","français","neurotechnology"],
+      excerpt: "Second episode in a short series reflecting on transhumanism and perception: Introduction vulgarisée au fonctionnement de l'audition et présentation de l'implant cochléaire comme solution pour les personnes sourdes ou fortement malentendantes.",
+      source: "Medium"
+    }
+
     {
       title: "Chroniques transhumanistes (Ep. 1)",
       url: "https://medium.com/@israeltankam/chroniques-transhumanistes-ep-1-voir-avec-la-langue-5d0f9d3dd83d",
       date: "Apr 5, 2020",
-      tags: ["essays","philosophy","technology","français"],
+      tags: ["essays","philosophy","technology","neurotechnology","français"],
       excerpt: "First episode in a short series reflecting on transhumanism and perception.",
       source: "Medium"
     },
@@ -125,30 +159,6 @@
       tags: ["chaos","vulgarisation","français","dynamical systems"],
       excerpt: "First in a popular science series on chaos — an accessible story illustrating sensitive dependence on initial conditions.",
       source: "Medium"
-    },
-    {
-      title: "Memory-based incremental parameter update (repo)",
-      url: "https://github.com/israeltankam/Memory-based-incremental-parameter-update-of-a-generic-stochastic-plant-epidemic-model",
-      date: "repo",
-      tags: ["software","sequential-MC","inference","epidemic modelling","modelling","plant health"],
-      excerpt: "Sequential-Monte Carlo framework to incrementally update parameters of a stochastic plant epidemic model (notebooks included).",
-      source: "GitHub"
-    },
-    {
-      title: "CMD4.0 — Cassava Mosaic Disease (repo)",
-      url: "https://github.com/israeltankam/CMD4.0-Cassava-Mosaic-Disease-Simulator",
-      date: "Created: Jun 2022",
-      tags: ["software","NetLogo","cassava","epidemiology","plant health","simulation"],
-      excerpt: "Agent-based NetLogo model for CMD (varieties, whitefly vectors, roguing, replanting, economic outputs).",
-      source: "GitHub"
-    },
-    {
-      title: "Chaos in ecology (notebook) — Course & simulations on chaotic dynamics",
-      url: "https://github.com/israeltankam/chaos_ecology",
-      date: "repo (notebook)",
-      tags: ["chaos","dynamical systems","notebook","course","ecology"],
-      excerpt: "Course notebook and simulation tools on chaos in ecological models; associated with a lecture at University of Bern.",
-      source: "GitHub"
     }
   ];
 
