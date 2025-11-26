@@ -10,6 +10,14 @@
       title: "Big insights from small data in Plant Disease Epidemiology",
       url: "https://medium.com/@israeltankam/big-insights-from-small-data-in-plant-disease-epidemiology-9977186b97ee",
       date: "November 19, 2025",
+      tags: ["agriculture", "precision agriculture", "user guide", "decision support", "data driven decisions", "crop modeling"],
+      excerpt: "User guide for AEF Crop Intelligence (https://aef-crop-intelligence.streamlit.app/), a decision support tool for farmers and agronomists that combines a Digital Twin of your field (a computer simulation of crop growth) with Satellite Intelligence (real-time observations from space) to help you optimize yield, manage diseases, and reduce input costs.",
+      source: "Medium"
+    },
+    {
+      title: "AEF Crop Intelligence: User Guide",
+      url: "https://medium.com/@israeltankam/big-insights-from-small-data-in-plant-disease-epidemiology-9977186b97ee",
+      date: "November 19, 2025",
       tags: ["agriculture","small data","plant health","modelling","predictive modelling","big data","hybrid model","data"],
       excerpt: "In plant disease epidemiology, limited observations are the norm. I outline how modern statistical and modelling approaches can transform these constrained datasets into powerful, actionable predictions for crop protection.",
       source: "Medium"
