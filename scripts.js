@@ -2,7 +2,7 @@
 // General page scripts: load miniblog fragment and miniblog.js, and GitHub last-edited detection.
 
 (async function () {
-  // 1) Dynamically load the mini-blog HTML fragment and then its script.
+  // 1a) Dynamically load the mini-blog HTML fragment and then its script.
   async function loadMiniblog() {
     const container = document.getElementById('miniblog-import');
     if (!container) return;
@@ -25,6 +25,31 @@
       container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (see console).</p>';
     }
   }
+
+  // 1b) Dynamically load the publication-list HTML fragment and append its script.
+async function loadPublicationList() {
+  const container = document.getElementById('publist-import');
+  if (!container) return;
+  try {
+    const res = await fetch('pub_list/index.html');
+    if (!res.ok) {
+      container.innerHTML = '<p class="text-sm text-red-600">Failed to load publication list (pub_list/index.html).</p>';
+      return;
+    }
+    const html = await res.text();
+    container.innerHTML = html;
+
+    // append publist.js (optional, supports auto-numbering)
+    const script = document.createElement('script');
+    script.src = 'pub_list/publist.js';
+    script.defer = false;
+    document.body.appendChild(script);
+  } catch (e) {
+    console.warn('Failed to load publication list', e);
+    container.innerHTML = '<p class="text-sm text-red-600">Failed to load publication list (see console).</p>';
+  }
+}
+
 
   // 2) GitHub last-edited detection (keeps previous logic)
   async function updateLastEdited() {
