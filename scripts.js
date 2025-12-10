@@ -100,12 +100,15 @@ async function loadPublicationList() {
 
   // Run loader + last-edited on DOM ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      loadMiniblog();
-      updateLastEdited();
-    });
-  } else {
+  document.addEventListener('DOMContentLoaded', () => {
     loadMiniblog();
+    loadPublicationList(); // <<< NEW
     updateLastEdited();
-  }
+  });
+} else {
+  loadMiniblog();
+  loadPublicationList(); // <<< NEW
+  updateLastEdited();
+}
+
 })();
