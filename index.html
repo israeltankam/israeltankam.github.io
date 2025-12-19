@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Israel Tankam — Accueil</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JY9TN3L74N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-JY9TN3L74N');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM VARIABLES --- */
+        :root {
+            --primary-blue: #3B82F6;
+            --indigo-accent: #6366F1;
+            --bg-gradient-start: #F0F9FF;
+            --bg-gradient-end: #E0E7FF;
+            --surface-white: rgba(255, 255, 255, 0.85);
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
+            --border-color: #BFDBFE;
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- GLOBAL RESET & LAYOUT --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrage vertical */
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary-blue), var(--indigo-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* --- GRID NAVIGATION --- */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive auto-grid */
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* --- CARDS (LINKS) --- */
+        .nav-card {
+            background: var(--surface-white);
+            backdrop-filter: blur(12px); /* Effet verre */
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out backwards;
+        }
+
+        /* Animation délai pour effet cascade */
+        .nav-card:nth-child(1) { animation-delay: 0.1s; }
+        .nav-card:nth-child(2) { animation-delay: 0.2s; }
+        .nav-card:nth-child(3) { animation-delay: 0.3s; }
+        .nav-card:nth-child(4) { animation-delay: 0.4s; }
+        .nav-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-blue);
+        }
+
+        /* Styles spécifiques pour le contenu de la carte */
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Style Spécial pour MLOps (Mise en avant) */
+        .nav-card.highlight {
+            border: 2px solid var(--indigo-accent);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,247,255,0.95));
+        }
+        .nav-card.highlight .card-title {
+            color: var(--indigo-accent);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 0; }
+            .grid-menu { grid-template-columns: 1fr; } /* 1 col on mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Israel Tankam</h1>
+            <p class="subtitle">Data Scientist • MLOps Engineer • Researcher</p>
+        </header>
+
+        <nav class="grid-menu">
+
+            <a href="/cv/" class="nav-card">
+                <div class="card-icon">👨🏾‍💻</div>
+                <div class="card-title">CV & Résumé</div>
+                <div class="card-desc">Mon parcours professionnel complet, mes compétences et une vue d'ensemble de mes activités.</div>
+            </a>
+
+            <a href="/mlops/" class="nav-card highlight">
+                <div class="card-icon">🚀</div>
+                <div class="card-title">Formation MLOps</div>
+                <div class="card-desc">Découvrez mon parcours certifiant : de l'expérimentation à la production industrielle.</div>
+            </a>
+
+            <a href="/portfolio/" class="nav-card">
+                <div class="card-icon">💻</div>
+                <div class="card-title">Portfolio Projets</div>
+                <div class="card-desc">Sélection de mes développements, codes sources et réalisations techniques.</div>
+            </a>
+
+            <a href="/pub_list/" class="nav-card">
+                <div class="card-icon">📚</div>
+                <div class="card-title">Publications</div>
+                <div class="card-desc">Liste de mes articles de recherche, conférences et travaux académiques.</div>
+            </a>
+
+            <a href="/blog/" class="nav-card">
+                <div class="card-icon">✍️</div>
+                <div class="card-title">Blog</div>
+                <div class="card-desc">Mes articles, réflexions et tutoriels sur la Data Science et le Machine Learning.</div>
+            </a>
+
+        </nav>
+
+        <footer>
+            &copy; 2025 Israel Tankam. Tous droits réservés.
+        </footer>
+
+    </div>
+
+</body>
+</html>
