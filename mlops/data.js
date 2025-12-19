@@ -1,4 +1,4 @@
-/* data.js */
+/* data.js - VERSION CORRIGÉE ET COMPLÈTE */
 
 const DATA = {
     fr: {
@@ -94,14 +94,29 @@ const DATA = {
                 }
             ]
         },
-        // ... (Garder la section QUIZ et RESULT telle quelle ou mettre à jour l'anglais de la même façon) ...
-        quiz: DATA?.fr?.quiz || { /* Copier l'ancien objet quiz ici si besoin, sinon je peux le réécrire */ },
-        result: DATA?.fr?.result || { /* Idem */ }
+        quiz: {
+            title: "Quiz d'Orientation MLOps",
+            intro: "20 questions pour évaluer votre niveau et définir votre parcours idéal. Difficulté progressive.",
+            submit: "Voir mes résultats",
+            next: "Suivant",
+            levels: ["Profane", "Débutant", "Intermédiaire", "Avancé", "Expert"]
+        },
+        result: {
+            title: "Votre Profil MLOps",
+            score: "Votre score : ",
+            recommendation: "Parcours Recommandé : ",
+            cta_apply: "Demander mon inscription à ce parcours",
+            form_title: "Finaliser l'inscription",
+            form_desc: "Envoyez votre résultat et votre motivation directement à Israel Tankam."
+        }
     },
     en: {
-        // ... Il faudrait traduire la structure ci-dessus en Anglais pour être cohérent ...
-        // Je mets un placeholder pour l'instant pour ne pas surcharger la réponse
-        home: DATA?.en?.home,
+        home: {
+            title: "Master MLOps",
+            subtitle: "From experimentation to industrial production.",
+            desc: "A certified, modular training adapted to your industry. Discover your level and the ideal path.",
+            cta: "Take the Placement Quiz"
+        },
         curriculum: {
             title: "The Complete MLOps Curriculum",
             intro: "A progressive approach, from simple Python code to complex distributed architectures.",
@@ -113,26 +128,59 @@ const DATA = {
                     tools: ["Python", "Pandas", "Jupyter"], skills: ["Data Cleaning", "EDA", "First Models"],
                     details: ["Module 0.1: Intro", "Module 0.2: Python", "Module 0.3: Data Prep", "Module 0.4: First Models", "Module 0.5: Interpretation"]
                 },
-                // ... (Remplir les autres parcours en EN de la même logique)
-                 { id: 1, title: "Path 1: Applied ML", duration: "40h", desc: "Professionalize your approach.", tools:["Scikit-learn"], skills:[], details:[] },
-                 { id: 2, title: "Path 2: MLOps Core", duration: "45h", desc: "The core. CI/CD, Docker, MLflow.", tools:["MLflow", "Docker"], skills:[], details:[] },
-                 { id: 3, title: "Path 3: Advanced", duration: "50h", desc: "Scale, Monitoring, Governance.", tools:["Airflow", "Grafana"], skills:[], details:[] },
-                 { id: 4, title: "Path 4: Expert", duration: "30h", desc: "Audit and Strategy.", tools:["Audit"], skills:[], details:[] }
+                {
+                    id: 1, title: "Path 1: Applied ML", duration: "40-45h", level: "Advanced Beginner",
+                    desc: "Professionalize your approach. Move from 'tinkering' to rigorous methodology.",
+                    tools: ["Scikit-learn", "Matplotlib", "Git"], skills: ["Feature Engineering", "Cross-Validation", "Metrics"],
+                    details: ["Module 1.1: ML Lifecycle", "Module 1.2: Feature Engineering", "Module 1.3: Rigorous Validation", "Module 1.4: Project Structure", "Module 1.5: Limits of Experimental ML"]
+                },
+                {
+                    id: 2, title: "Path 2: MLOps Core", duration: "45-50h", level: "Intermediate",
+                    desc: "The core of MLOps. Automate, version, and deploy. This is where industrialization begins.",
+                    tools: ["MLflow", "DVC", "Docker", "FastAPI"], skills: ["Automated Pipelines", "Versioning", "API Deployment"],
+                    details: ["Module 2.1: Automated Pipelines", "Module 2.2: Full Versioning", "Module 2.3: Deployment", "Module 2.4: Monitoring Basics", "Module 2.5: CI/CD for ML"]
+                },
+                {
+                    id: 3, title: "Path 3: Advanced & Prod", duration: "45-55h", level: "Advanced",
+                    desc: "Manage complexity at scale. Observability, governance, and robust architectures.",
+                    tools: ["Airflow", "Evidently AI", "Prometheus"], skills: ["Advanced Observability", "Governance", "Optimization"],
+                    details: ["Module 3.1: Industrial Architectures", "Module 3.2: Advanced Observability", "Module 3.3: Governance & Risks", "Module 3.4: Optimization", "Module 3.5: ML Product"]
+                },
+                {
+                    id: 4, title: "Path 4: Expert", duration: "30-40h", level: "Expert",
+                    desc: "For leads and architects. Audit existing systems, long-term strategy, and R&D.",
+                    tools: ["Feature Stores", "Audit Tools"], skills: ["MLOps Audit", "AI Strategy", "Mentoring"],
+                    details: ["Module 4.1: MLOps Maturity Audit", "Module 4.2: Strategic Design", "Module 4.3: Complex Cases", "Module 4.4: Open Project"]
+                }
             ]
         },
-        quiz: DATA?.en?.quiz,
-        result: DATA?.en?.result
+        quiz: {
+            title: "MLOps Placement Quiz",
+            intro: "20 questions to assess your level and define your ideal path. Progressive difficulty.",
+            submit: "See Results",
+            next: "Next",
+            levels: ["Layman", "Beginner", "Intermediate", "Advanced", "Expert"]
+        },
+        result: {
+            title: "Your MLOps Profile",
+            score: "Your score: ",
+            recommendation: "Recommended Path: ",
+            cta_apply: "Apply for this path",
+            form_title: "Finalize Enrollment",
+            form_desc: "Send your results and motivation directly to Israel Tankam."
+        }
     }
 };
+
 const QUIZ_QUESTIONS = [
     // --- NIVEAU PROFANE (1 pt) ---
     {
         id: 1, level: 0, points: 1, 
         text: "À quoi sert un modèle de Machine Learning ?",
         options: [
-            { text: "Prendre des décisions à partir de données", correct: true }, // [cite: 295]
+            { text: "Prendre des décisions à partir de données", correct: true }, 
             { text: "Stocker des données dans une base", correct: false },
-            { text: "Apprendre des relations à partir d’exemples", correct: true }, // [cite: 295]
+            { text: "Apprendre des relations à partir d’exemples", correct: true }, 
             { text: "Remplacer complètement un humain", correct: false }
         ]
     },
@@ -140,31 +188,30 @@ const QUIZ_QUESTIONS = [
         id: 2, level: 0, points: 1, 
         text: "Qu’est-ce qu’un jeu de données ?",
         options: [
-            { text: "Un ensemble d’exemples", correct: true }, // [cite: 295]
+            { text: "Un ensemble d’exemples", correct: true }, 
             { text: "Un logiciel de calcul", correct: false },
-            { text: "Une collection de données structurées", correct: true }, // [cite: 295]
+            { text: "Une collection de données structurées", correct: true }, 
             { text: "Un algorithme", correct: false }
         ]
     },
-
     // --- NIVEAU DÉBUTANT (2 pts) ---
     {
         id: 3, level: 1, points: 2, 
         text: "Quelles tâches relèvent du Machine Learning ?",
         options: [
-            { text: "Classification", correct: true }, // [cite: 297]
-            { text: "Régression", correct: true }, // [cite: 297]
+            { text: "Classification", correct: true }, 
+            { text: "Régression", correct: true }, 
             { text: "Compression de fichiers", correct: false },
-            { text: "Clustering", correct: true } // [cite: 297]
+            { text: "Clustering", correct: true } 
         ]
     },
     {
         id: 4, level: 1, points: 2, 
         text: "Pourquoi séparer les données en train et test ?",
         options: [
-            { text: "Évaluer la performance réelle", correct: true }, // [cite: 297]
+            { text: "Évaluer la performance réelle", correct: true }, 
             { text: "Accélérer l’entraînement", correct: false },
-            { text: "Éviter le surapprentissage", correct: true }, // [cite: 297]
+            { text: "Éviter le surapprentissage", correct: true }, 
             { text: "Réduire la taille des données", correct: false }
         ]
     },
@@ -172,9 +219,9 @@ const QUIZ_QUESTIONS = [
         id: 5, level: 1, points: 2, 
         text: "Quelles bibliothèques Python sont couramment utilisées en ML ?",
         options: [
-            { text: "NumPy", correct: true }, // [cite: 297]
-            { text: "Pandas", correct: true }, // [cite: 297]
-            { text: "Scikit-learn", correct: true }, // [cite: 297]
+            { text: "NumPy", correct: true }, 
+            { text: "Pandas", correct: true }, 
+            { text: "Scikit-learn", correct: true }, 
             { text: "Selenium", correct: false }
         ]
     },
@@ -182,9 +229,9 @@ const QUIZ_QUESTIONS = [
         id: 6, level: 1, points: 2, 
         text: "Qu’est-ce qu’une feature ?",
         options: [
-            { text: "Une variable d’entrée du modèle", correct: true }, // [cite: 297]
+            { text: "Une variable d’entrée du modèle", correct: true }, 
             { text: "Une sortie du modèle", correct: false },
-            { text: "Une caractéristique mesurable", correct: true }, // [cite: 297]
+            { text: "Une caractéristique mesurable", correct: true }, 
             { text: "Un hyperparamètre", correct: false }
         ]
     },
@@ -192,8 +239,8 @@ const QUIZ_QUESTIONS = [
         id: 7, level: 1, points: 2, 
         text: "Qu’est-ce que l’accuracy ?",
         options: [
-            { text: "Une métrique de classification", correct: true }, // [cite: 297]
-            { text: "Le taux de bonnes prédictions", correct: true }, // [cite: 297]
+            { text: "Une métrique de classification", correct: true }, 
+            { text: "Le taux de bonnes prédictions", correct: true }, 
             { text: "Toujours adaptée aux données déséquilibrées", correct: false },
             { text: "Une fonction de perte", correct: false }
         ]
@@ -202,9 +249,9 @@ const QUIZ_QUESTIONS = [
         id: 8, level: 1, points: 2, 
         text: "Quelles sont des étapes classiques d’un projet ML ?",
         options: [
-            { text: "Collecte des données", correct: true }, // [cite: 297]
-            { text: "Entraînement du modèle", correct: true }, // [cite: 297]
-            { text: "Déploiement", correct: true }, // [cite: 297]
+            { text: "Collecte des données", correct: true }, 
+            { text: "Entraînement du modèle", correct: true }, 
+            { text: "Déploiement", correct: true }, 
             { text: "Design graphique", correct: false }
         ]
     },
@@ -212,41 +259,40 @@ const QUIZ_QUESTIONS = [
         id: 9, level: 1, points: 2, 
         text: "Qu’est-ce qu’un notebook Jupyter est souvent utilisé pour ?",
         options: [
-            { text: "Explorer les données", correct: true }, // [cite: 298]
-            { text: "Tester des modèles", correct: true }, // [cite: 298]
+            { text: "Explorer les données", correct: true }, 
+            { text: "Tester des modèles", correct: true }, 
             { text: "Déployer en production", correct: false },
-            { text: "Documenter des analyses", correct: true } // [cite: 298]
+            { text: "Documenter des analyses", correct: true } 
         ]
     },
     {
         id: 10, level: 1, points: 2, 
         text: "Qu’est-ce qu’un hyperparamètre ?",
         options: [
-            { text: "Paramètre fixé avant l’entraînement", correct: true }, // [cite: 298]
+            { text: "Paramètre fixé avant l’entraînement", correct: true }, 
             { text: "Paramètre appris automatiquement", correct: false },
-            { text: "Élément influençant la performance", correct: true }, // [cite: 298]
+            { text: "Élément influençant la performance", correct: true }, 
             { text: "Valeur issue des données", correct: false }
         ]
     },
-
     // --- NIVEAU INTERMÉDIAIRE (3 pts) ---
     {
         id: 11, level: 2, points: 3, 
         text: "Quelles situations peuvent provoquer du data leakage ?",
         options: [
-            { text: "Utiliser des données futures", correct: true }, // [cite: 300]
-            { text: "Normaliser avant la séparation train/test", correct: true }, // [cite: 300]
+            { text: "Utiliser des données futures", correct: true }, 
+            { text: "Normaliser avant la séparation train/test", correct: true }, 
             { text: "Ajouter trop de features", correct: false },
-            { text: "Mauvais découpage temporel", correct: true } // [cite: 300]
+            { text: "Mauvais découpage temporel", correct: true } 
         ]
     },
     {
         id: 12, level: 2, points: 3, 
         text: "Quelles techniques permettent de réduire l’overfitting ?",
         options: [
-            { text: "Régularisation", correct: true }, // [cite: 300]
-            { text: "Cross-validation", correct: true }, // [cite: 300]
-            { text: "Dropout", correct: true }, // [cite: 300]
+            { text: "Régularisation", correct: true }, 
+            { text: "Cross-validation", correct: true }, 
+            { text: "Dropout", correct: true }, 
             { text: "Augmenter indéfiniment la complexité", correct: false }
         ]
     },
@@ -254,83 +300,81 @@ const QUIZ_QUESTIONS = [
         id: 13, level: 2, points: 3, 
         text: "Quelles métriques sont pertinentes pour un problème de classification déséquilibrée ?",
         options: [
-            { text: "Precision", correct: true }, // [cite: 300]
-            { text: "Recall", correct: true }, // [cite: 300]
+            { text: "Precision", correct: true }, 
+            { text: "Recall", correct: true }, 
             { text: "Accuracy", correct: false },
-            { text: "F1-score", correct: true } // [cite: 300]
+            { text: "F1-score", correct: true } 
         ]
     },
     {
         id: 14, level: 2, points: 3, 
         text: "En MLOps, que permet le versioning des modèles ?",
         options: [
-            { text: "Comparer des performances", correct: true }, // [cite: 300]
-            { text: "Revenir à une version antérieure", correct: true }, // [cite: 300]
+            { text: "Comparer des performances", correct: true }, 
+            { text: "Revenir à une version antérieure", correct: true }, 
             { text: "Réduire le temps d’inférence", correct: false },
-            { text: "Assurer la traçabilité", correct: true } // [cite: 300]
+            { text: "Assurer la traçabilité", correct: true } 
         ]
     },
     {
         id: 15, level: 2, points: 3, 
         text: "Quelles affirmations sur le pipeline ML sont vraies ?",
         options: [
-            { text: "Il automatise les étapes du cycle ML", correct: true }, // [cite: 300]
-            { text: "Il réduit les erreurs humaines", correct: true }, // [cite: 300]
+            { text: "Il automatise les étapes du cycle ML", correct: true }, 
+            { text: "Il réduit les erreurs humaines", correct: true }, 
             { text: "Il remplace le data scientist", correct: false },
-            { text: "Il facilite la reproductibilité", correct: true } // [cite: 300]
+            { text: "Il facilite la reproductibilité", correct: true } 
         ]
     },
-
     // --- NIVEAU AVANCÉ (4 pts) ---
     {
         id: 16, level: 3, points: 4, 
         text: "Quelles sont des sources de data drift en production ?",
         options: [
-            { text: "Changement de comportement utilisateur", correct: true }, // [cite: 302]
-            { text: "Saison ou climat", correct: true }, // [cite: 302]
+            { text: "Changement de comportement utilisateur", correct: true }, 
+            { text: "Saison ou climat", correct: true }, 
             { text: "Mauvaise initialisation des poids", correct: false },
-            { text: "Évolution du contexte métier", correct: true } // [cite: 302]
+            { text: "Évolution du contexte métier", correct: true } 
         ]
     },
     {
         id: 17, level: 3, points: 4, 
         text: "Quelles pratiques relèvent du MLOps mature ?",
         options: [
-            { text: "CI/CD pour modèles", correct: true }, // [cite: 302]
-            { text: "Monitoring des données et performances", correct: true }, // [cite: 302]
+            { text: "CI/CD pour modèles", correct: true }, 
+            { text: "Monitoring des données et performances", correct: true }, 
             { text: "Déploiement manuel ponctuel", correct: false },
-            { text: "Tests automatisés", correct: true } // [cite: 302]
+            { text: "Tests automatisés", correct: true } 
         ]
     },
     {
         id: 18, level: 3, points: 4, 
         text: "Pourquoi le monitoring des features est-il crucial ?",
         options: [
-            { text: "Détecter des changements de distribution", correct: true }, // [cite: 302]
+            { text: "Détecter des changements de distribution", correct: true }, 
             { text: "Améliorer automatiquement la précision", correct: false },
-            { text: "Anticiper une dégradation du modèle", correct: true }, // [cite: 302]
-            { text: "Garantir la conformité métier", correct: true } // [cite: 302]
+            { text: "Anticiper une dégradation du modèle", correct: true }, 
+            { text: "Garantir la conformité métier", correct: true } 
         ]
     },
     {
         id: 19, level: 3, points: 4, 
         text: "Quelles contraintes non techniques influencent un système ML en production ?",
         options: [
-            { text: "Réglementation (RGPD, IA Act)", correct: true }, // [cite: 302]
-            { text: "Acceptabilité utilisateur", correct: true }, // [cite: 302]
-            { text: "Coûts d’infrastructure", correct: true }, // [cite: 302]
+            { text: "Réglementation (RGPD, IA Act)", correct: true }, 
+            { text: "Acceptabilité utilisateur", correct: true }, 
+            { text: "Coûts d’infrastructure", correct: true }, 
             { text: "Choix de l’algorithme", correct: false }
         ]
     },
-
     // --- NIVEAU EXPERT (6 pts) ---
     {
         id: 20, level: 4, points: 6, 
         text: "Un modèle montre de bonnes métriques globales mais provoque des décisions métier erronées. Quelles causes sont plausibles ?",
         options: [
-            { text: "Mauvais alignement entre métrique et objectif métier", correct: true }, // [cite: 304]
-            { text: "Concept drift non détecté", correct: true }, // [cite: 304]
-            { text: "Biais dans les données d’entraînement", correct: true }, // [cite: 304]
+            { text: "Mauvais alignement entre métrique et objectif métier", correct: true }, 
+            { text: "Concept drift non détecté", correct: true }, 
+            { text: "Biais dans les données d’entraînement", correct: true }, 
             { text: "Trop peu d’epochs d’entraînement", correct: false }
         ]
     }
