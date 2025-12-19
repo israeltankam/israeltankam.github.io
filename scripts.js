@@ -50,6 +50,23 @@ async function loadPublicationList() {
   }
 }
 
+// 1c) Dynamically load the portfolio HTML fragment and append its script.
+async function loadPortfolio() {
+  const container = document.getElementById('portfolio-import');
+  if (!container) return;
+  try {
+    const res = await fetch('portfolio/index.html');
+    if (!res.ok) {
+      container.innerHTML = '<p class="text-sm text-red-600">Failed to load portfolio (portfolio/index.html).</p>';
+      return;
+    }
+    const html = await res.text();
+    container.innerHTML = html;
+  } catch (e) {
+    console.warn('Failed to load portfolio', e);
+    container.innerHTML = '<p class="text-sm text-red-600">Failed to load portfolio (see console).</p>';
+  }
+}
 
   // 2) GitHub last-edited detection (keeps previous logic)
   async function updateLastEdited() {
