@@ -190,7 +190,7 @@ function renderResult() {
                 <h3>${t.form_title}</h3>
                 <p>${t.form_desc}</p>
                 
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form action="https://formspree.io/f/mqezepld" method="POST">
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" required placeholder="votre@email.com">
