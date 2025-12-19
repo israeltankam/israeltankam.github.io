@@ -47,18 +47,113 @@ function renderHome() {
 
 function renderCurriculum() {
     const t = DATA[currentLang].curriculum;
-    let html = `<div class="section container"><h1>${t.title}</h1>`;
     
+    // Header Section
+    let html = `
+        <div class="section container">
+            <div class="curriculum-intro">
+                <h1>${t.title}</h1>
+                <p>${t.intro}</p>
+            </div>
+            
+            <div class="project-highlight">
+                ${t.common_project}
+            </div>
+
+            <div class="curriculum-list">
+    `;
+    
+    // Loop through modules
     t.modules.forEach(mod => {
+        // Generate Tools Badges
+        const toolsHtml = mod.tools.map(tool => `<span class="tool-badge">${tool}</span>`).join('');
+        
+        // Generate Skills Text
+        const skillsText = mod.skills.join(' • ');
+
+        // Generate Details List
+        const detailsHtml = mod.details.map(item => `<div class="detail-item">Example: ${item}</div>`).join(''); // Note: "Example" prefix is optional context
+        // Better rendering for details based on Data:
+        const syllabusHtml = mod.details.map(item => `
+            <div class="detail-item">
+                <span style="color:var(--primary-blue);">➤</span> ${item}
+            </div>
+        `).join('');
+
         html += `
-            <div class="card">
-                <h3>${mod.title}</h3>
+            <div class="card module-card" id="module-${mod.id}">
+                <div class="module-header">
+                    <div>
+                        <h3>${mod.title}</h3>
+                        <div class="module-meta">
+                            <span class="meta-tag">⏱ ${mod.duration}</span>
+                            <span class="meta-tag">🎓 ${mod.level}</span>
+                        </div>
+                    </div>
+                </div>
+
                 <p>${mod.desc}</p>
+
+                <div class="skills-list">
+                    <strong>Compétences :</strong> ${skillsText}
+                </div>
+
+                <div class="tools-container">
+                    ${toolsHtml}
+                </div>
+
+                <button class="btn-toggle-details" onclick="toggleDetails(${mod.id})">
+                    Voir le programme détaillé ▼
+                </button>
+
+                <div id="details-${mod.id}" class="module-details">
+                    <h4 style="margin-bottom:0.5rem; font-size:1rem;">Programme des séances :</h4>
+                    ${syllabusHtml}
+                    <div style="margin-top:1.5rem; text-align:right;">
+                        <button onclick="prefillForm('${mod.title}')" class="btn btn-sm btn-secondary">S'inscrire à ce module</button>
+                    </div>
+                </div>
             </div>
         `;
     });
-    html += `</div>`;
+
+    html += `</div></div>`; // Close grid and section
     document.getElementById('app').innerHTML = html;
+}
+
+// Fonction utilitaire pour l'accordéon
+function toggleDetails(id) {
+    const details = document.getElementById(`details-${id}`);
+    const btn = details.previousElementSibling; // Le bouton
+    
+    if (details.classList.contains('active')) {
+        details.classList.remove('active');
+        btn.innerHTML = "Voir le programme détaillé ▼";
+    } else {
+        details.classList.add('active');
+        btn.innerHTML = "Masquer le programme ▲";
+    }
+}
+
+// Petit bonus : Lier le bouton "S'inscrire" vers le formulaire
+function prefillForm(moduleTitle) {
+    // On simule un résultat pour aller sur la page de résultat/contact
+    window.lastResult = {
+        score: 0, 
+        path: 99, // Dummy ID
+        details: {}
+    };
+    
+    // On force l'affichage du formulaire
+    navigate('result');
+    
+    // On attend que le DOM soit généré puis on remplit
+    setTimeout(() => {
+        const subjectInput = document.querySelector('input[name="subject"]');
+        if(subjectInput) subjectInput.value = `Inscription directe - ${moduleTitle}`;
+        document.getElementById('contact-form-container').style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
 }
 
 function renderQuiz() {
