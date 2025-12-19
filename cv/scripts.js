@@ -7,7 +7,7 @@
     const container = document.getElementById('miniblog-import');
     if (!container) return;
     try {
-      const res = await fetch('blog/miniblog.html');
+      const res = await fetch('../blog/miniblog.html');
       if (!res.ok) {
         container.innerHTML = '<p class="text-sm text-red-600">Failed to load mini-blog (blog/miniblog.html).</p>';
         return;
@@ -31,7 +31,7 @@ async function loadPublicationList() {
   const container = document.getElementById('publist-import');
   if (!container) return;
   try {
-    const res = await fetch('pub_list/index.html');
+    const res = await fetch('../pub_list/index.html');
     if (!res.ok) {
       container.innerHTML = '<p class="text-sm text-red-600">Failed to load publication list (pub_list/index.html).</p>';
       return;
@@ -55,7 +55,7 @@ async function loadPortfolio() {
   const container = document.getElementById('portfolio-import');
   if (!container) return;
   try {
-    const res = await fetch('portfolio/index.html');
+    const res = await fetch('../portfolio/index.html');
     if (!res.ok) {
       container.innerHTML = '<p class="text-sm text-red-600">Failed to load portfolio (portfolio/index.html).</p>';
       return;
