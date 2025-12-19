@@ -38,7 +38,7 @@ function renderHome() {
             <p style="font-size:1.1rem; max-width:600px; margin: 0 auto 2rem auto;">${t.desc}</p>
             <button onclick="navigate('quiz')" class="btn btn-primary">${t.cta}</button>
             <div style="margin-top:3rem;">
-                <img src="https://source.unsplash.com/random/800x400?technology,data" alt="MLOps" style="border-radius:16px; box-shadow:var(--shadow-hover); max-width:100%; height:auto;">
+                <img src="hero.jpg" alt="MLOps Illustration" style="border-radius:16px; box-shadow:var(--shadow-hover); max-width:100%; height:auto;">
             </div>
         </div>
     `;
