@@ -68,6 +68,23 @@ async function loadPortfolio() {
   }
 }
 
+// 1d) Dynamically load the talks HTML fragment and append its script.
+async function loadTalks() {
+  const container = document.getElementById('talks-import');
+  if (!container) return;
+  try {
+    const res = await fetch('../talks/index.html');
+    if (!res.ok) {
+      container.innerHTML = '<p class="text-sm text-red-600">Failed to load talks (talks/index.html).</p>';
+      return;
+    }
+    const html = await res.text();
+    container.innerHTML = html;
+  } catch (e) {
+    console.warn('Failed to load talks and poster', e);
+    container.innerHTML = '<p class="text-sm text-red-600">Failed to load talk and posters (see console).</p>';
+  }
+}
   // 2) GitHub last-edited detection (keeps previous logic)
   async function updateLastEdited() {
     const lastEditedEl = document.getElementById('last-edited');
@@ -125,6 +142,7 @@ async function loadPortfolio() {
 } else {
   loadMiniblog();
   loadPortfolio();
+  loadTalks();
   loadPublicationList();
   updateLastEdited();
 }
