@@ -124,7 +124,8 @@ async function loadPortfolio() {
   });
 } else {
   loadMiniblog();
-  loadPublicationList(); // <<< NEW
+  loadPortfolio();
+  loadPublicationList();
   updateLastEdited();
 }
 
