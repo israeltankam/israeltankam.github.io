@@ -191,6 +191,7 @@ function renderResult() {
                 <p>${t.form_desc}</p>
                 
                 <form action="https://formspree.io/f/mqezepld" method="POST">
+                    <input type="hidden" name="_next" value="https://israeltankam.github.io/mlops/">
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" required placeholder="votre@email.com">
