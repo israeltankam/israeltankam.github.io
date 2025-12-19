@@ -110,7 +110,7 @@ function renderCurriculum() {
                     <h4 style="margin-bottom:0.5rem; font-size:1rem;">Programme des séances :</h4>
                     ${syllabusHtml}
                     <div style="margin-top:1.5rem; text-align:right;">
-                        <button onclick="prefillForm('${mod.title}')" class="btn btn-sm btn-secondary">S'inscrire à ce module</button>
+                        <button onclick="navigate('quiz')" class="btn btn-sm btn-secondary">S'inscrire à ce module</button>
                     </div>
                 </div>
             </div>
