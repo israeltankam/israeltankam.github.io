@@ -133,12 +133,13 @@
             min-height: 200px;
         }
 
-        /* Cascade Animation */
+        /* Cascade Animation (Updated for 6 items) */
         .nav-card:nth-child(1) { animation-delay: 0.1s; }
         .nav-card:nth-child(2) { animation-delay: 0.2s; }
         .nav-card:nth-child(3) { animation-delay: 0.3s; }
         .nav-card:nth-child(4) { animation-delay: 0.4s; }
         .nav-card:nth-child(5) { animation-delay: 0.5s; }
+        .nav-card:nth-child(6) { animation-delay: 0.6s; }
 
         .nav-card:hover {
             transform: translateY(-8px);
@@ -219,6 +220,12 @@
                 <div class="card-desc" id="txt-pub-desc">List of my research papers, conferences, and academic work.</div>
             </a>
 
+            <a href="/talks/" class="nav-card">
+                <div class="card-icon">🎤</div>
+                <div class="card-title" id="txt-talks-title">Talks, Posters & Tutorials</div>
+                <div class="card-desc" id="txt-talks-desc">Conferences, workshops, science cafes, and public presentations.</div>
+            </a>
+
             <a href="/blog/" class="nav-card">
                 <div class="card-icon">✍️</div>
                 <div class="card-title" id="txt-blog-title">Blog</div>
@@ -246,6 +253,8 @@
                 port_desc: "A selection of my developments, source codes, and technical achievements.",
                 pub_title: "Publications",
                 pub_desc: "List of my research papers, conferences, and academic work.",
+                talks_title: "Talks, Posters & Tutorials",
+                talks_desc: "Conferences, workshops, science cafes, and public presentations.",
                 blog_title: "Blog",
                 blog_desc: "Multidisciplinary writings: Modeling, Agriculture, Ecology, Math, Philosophy, Music, and Tech.",
                 btn_text: "🇫🇷 Français"
@@ -260,6 +269,8 @@
                 port_desc: "Sélection de mes développements, codes sources et réalisations techniques.",
                 pub_title: "Publications",
                 pub_desc: "Liste de mes articles de recherche, conférences et travaux académiques.",
+                talks_title: "Conférences, Posters & Tutoriels",
+                talks_desc: "Présentations en conférences, ateliers, cafés scientifiques et interventions publiques.",
                 blog_title: "Blog",
                 blog_desc: "Écrits multidisciplinaires : Modélisation, Agriculture, Écologie, Maths, Philosophie, Musique et Tech.",
                 btn_text: "🇬🇧 English"
@@ -289,14 +300,14 @@
             
             document.getElementById('txt-pub-title').innerText = t.pub_title;
             document.getElementById('txt-pub-desc').innerText = t.pub_desc;
+
+            document.getElementById('txt-talks-title').innerText = t.talks_title;
+            document.getElementById('txt-talks-desc').innerText = t.talks_desc;
             
             document.getElementById('txt-blog-title').innerText = t.blog_title;
             document.getElementById('txt-blog-desc').innerText = t.blog_desc;
             
             document.getElementById('btn-lang-text').innerText = t.btn_text;
-
-            // Optional: Persist to localStorage if needed
-            // localStorage.setItem('lang', currentLang);
         }
     </script>
 </body>
