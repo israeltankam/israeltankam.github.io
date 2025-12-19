@@ -17,7 +17,7 @@
 
       // then append miniblog.js as a <script> so it runs in page context
       const script = document.createElement('script');
-      script.src = 'blog/miniblog.js';
+      script.src = '../blog/miniblog.js';
       script.defer = false;
       document.body.appendChild(script);
     } catch (e) {
