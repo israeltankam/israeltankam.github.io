@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Israel Tankam — Accueil</title>
+    <title>Israël Tankam Chedjou — Researcher & Data Scientist</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JY9TN3L74N"></script>
     <script>
@@ -14,7 +14,7 @@
         gtag('config', 'G-JY9TN3L74N');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* --- DESIGN SYSTEM VARIABLES --- */
@@ -41,7 +41,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrage vertical */
             align-items: center;
             padding: 2rem 1rem;
         }
@@ -50,35 +49,66 @@
             max-width: 900px;
             width: 100%;
             margin: 0 auto;
+            position: relative;
+        }
+
+        /* --- LANGUAGE SWITCHER --- */
+        .lang-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .btn-lang {
+            background: var(--surface-white);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--indigo-accent);
+            transition: all 0.2s;
+            box-shadow: var(--shadow-soft);
+        }
+        .btn-lang:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
         }
 
         /* --- HEADER --- */
         header {
             text-align: center;
+            margin-top: 3rem;
             margin-bottom: 3rem;
             animation: fadeIn 0.8s ease-out;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
             background: linear-gradient(to right, var(--primary-blue), var(--indigo-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .subtitle {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            font-weight: 400;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* --- GRID NAVIGATION --- */
         .grid-menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive auto-grid */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             width: 100%;
         }
@@ -86,7 +116,7 @@
         /* --- CARDS (LINKS) --- */
         .nav-card {
             background: var(--surface-white);
-            backdrop-filter: blur(12px); /* Effet verre */
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2rem;
@@ -96,14 +126,14 @@
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
             animation: slideUp 0.6s ease-out backwards;
+            min-height: 200px;
         }
 
-        /* Animation délai pour effet cascade */
+        /* Cascade Animation */
         .nav-card:nth-child(1) { animation-delay: 0.1s; }
         .nav-card:nth-child(2) { animation-delay: 0.2s; }
         .nav-card:nth-child(3) { animation-delay: 0.3s; }
@@ -116,33 +146,16 @@
             border-color: var(--primary-blue);
         }
 
-        /* Styles spécifiques pour le contenu de la carte */
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+        .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-blue); }
+        .card-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
 
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--primary-blue);
-        }
-
-        .card-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* Style Spécial pour MLOps (Mise en avant) */
+        /* Highlight Style (MLOps) */
         .nav-card.highlight {
             border: 2px solid var(--indigo-accent);
             background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,247,255,0.95));
         }
-        .nav-card.highlight .card-title {
-            color: var(--indigo-accent);
-        }
+        .nav-card.highlight .card-title { color: var(--indigo-accent); }
 
         /* --- FOOTER --- */
         footer {
@@ -151,23 +164,19 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             opacity: 0.8;
+            padding-bottom: 2rem;
         }
 
         /* --- ANIMATIONS --- */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Mobile Adjustments */
+        /* Mobile */
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .container { padding: 0; }
-            .grid-menu { grid-template-columns: 1fr; } /* 1 col on mobile */
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 0.9rem; }
+            .grid-menu { grid-template-columns: 1fr; }
+            .lang-switch { position: relative; text-align: right; margin-bottom: 1rem; width: 100%; right: auto; top: auto; }
         }
     </style>
 </head>
@@ -175,50 +184,120 @@
 
     <div class="container">
         
+        <div class="lang-switch">
+            <button class="btn-lang" onclick="toggleLanguage()" id="btn-lang-text">🇫🇷 Français</button>
+        </div>
+
         <header>
-            <h1>Israel Tankam</h1>
-            <p class="subtitle">Data Scientist • MLOps Engineer • Researcher</p>
+            <h1>Israël Tankam Chedjou</h1>
+            <p class="subtitle" id="txt-subtitle">Researcher • Applied Mathematician • Product Owner • MLops & Data</p>
         </header>
 
         <nav class="grid-menu">
 
             <a href="/cv/" class="nav-card">
                 <div class="card-icon">👨🏾‍💻</div>
-                <div class="card-title">CV & Résumé</div>
-                <div class="card-desc">Mon parcours professionnel complet, mes compétences et une vue d'ensemble de mes activités.</div>
+                <div class="card-title" id="txt-cv-title">CV & Resume</div>
+                <div class="card-desc" id="txt-cv-desc">My complete professional background, skills, and activity overview.</div>
             </a>
 
             <a href="/mlops/" class="nav-card highlight">
                 <div class="card-icon">🚀</div>
-                <div class="card-title">Formation MLOps</div>
-                <div class="card-desc">Découvrez mon parcours certifiant : de l'expérimentation à la production industrielle.</div>
+                <div class="card-title" id="txt-mlops-title">MLOps Training</div>
+                <div class="card-desc" id="txt-mlops-desc">Discover my certified course: from experimentation to industrial production.</div>
             </a>
 
             <a href="/portfolio/" class="nav-card">
                 <div class="card-icon">💻</div>
-                <div class="card-title">Portfolio Projets</div>
-                <div class="card-desc">Sélection de mes développements, codes sources et réalisations techniques.</div>
+                <div class="card-title" id="txt-port-title">Project Portfolio</div>
+                <div class="card-desc" id="txt-port-desc">A selection of my developments, source codes, and technical achievements.</div>
             </a>
 
             <a href="/pub_list/" class="nav-card">
                 <div class="card-icon">📚</div>
-                <div class="card-title">Publications</div>
-                <div class="card-desc">Liste de mes articles de recherche, conférences et travaux académiques.</div>
+                <div class="card-title" id="txt-pub-title">Publications</div>
+                <div class="card-desc" id="txt-pub-desc">List of my research papers, conferences, and academic work.</div>
             </a>
 
             <a href="/blog/" class="nav-card">
                 <div class="card-icon">✍️</div>
-                <div class="card-title">Blog</div>
-                <div class="card-desc">Mes articles, réflexions et tutoriels sur la Data Science et le Machine Learning.</div>
+                <div class="card-title" id="txt-blog-title">Blog</div>
+                <div class="card-desc" id="txt-blog-desc">My articles, thoughts, and tutorials on Data Science and Machine Learning.</div>
             </a>
 
         </nav>
 
         <footer>
-            &copy; 2025 Israel Tankam. Tous droits réservés.
+            &copy; 2025 Israël Tankam Chedjou.
         </footer>
 
     </div>
 
+    <script>
+        // Data content
+        const content = {
+            en: {
+                subtitle: "Researcher • Applied Mathematician • Product Owner • MLops & Data",
+                cv_title: "CV & Resume",
+                cv_desc: "My complete professional background, skills, and activity overview.",
+                mlops_title: "MLOps Training",
+                mlops_desc: "Discover my certified course: from experimentation to industrial production.",
+                port_title: "Project Portfolio",
+                port_desc: "A selection of my developments, source codes, and technical achievements.",
+                pub_title: "Publications",
+                pub_desc: "List of my research papers, conferences, and academic work.",
+                blog_title: "Blog",
+                blog_desc: "My articles, thoughts, and tutorials on Data Science and Machine Learning.",
+                btn_text: "🇫🇷 Français"
+            },
+            fr: {
+                subtitle: "Chercheur • Mathématicien Appliqué • Product Owner • MLops & Data",
+                cv_title: "CV & Résumé",
+                cv_desc: "Mon parcours professionnel complet, mes compétences et une vue d'ensemble.",
+                mlops_title: "Formation MLOps",
+                mlops_desc: "Découvrez mon parcours certifiant : de l'expérimentation à la production industrielle.",
+                port_title: "Portfolio Projets",
+                port_desc: "Sélection de mes développements, codes sources et réalisations techniques.",
+                pub_title: "Publications",
+                pub_desc: "Liste de mes articles de recherche, conférences et travaux académiques.",
+                blog_title: "Blog",
+                blog_desc: "Mes articles, réflexions et tutoriels sur la Data Science et le Machine Learning.",
+                btn_text: "🇬🇧 English"
+            }
+        };
+
+        // State
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            // Toggle state
+            currentLang = (currentLang === 'en') ? 'fr' : 'en';
+            
+            // Update HTML
+            const t = content[currentLang];
+            
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            
+            document.getElementById('txt-cv-title').innerText = t.cv_title;
+            document.getElementById('txt-cv-desc').innerText = t.cv_desc;
+            
+            document.getElementById('txt-mlops-title').innerText = t.mlops_title;
+            document.getElementById('txt-mlops-desc').innerText = t.mlops_desc;
+            
+            document.getElementById('txt-port-title').innerText = t.port_title;
+            document.getElementById('txt-port-desc').innerText = t.port_desc;
+            
+            document.getElementById('txt-pub-title').innerText = t.pub_title;
+            document.getElementById('txt-pub-desc').innerText = t.pub_desc;
+            
+            document.getElementById('txt-blog-title').innerText = t.blog_title;
+            document.getElementById('txt-blog-desc').innerText = t.blog_desc;
+            
+            document.getElementById('btn-lang-text').innerText = t.btn_text;
+
+            // Optional: Persist to localStorage if needed
+            // localStorage.setItem('lang', currentLang);
+        }
+    </script>
 </body>
 </html>
