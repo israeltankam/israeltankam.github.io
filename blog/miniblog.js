@@ -7,15 +7,15 @@
   // Each entry: title, url, date, tags (array), excerpt, source
   const POSTS = [
     {
-      title: "Big insights from small data in Plant Disease Epidemiology",
-      url: "https://medium.com/@israeltankam/big-insights-from-small-data-in-plant-disease-epidemiology-9977186b97ee",
+      title: "AEF Crop Intelligence: User Guide",
+      url: "https://medium.com/@israeltankam/%EF%B8%8F-aef-crop-intelligence-user-guide-2d5fd9ee1895",
       date: "November 19, 2025",
-      tags: ["agriculture", "precision agriculture", "user guide", "decision support", "data driven decisions", "crop modeling"],
+      tags: ["agriculture", "precision agriculture", "user guide", "decision support", "data driven decisions", "crop modelling"],
       excerpt: "User guide for AEF Crop Intelligence (https://aef-crop-intelligence.streamlit.app/), a decision support tool for farmers and agronomists that combines a Digital Twin of your field (a computer simulation of crop growth) with Satellite Intelligence (real-time observations from space) to help you optimize yield, manage diseases, and reduce input costs.",
       source: "Medium"
     },
     {
-      title: "AEF Crop Intelligence: User Guide",
+      title: "Big insights from small data in Plant Disease Epidemiology",
       url: "https://medium.com/@israeltankam/big-insights-from-small-data-in-plant-disease-epidemiology-9977186b97ee",
       date: "November 19, 2025",
       tags: ["agriculture","small data","plant health","modelling","predictive modelling","big data","hybrid model","data"],
