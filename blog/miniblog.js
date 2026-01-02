@@ -7,6 +7,14 @@
   // Each entry: title, url, date, tags (array), excerpt, source
   const POSTS = [
     {
+      title: "Beyond the Hype: Relearning how to model the World",
+      url: "https://medium.com/@israeltankam/beyond-the-hype-relearning-how-to-model-the-world-23e330341923",
+      date: "January 02, 2026",
+      tags: ["mechanistic modelling", "hybrid models", "complex systems", "causal reasoning", "LLMs", "Machine Learning", "extrapolation", "counterfactuals", "validation"],
+      excerpt: "This article explores the overreliance on pure machine learning for modelling complex real-world systems, arguing it leads to brittle and non-causal models. It advocates for a hybrid future that integrates mechanistic modelling for structural understanding with data-driven techniques, guided by human expertise.",
+      source: "Medium"
+    },
+    {
       title: "AEF Crop Intelligence: User Guide",
       url: "https://medium.com/@israeltankam/%EF%B8%8F-aef-crop-intelligence-user-guide-2d5fd9ee1895",
       date: "November 19, 2025",
