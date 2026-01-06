@@ -8,11 +8,11 @@
   const POSTS = [
     {
       title: "Beyond the Hype: Relearning how to model the World",
-      url: "https://medium.com/@israeltankam/beyond-the-hype-relearning-how-to-model-the-world-23e330341923",
-      date: "January 02, 2026",
+      url: "https://www.linkedin.com/pulse/beyond-hype-relearning-how-model-world-isra%C3%ABl-tankam-chedjou-phd-ld1re",
+      date: "January 05, 2026",
       tags: ["mechanistic modelling", "hybrid models", "complex systems", "causal reasoning", "LLMs", "Machine Learning", "extrapolation", "counterfactuals", "validation"],
       excerpt: "This article explores the overreliance on pure machine learning for modelling complex real-world systems, arguing it leads to brittle and non-causal models. It advocates for a hybrid future that integrates mechanistic modelling for structural understanding with data-driven techniques, guided by human expertise.",
-      source: "Medium"
+      source: "LinkedIn"
     },
     {
       title: "AEF Crop Intelligence: User Guide",
