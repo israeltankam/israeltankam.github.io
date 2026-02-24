@@ -6,6 +6,22 @@
   // ======= POSTS DATA (Medium articles + repo notes) =======
   // Each entry: title, url, date, tags (array), excerpt, source
   const POSTS = [
+  {
+  title: "Managing plant viral epidemics: linking insect transmission and epidemic risk",
+  url: "https://methodsblog.com/2026/02/21/managing-plant-viral-epidemics-linking-insect-transmission-and-epidemic-risk/",
+  date: "February 21, 2026",
+  tags: ["plant health", "epidemiology", "plant viruses", "vector-borne diseases", "modelling", "risk assessment", "cassava"],
+  excerpt: "Explores how mechanistic understanding of insect-mediated virus transmission can be integrated into epidemic risk models, improving prediction and management of plant viral outbreaks.",
+  source: "Methods Blog"
+},
+{
+  title: "Managing cassava viral epidemics: linking insect transmission and epidemic risk",
+  url: "https://www.plantsci.cam.ac.uk/news/managing-cassava-viral-epidemics-linking-insect-transmission-and-epidemic-risk/",
+  date: "December 15, 2025",
+  tags: ["cassava", "plant health", "epidemiology", "vector-borne diseases", "modelling", "plant viruses", "research impact"],
+  excerpt: "University of Cambridge news feature highlighting research on cassava viral epidemics and how integrating insect transmission processes into epidemic models improves risk assessment and disease management strategies.",
+  source: "University of Cambridge"
+},
     {
       title: "Beyond the Hype: Relearning how to model the World",
       url: "https://www.linkedin.com/pulse/beyond-hype-relearning-how-model-world-isra%C3%ABl-tankam-chedjou-phd-ld1re",
