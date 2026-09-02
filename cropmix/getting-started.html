@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Getting started · Cropmix</title><meta name="description" content="Install Cropmix, build the core model objects and run a complete stochastic simulation."><link rel="canonical" href="https://israeltankam.github.io/cropmix/getting-started.html"><link rel="icon" type="image/png" href="assets/img/favicon.png"><link rel="stylesheet" href="assets/css/site.css"></head><body><div class="docs-layout"><aside class="sidebar"><a class="brand" href="index.html"><img src="assets/img/cropmix-mark.png" alt="Cropmix"><div><div class="brand-title">Cropmix</div><div class="brand-sub">Documentation · 0.2.0</div></div></a><div class="search-wrap"><input class="search" data-search type="search" placeholder="Search documentation…" aria-label="Search documentation"><div class="search-results" data-search-results></div></div><div class="nav-group"><div class="nav-label">Overview</div><div class="nav"><a class="" href="index.html">Home</a><a class="active" href="getting-started.html">Getting started</a><a class="" href="user-guide.html">User guide</a></div></div><div class="nav-group"><div class="nav-label">User guide</div><div class="nav"><a class="" href="concepts.html">Model &amp; concepts</a><a class="" href="geometry-designs.html">Fields &amp; planting designs</a><a class="" href="biology.html">Biological parameters</a><a class="" href="scenarios.html">Scenarios &amp; inoculum</a><a class="" href="movement.html">Vector movement</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="results.html">Results &amp; uncertainty</a><a class="" href="mean-field.html">Mean-field models</a><a class="" href="metrics.html">Spatial metrics</a><a class="" href="optimization.html">Optimisation</a><a class="" href="epipvr.html">EpiPvr integration</a></div></div><div class="nav-group"><div class="nav-label">Tutorials</div><div class="nav"><a class="" href="examples.html">Examples</a><a class="" href="cbsd-case-study.html">Worked example: CBSD</a></div></div><div class="nav-group"><div class="nav-label">Reference</div><div class="nav"><a class="" href="api.html">API reference</a><a class="" href="advanced.html">High-performance backend</a><a class="" href="performance.html">Performance &amp; HPC</a><a class="" href="reproducibility.html">Reproducibility &amp; QA</a><a class="" href="limitations.html">Model boundaries</a></div></div><div class="nav-group"><div class="nav-label">Project</div><div class="nav"><a class="" href="deployment.html">GitHub Pages deployment</a></div></div><div class="side-actions"><a class="side-btn" href="api.html">API</a><button class="side-btn" data-theme-toggle>Theme</button></div><div class="side-footer">Python ≥ 3.10 · GPL-3.0-or-later</div></aside><main class="main"><header class="topbar"><div class="topbar-left"><button class="icon-btn mobile-menu" data-menu>Menu</button><span class="topbar-title">Cropmix 0.2.0 documentation</span></div><div class="topbar-right"><a class="top-link" href="https://github.com/israeltankam/cropmix">GitHub</a><a class="top-link" href="api.html">API</a><button class="icon-btn" data-theme-toggle aria-label="Toggle theme">Theme</button></div></header><div class="doc-grid"><article class="content"><div class="breadcrumbs"><a href="index.html">Cropmix</a> / Getting started</div><div class="eyebrow">Getting started</div><h1>Getting started</h1><p class="lead">Install Cropmix, define a field and two varieties, run a stochastic epidemic and inspect the result.</p>
+<h2 id="requirements">Requirements<a class="heading-anchor" href="#requirements">#</a></h2><p>Cropmix 0.2.0 requires Python 3.10 or newer and depends on NumPy, pandas, SciPy and Numba. Plotting is optional and is installed with the <code>viz</code> extra.</p><pre><code>python -m venv cropmix-env
+source cropmix-env/bin/activate        # Windows: cropmix-env\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install cropmix</code></pre><p>If you are installing a local wheel instead of a registry release:</p><pre><code>python -m pip install ./dist/cropmix-0.2.0-py3-none-any.whl</code></pre><h3 id="optional-extras">Optional extras<a class="heading-anchor" href="#optional-extras">#</a></h3><pre><code>python -m pip install "cropmix[viz]"
+python -m pip install "cropmix[dev,viz,docs]"</code></pre>
+<h2 id="check-the-installation">Check the installation<a class="heading-anchor" href="#check-the-installation">#</a></h2><pre><code>python -c "import cropmix; print(cropmix.__version__)"
+cropmix --version
+cropmix doctor</code></pre><p><code>cropmix doctor</code> reports the Python environment and also checks for <code>Rscript</code> and EpiPvr when you plan to use the optional inference bridge.</p>
+<h2 id="a-complete-minimal-example">A complete minimal example<a class="heading-anchor" href="#a-complete-minimal-example">#</a></h2><p>This example uses illustrative rate values. The units of all rates are per day; yields use an arbitrary but internally consistent unit.</p><pre><code>import cropmix as cm
+
+# 1. Planting coordinates
+field = cm.Field.rectangular(rows=6, columns=6, spacing=1.0)
+
+# 2. Host varieties
+variety_a = cm.Variety(
+    name="A",
+    transmission=cm.HostTransmission(
+        acquisition_rate=0.80,
+        inoculation_rate=0.25,
+    ),
+    plant=cm.PlantParameters(
+        latent_progression_rate=1 / 18,
+        roguing_rate=0.0,
+    ),
+    yield_model=cm.YieldParameters(
+        healthy=1.0,
+        infected=0.45,
+        unit="relative yield",
+    ),
+)
+
+variety_b = cm.Variety(
+    name="B",
+    transmission=cm.HostTransmission(
+        acquisition_rate=0.35,
+        inoculation_rate=0.10,
+    ),
+    plant=cm.PlantParameters(latent_progression_rate=1 / 18),
+    yield_model=cm.YieldParameters(
+        healthy=0.90,
+        infected=0.65,
+        unit="relative yield",
+    ),
+)
+
+# 3. Vector, pathogen and movement model
+system = cm.CropMixSystem(
+    varieties=(variety_a, variety_b),
+    vector=cm.VectorParameters(
+        mortality_rate=0.15,
+        dispersal_rate=0.40,
+    ),
+    pathogen=cm.PathogenParameters(
+        vector_clearance_rate=1.5,
+        transmission_mode="SPT",
+    ),
+    kernel=cm.ExponentialKernel(scale=1.5),
+)
+
+# 4. Exact planting composition
+#    36 sites = 18 plants of A + 18 plants of B
+design = cm.MixtureDesign.random(
+    field,
+    counts={"A": 18, "B": 18},
+    seed=7,
+)
+
+# 5. Epidemic conditions
+scenario = cm.Scenario(
+    duration=120,
+    vectors_per_plant=5,
+    inoculum=cm.Inoculum.random(count=1),
+    vector_inoculum=cm.VectorInoculum.none(),
+)
+
+# 6. Monte Carlo simulation
+result = cm.simulate_mixture(
+    design,
+    system,
+    scenario,
+    n_runs=50,
+    seed=42,
+)
+
+print(result.summary())</code></pre>
+<div class="callout note"><strong>Random introductions are replicate-specific</strong>With <code>Inoculum.random(count=1)</code>, the initially infectious plant is sampled independently for each stochastic replicate. The global simulation seed makes the experiment reproducible.</div>
+<h2 id="inspect-the-result">Inspect the result<a class="heading-anchor" href="#inspect-the-result">#</a></h2><pre><code>print(result.mean_yield)
+print(result.yield_sd)                 # run-to-run variability
+print(result.yield_se)                 # Monte Carlo SE of the mean
+print(result.mean_final_incidence)
+
+trajectory = result.trajectory_dataframe()
+print(trajectory.head())</code></pre><p>With plotting support installed:</p><pre><code>result.plot_incidence(by_variety=True)
+result.plot_vector_prevalence()
+result.plot_final_infection_probability()</code></pre>
+<h2 id="where-to-go-next">Where to go next<a class="heading-anchor" href="#where-to-go-next">#</a></h2><div class="card-grid"><div class="card"><h3 id="change-field-geometry">Change field geometry<a class="heading-anchor" href="#change-field-geometry">#</a></h3><p>Use surveyed coordinates, masks, polygons or dataframe import.</p><a class="card-link" href="geometry-designs.html">Fields &amp; planting designs →</a></div><div class="card"><h3 id="change-introductions">Change introductions<a class="heading-anchor" href="#change-introductions">#</a></h3><p>Use no plant inoculum, fixed infectious sites, vector infection pressure or combined introductions.</p><a class="card-link" href="scenarios.html">Scenarios &amp; inoculum →</a></div><div class="card"><h3 id="analyse-spatial-structure">Analyse spatial structure<a class="heading-anchor" href="#analyse-spatial-structure">#</a></h3><p>Use coordinate-based mixing metrics or regular-grid metrics where their assumptions apply.</p><a class="card-link" href="metrics.html">Spatial metrics →</a></div><div class="card"><h3 id="optimise-a-design">Optimise a design<a class="heading-anchor" href="#optimise-a-design">#</a></h3><p>Search the fixed-composition design space under expected yield or a custom objective.</p><a class="card-link" href="optimization.html">Optimisation →</a></div></div></article><aside class="toc"><div class="toc-title">On this page</div><a class="level-2" href="#requirements">Requirements</a><a class="level-3" href="#optional-extras">Optional extras</a><a class="level-2" href="#check-the-installation">Check the installation</a><a class="level-2" href="#a-complete-minimal-example">A complete minimal example</a><a class="level-2" href="#inspect-the-result">Inspect the result</a><a class="level-2" href="#where-to-go-next">Where to go next</a><a class="level-3" href="#change-field-geometry">Change field geometry</a><a class="level-3" href="#change-introductions">Change introductions</a><a class="level-3" href="#analyse-spatial-structure">Analyse spatial structure</a><a class="level-3" href="#optimise-a-design">Optimise a design</a></aside></div><footer class="footer"><span>Cropmix 0.2.0 documentation</span><span><a href="https://github.com/israeltankam/cropmix">Source</a> · <a href="https://github.com/israeltankam/cropmix/issues">Issues</a> · <a href="deployment.html">Deployment</a></span></footer></main></div><script src="assets/js/site.js"></script></body></html>
