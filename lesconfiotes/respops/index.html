@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Les Confiotes — Revue KPI Anaïque</title>
+  <meta name="description" content="Formulaire de revue des indicateurs de performance — Responsable des opérations et du pilotage de l'atelier.">
+  <style>
+    :root{
+      --bg:#f5f1e7;
+      --paper:#fffdf8;
+      --ink:#191817;
+      --muted:#6c675e;
+      --gold:#b58a19;
+      --gold-dark:#8d6910;
+      --line:#ded5c3;
+      --soft:#f3ead4;
+      --danger:#9d2e2e;
+      --ok:#2f6d4f;
+      --shadow:0 16px 45px rgba(42,31,8,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(181,138,25,.10), transparent 34rem),
+        linear-gradient(180deg,#faf8f2 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.52;
+    }
+    a{color:inherit}
+    .hero{
+      background:#0d0d0d;
+      color:#fff;
+      border-bottom:4px solid var(--gold);
+    }
+    .hero-inner{
+      width:min(1050px,calc(100% - 32px));
+      margin:auto;
+      padding:30px 0 28px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:end;
+    }
+    .brand{
+      color:#e6c45a;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:1.25rem;
+      letter-spacing:.03em;
+      margin-bottom:8px;
+    }
+    h1{
+      margin:0;
+      max-width:760px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:clamp(2rem,4vw,3.5rem);
+      line-height:1.05;
+      font-weight:700;
+    }
+    .hero p{margin:.75rem 0 0;color:#d7d3ca;max-width:760px}
+    .deadline{
+      padding:14px 16px;
+      border:1px solid rgba(230,196,90,.45);
+      border-radius:14px;
+      background:rgba(181,138,25,.10);
+      min-width:220px;
+    }
+    .deadline small{display:block;color:#d9cfb2}
+    .deadline strong{font-size:1.05rem;color:#f3d36e}
+    main{
+      width:min(1050px,calc(100% - 32px));
+      margin:26px auto 70px;
+    }
+    .card{
+      background:var(--paper);
+      border:1px solid rgba(181,138,25,.18);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      overflow:hidden;
+    }
+    .card-head{padding:22px 24px 12px}
+    .card-body{padding:0 24px 24px}
+    h2{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.55rem;
+      margin:0 0 6px;
+    }
+    h3{font-size:1.02rem;margin:24px 0 10px}
+    .intro{color:var(--muted);margin:0}
+    .notice{
+      border-left:4px solid var(--gold);
+      background:var(--soft);
+      padding:14px 16px;
+      border-radius:10px;
+      margin:16px 0;
+    }
+    .notice strong{display:block;margin-bottom:4px}
+    .missing-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+    .missing-date{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:11px 12px;
+      background:#fff;
+      font-weight:700;
+      font-size:.94rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .field{margin-top:16px}
+    label,.label{
+      display:block;
+      font-weight:700;
+      margin-bottom:7px;
+    }
+    .hint{
+      color:var(--muted);
+      font-size:.88rem;
+      margin-top:5px;
+    }
+    input[type="text"],input[type="email"],input[type="number"],input[type="date"],select,textarea{
+      width:100%;
+      padding:12px 13px;
+      border:1px solid #cfc6b5;
+      border-radius:10px;
+      background:#fff;
+      color:var(--ink);
+      font:inherit;
+      outline:none;
+      transition:.15s border,.15s box-shadow;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(181,138,25,.13);
+    }
+    textarea{min-height:92px;resize:vertical}
+    .radio-row,.check-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .choice{
+      position:relative;
+    }
+    .choice input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+    .choice span{
+      display:block;
+      padding:9px 11px;
+      border:1px solid #d2cab9;
+      background:#fff;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:.9rem;
+      transition:.15s;
+    }
+    .choice input:checked + span{
+      border-color:var(--gold-dark);
+      background:#f5e9c4;
+      box-shadow:inset 0 0 0 1px var(--gold);
+    }
+    .checklist{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:8px;
+      counter-reset:item;
+    }
+    .check-item{
+      display:flex;
+      gap:9px;
+      align-items:flex-start;
+      padding:10px 11px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      font-size:.92rem;
+    }
+    .check-item input{margin-top:3px;accent-color:var(--gold-dark)}
+    .week-table,.simple-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      font-size:.92rem;
+    }
+    th,td{
+      border-bottom:1px solid #e5dece;
+      padding:10px 8px;
+      vertical-align:middle;
+      text-align:left;
+    }
+    th{
+      color:#554e40;
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    td input, td select{min-width:90px}
+    .section-number{
+      display:inline-flex;
+      width:34px;height:34px;
+      align-items:center;justify-content:center;
+      border-radius:50%;
+      background:#111;
+      color:#e7c65d;
+      margin-right:8px;
+      font-weight:800;
+      font-size:.9rem;
+      vertical-align:middle;
+    }
+    .metric{
+      background:#111;
+      color:#fff;
+      padding:16px;
+      border-radius:12px;
+      margin-top:14px;
+    }
+    .metric strong{color:#e8c85f}
+    .footer-actions{
+      position:sticky;
+      bottom:12px;
+      z-index:10;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(255,253,248,.94);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(181,138,25,.25);
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+      border-radius:14px;
+      padding:11px;
+      margin-top:18px;
+    }
+    button{
+      border:0;
+      border-radius:10px;
+      padding:11px 15px;
+      font:inherit;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .primary{background:#111;color:#f1d169}
+    .secondary{background:#eee8dc;color:#2e2b25}
+    .danger{background:#f7e5e3;color:#8d2727}
+    .progress-wrap{flex:1;min-width:140px}
+    .progress-track{height:8px;border-radius:999px;background:#e4ded1;overflow:hidden}
+    .progress-bar{height:100%;width:0;background:linear-gradient(90deg,#8f6a13,#d3ac3c);transition:.2s}
+    .progress-text{font-size:.82rem;color:var(--muted);margin-top:4px}
+    .submit-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:18px;
+    }
+    .status{
+      padding:10px 12px;
+      border-radius:10px;
+      display:none;
+      margin-top:12px;
+    }
+    .status.ok{display:block;background:#e8f4ed;color:#22593f}
+    .status.err{display:block;background:#f8e8e6;color:#8b2a2a}
+    details{
+      border-top:1px solid #eee4d3;
+    }
+    summary{
+      padding:18px 24px;
+      cursor:pointer;
+      font-weight:800;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details[open] summary{background:#faf5e9}
+    .details-body{padding:0 24px 22px}
+    .tiny{font-size:.82rem;color:var(--muted)}
+    .required::after{content:" *";color:var(--danger)}
+    @media (max-width:760px){
+      .hero-inner{grid-template-columns:1fr}
+      .deadline{min-width:0}
+      .grid,.grid-3,.missing-grid,.checklist{grid-template-columns:1fr}
+      .week-table{display:block;overflow:auto;white-space:nowrap}
+      .footer-actions{align-items:stretch;flex-direction:column}
+      .progress-wrap{width:100%}
+      .footer-actions button{width:100%}
+    }
+    @media print{
+      body{background:#fff}
+      .hero{background:#fff;color:#000;border-bottom:2px solid #b58a19}
+      .hero p,.brand{color:#444}
+      .deadline{color:#000;background:#fff}
+      .footer-actions,.submit-row button,.tiny.print-hide{display:none!important}
+      .card{box-shadow:none;break-inside:avoid}
+      details{display:block}
+      details .details-body{display:block!important}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="brand">Les Confiotes</div>
+        <h1>Revue KPI — Responsable des opérations</h1>
+        <p>Danielle Anaïque Monkam Mangoua · période observée du 17 août au 16 septembre 2026.</p>
+      </div>
+      <div class="deadline">
+        <small>À remplir et envoyer au plus tard</small>
+        <strong>16 septembre 2026 · 18h00</strong>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-head">
+        <h2>Avant de commencer</h2>
+        <p class="intro">Répondre avec les chiffres réellement observés. Lorsqu’une donnée n’est pas disponible, choisir « Non mesuré » plutôt que l’estimer au hasard.</p>
+      </div>
+      <div class="card-body">
+        <div class="notice">
+          <strong>Rapports journaliers non retrouvés au 11 septembre</strong>
+          Ces dates doivent être régularisées ou explicitement déclarées comme sans rapport.
+        </div>
+        <div class="missing-grid">
+          <div class="missing-date">Lundi 17 août</div>
+          <div class="missing-date">Lundi 31 août</div>
+          <div class="missing-date">Mercredi 2 septembre</div>
+          <div class="missing-date">Jeudi 3 septembre</div>
+          <div class="missing-date">Vendredi 4 septembre</div>
+          <div class="missing-date">Mercredi 9 septembre</div>
+        </div>
+        <p class="hint">Le fichier nommé « Rapport_Anaique_11_09_26 » porte intérieurement la date du 10 septembre. Merci de confirmer plus bas s’il correspond bien au 11 septembre.</p>
+      </div>
+    </section>
+
+    <form id="kpiForm" action="https://formspree.io/f/xdeojjnq" method="POST">
+      <input type="hidden" name="_subject" value="Revue KPI Anaïque — 16 septembre 2026">
+      <input type="hidden" name="periode_evaluation" value="17 août au 16 septembre 2026">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <section class="card">
+        <div class="card-head">
+          <h2><span class="section-number">1</span>Identification et rapports manquants</h2>
+          <p class="intro">23 jours ouvrés sont attendus entre le 17 août et le 16 septembre inclus.</p>
+        </div>
+        <div class="card-body">
+          <div class="grid">
+            <div class="field">
+              <label class="required" for="nom">Nom et prénom</label>
+              <input id="nom" name="nom" type="text" value="Danielle Anaïque Monkam Mangoua" required>
+            </div>
+            <div class="field">
+              <label class="required" for="date_remplissage">Date de remplissage</label>
+              <input id="date_remplissage" name="date_remplissage" type="date" required>
+            </div>
+          </div>
+
+          <h3>Statut des rapports non retrouvés</h3>
+          <table class="simple-table">
+            <thead><tr><th>Date</th><th>Statut au 16 septembre</th></tr></thead>
+            <tbody>
+              <tr><td>17 août</td><td><select name="rapport_2026_08_17" required><option value="">Choisir</option><option>Régularisé et transmis</option><option>Rédigé mais non encore transmis</option><option>Aucun rapport produit ce jour</option><option>Je n'étais pas encore en mesure de produire un rapport</option></select></td></tr>
+              <tr><td>31 août</td><td><select name="rapport_2026_08_31" required><option value="">Choisir</option><option>Régularisé et transmis</option><option>Rédigé mais non encore transmis</option><option>Aucun rapport produit ce jour</option><option>Absence / atelier fermé</option></select></td></tr>
+              <tr><td>2 septembre</td><td><select name="rapport_2026_09_02" required><option value="">Choisir</option><option>Régularisé et transmis</option><option>Rédigé mais non encore transmis</option><option>Aucun rapport produit ce jour</option><option>Absence / atelier fermé</option></select></td></tr>
+              <tr><td>3 septembre</td><td><select name="rapport_2026_09_03" required><option value="">Choisir</option><option>Régularisé et transmis</option><option>Rédigé mais non encore transmis</option><option>Aucun rapport produit ce jour</option><option>Absence / atelier fermé</option></select></td></tr>
+              <tr><td>4 septembre</td><td><select name="rapport_2026_09_04" required><option value="">Choisir</option><option>Régularisé et transmis</option><option>Rédigé mais non encore transmis</option><option>Aucun rapport produit ce jour</option><option>Absence / atelier fermé</option></select></td></tr>
+              <tr><td>9 septembre</td><td><select name="rapport_2026_09_09" required><option value="">Choisir</option><option>Régularisé et transmis</option><option>Rédigé mais non encore transmis</option><option>Aucun rapport produit ce jour</option><option>Absence / atelier fermé</option></select></td></tr>
+            </tbody>
+          </table>
+
+          <div class="grid">
+            <div class="field">
+              <label class="required">Le fichier nommé « Rapport_Anaique_11_09_26 » correspond-il au 11 septembre ?</label>
+              <select name="confirmation_rapport_11_sept" required>
+                <option value="">Choisir</option>
+                <option>Oui, c'est bien le rapport du 11 septembre</option>
+                <option>Non, c'est un second rapport du 10 septembre</option>
+                <option>Je dois encore vérifier</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="required" for="nb_rapports_total">Nombre total de rapports journaliers réellement produits du 17 août au 16 septembre</label>
+              <input id="nb_rapports_total" name="nb_rapports_total" type="number" min="0" max="23" required>
+              <div class="hint">Maximum possible : 23.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <details class="card" open>
+        <summary><span class="section-number">2</span>Autonomie de l’atelier vis-à-vis de Robertine</summary>
+        <div class="details-body">
+          <div class="notice"><strong>Compter uniquement les jours où sa présence était nécessaire au fonctionnement courant.</strong>Ne pas compter une venue choisie pour une recette sensible, un contrôle ponctuel, une innovation ou une visite non indispensable.</div>
+          <table class="week-table">
+            <thead><tr><th>Semaine</th><th>Jours travaillés</th><th>Jours où la présence de Robertine était nécessaire</th></tr></thead>
+            <tbody>
+              <tr><td>17–21 août</td><td>5</td><td><input name="ro_jours_s1" type="number" min="0" max="5" required></td></tr>
+              <tr><td>24–28 août</td><td>5</td><td><input name="ro_jours_s2" type="number" min="0" max="5" required></td></tr>
+              <tr><td>31 août–4 sept.</td><td>5</td><td><input name="ro_jours_s3" type="number" min="0" max="5" required></td></tr>
+              <tr><td>7–11 sept.</td><td>5</td><td><input name="ro_jours_s4" type="number" min="0" max="5" required></td></tr>
+              <tr><td>14–16 sept.</td><td>3</td><td><input name="ro_jours_s5" type="number" min="0" max="3" required></td></tr>
+            </tbody>
+          </table>
+          <div class="field">
+            <label class="required">Au 16 septembre, l’atelier peut-il fonctionner une journée normale sans présence de Robertine, hors opérations techniques qui lui sont réservées ?</label>
+            <div class="radio-row">
+              <label class="choice"><input type="radio" name="autonomie_journee_sans_ro" value="Très mauvais — impossible" required><span>Impossible</span></label>
+              <label class="choice"><input type="radio" name="autonomie_journee_sans_ro" value="Mauvais — seulement quelques heures"><span>Quelques heures</span></label>
+              <label class="choice"><input type="radio" name="autonomie_journee_sans_ro" value="Acceptable — oui avec plusieurs appels"><span>Oui, avec plusieurs appels</span></label>
+              <label class="choice"><input type="radio" name="autonomie_journee_sans_ro" value="Bon — oui avec un appui ponctuel"><span>Oui, appui ponctuel</span></label>
+              <label class="choice"><input type="radio" name="autonomie_journee_sans_ro" value="Très bon — oui en autonomie"><span>Oui, en autonomie</span></label>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" open>
+        <summary><span class="section-number">3</span>Propreté, rangement et organisation</summary>
+        <div class="details-body">
+          <p class="intro">Faire ce contrôle le 16 septembre, en fin de journée. Cocher uniquement les points effectivement conformes.</p>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Sol et plans de travail propres"><span>Sol et plans de travail propres</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Matériel lavé et rangé"><span>Matériel lavé et rangé</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Bouteilles et contenants rangés dans leur zone"><span>Bouteilles/contenants dans leur zone</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Matières premières identifiées et rangées"><span>Matières premières identifiées/rangées</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Produits finis identifiés et rangés"><span>Produits finis identifiés/rangés</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Congélateurs et froid organisés"><span>Zones froides organisées</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Passages et accès dégagés"><span>Passages et accès dégagés</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Déchets et produits non conformes isolés"><span>Déchets/non-conformes isolés</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Étiquetage interne lisible"><span>Étiquetage interne lisible</span></label>
+            <label class="check-item"><input type="checkbox" name="controle_proprete[]" value="Fermeture de l'atelier sans tâche de rangement critique restante"><span>Fermeture sans rangement critique restant</span></label>
+          </div>
+          <div class="field">
+            <label class="required">Par rapport au 17 août, l’état général de l’atelier est :</label>
+            <select name="evolution_proprete_rangement" required>
+              <option value="">Choisir</option>
+              <option>Très mauvais — nettement dégradé</option>
+              <option>Mauvais — légèrement dégradé</option>
+              <option>Acceptable — peu changé</option>
+              <option>Bon — clairement amélioré</option>
+              <option>Très bon — fortement amélioré et stabilisé</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">4</span>Clarté des rôles et discipline opérationnelle</summary>
+        <div class="details-body">
+          <div class="grid">
+            <div class="field">
+              <label class="required">Combien de personnes de l’équipe savent expliquer sans aide leurs 3 responsabilités principales ?</label>
+              <input name="roles_nb_personnes_claires" type="number" min="0" max="4" required>
+              <div class="hint">Tester Mireille, Flore, Charline et Robertine séparément. Maximum : 4.</div>
+            </div>
+            <div class="field">
+              <label class="required">Combien de personnes ont encore des tâches régulièrement ambiguës ou en doublon ?</label>
+              <input name="roles_nb_personnes_ambigues" type="number" min="0" max="4" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="required">La séparation des rôles Anaïque / Robertine est aujourd’hui :</label>
+            <select name="clarte_roles_anaique_robertine" required>
+              <option value="">Choisir</option>
+              <option>Très mauvaise — conflits ou chevauchements fréquents</option>
+              <option>Mauvaise — plusieurs zones floues</option>
+              <option>Acceptable — quelques zones floues mais fonctionnement possible</option>
+              <option>Bonne — rôles globalement clairs</option>
+              <option>Très bonne — rôles clairs, complémentaires et respectés</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">5</span>Rapidité d’exécution des tâches prioritaires</summary>
+        <div class="details-body">
+          <p class="intro">Pour chaque semaine, compter uniquement les tâches marquées comme prioritaires et ayant une échéance identifiable.</p>
+          <table class="week-table">
+            <thead><tr><th>Semaine</th><th>Tâches prioritaires prévues</th><th>Terminées dans le délai</th></tr></thead>
+            <tbody>
+              <tr><td>17–21 août</td><td><input name="prio_s1_total" type="number" min="0" required></td><td><input name="prio_s1_ok" type="number" min="0" required></td></tr>
+              <tr><td>24–28 août</td><td><input name="prio_s2_total" type="number" min="0" required></td><td><input name="prio_s2_ok" type="number" min="0" required></td></tr>
+              <tr><td>31 août–4 sept.</td><td><input name="prio_s3_total" type="number" min="0" required></td><td><input name="prio_s3_ok" type="number" min="0" required></td></tr>
+              <tr><td>7–11 sept.</td><td><input name="prio_s4_total" type="number" min="0" required></td><td><input name="prio_s4_ok" type="number" min="0" required></td></tr>
+              <tr><td>14–16 sept.</td><td><input name="prio_s5_total" type="number" min="0" required></td><td><input name="prio_s5_ok" type="number" min="0" required></td></tr>
+            </tbody>
+          </table>
+          <div class="field">
+            <label class="required">Par rapport au début, la vitesse de travail des ouvrières sur les tâches répétitives est :</label>
+            <select name="evolution_vitesse_ouvrieres" required>
+              <option value="">Choisir</option>
+              <option>Très mauvaise — plus lente</option>
+              <option>Mauvaise — pas d'amélioration et retards fréquents</option>
+              <option>Acceptable — amélioration faible ou irrégulière</option>
+              <option>Bonne — amélioration nette</option>
+              <option>Très bonne — amélioration nette et stable</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">6</span>Fiabilité du stock, inventaires et FIFO</summary>
+        <div class="details-body">
+          <div class="grid-3">
+            <div class="field">
+              <label class="required">Références contrôlées physiquement au dernier inventaire</label>
+              <input name="stock_refs_controlees" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Références avec écart ≤ 10 %</label>
+              <input name="stock_refs_ecart_10" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Références avec écart > 20 %</label>
+              <input name="stock_refs_ecart_sup20" type="number" min="0" required>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="field">
+              <label>Écart moyen absolu stock physique / stock fichier (%)</label>
+              <input name="stock_ecart_moyen_pct" type="number" min="0" step="0.1" placeholder="Ex. 12.5">
+              <div class="hint">Laisser vide si non calculable.</div>
+            </div>
+            <div class="field">
+              <label class="required">Nombre d’inventaires physiques complets réalisés depuis le 17 août</label>
+              <input name="inventaires_complets_nombre" type="number" min="0" max="5" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="required">Le dernier inventaire comporte-t-il une évaluation écrite des écarts et risques ?</label>
+            <select name="inventaire_rapport_ecrit" required>
+              <option value="">Choisir</option>
+              <option>Non</option>
+              <option>Partiellement</option>
+              <option>Oui, complète</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="required">Contrôle FIFO au 16 septembre</label>
+            <div class="radio-row">
+              <label class="choice"><input type="radio" name="fifo_conformite" value="Non appliqué" required><span>Non appliqué</span></label>
+              <label class="choice"><input type="radio" name="fifo_conformite" value="<60%"><span>&lt; 60 %</span></label>
+              <label class="choice"><input type="radio" name="fifo_conformite" value="60–79%"><span>60–79 %</span></label>
+              <label class="choice"><input type="radio" name="fifo_conformite" value="80–94%"><span>80–94 %</span></label>
+              <label class="choice"><input type="radio" name="fifo_conformite" value="≥95%"><span>≥ 95 %</span></label>
+            </div>
+            <div class="hint">Estimer sur les références concernées : produit le plus ancien accessible et utilisé en premier, dates/identification cohérentes.</div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">7</span>Fluidité du stock et anticipation des ruptures</summary>
+        <div class="details-body">
+          <div class="grid-3">
+            <div class="field">
+              <label class="required">Risques de rupture prévisibles identifiés</label>
+              <input name="ruptures_risques_identifies" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Signalés avant blocage</label>
+              <input name="ruptures_signalees_avant_blocage" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Ayant effectivement bloqué une opération</label>
+              <input name="ruptures_ayant_bloque" type="number" min="0" required>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="field">
+              <label class="required">Alertes avec plan d’action défini sous 48 h</label>
+              <input name="ruptures_plan_48h" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Nombre de consommables critiques avec seuil d’alerte défini</label>
+              <input name="consommables_critiques_seuil_defini" type="number" min="0" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="required">Aujourd’hui, le suivi des consommables critiques permet de voir une rupture avant qu’elle bloque l’atelier :</label>
+            <select name="qualite_anticipation_ruptures" required>
+              <option value="">Choisir</option>
+              <option>Très mauvais — presque jamais</option>
+              <option>Mauvais — rarement</option>
+              <option>Acceptable — environ une fois sur deux</option>
+              <option>Bon — le plus souvent</option>
+              <option>Très bon — presque toujours</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">8</span>Planification et production</summary>
+        <div class="details-body">
+          <p class="intro">Indiquer si un plan hebdomadaire identifiable a existé avant ou au début de chaque semaine.</p>
+          <table class="simple-table">
+            <thead><tr><th>Semaine</th><th>Plan hebdomadaire disponible ?</th></tr></thead>
+            <tbody>
+              <tr><td>17–21 août</td><td><select name="plan_s1" required><option value="">Choisir</option><option>Oui</option><option>Non</option><option>Partiel / informel</option></select></td></tr>
+              <tr><td>24–28 août</td><td><select name="plan_s2" required><option value="">Choisir</option><option>Oui</option><option>Non</option><option>Partiel / informel</option></select></td></tr>
+              <tr><td>31 août–4 sept.</td><td><select name="plan_s3" required><option value="">Choisir</option><option>Oui</option><option>Non</option><option>Partiel / informel</option></select></td></tr>
+              <tr><td>7–11 sept.</td><td><select name="plan_s4" required><option value="">Choisir</option><option>Oui</option><option>Non</option><option>Partiel / informel</option></select></td></tr>
+              <tr><td>14–16 sept.</td><td><select name="plan_s5" required><option value="">Choisir</option><option>Oui</option><option>Non</option><option>Partiel / informel</option></select></td></tr>
+            </tbody>
+          </table>
+          <div class="grid">
+            <div class="field">
+              <label class="required">Nombre d’écarts significatifs au plan depuis le 17 août</label>
+              <input name="production_ecarts_significatifs" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Nombre de ces écarts expliqués et suivis d’une décision/action</label>
+              <input name="production_ecarts_suivis" type="number" min="0" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="required">Demand Planner / Excel sont-ils utilisés de manière régulière pour préparer ou vérifier les besoins ?</label>
+            <select name="usage_outils_planification" required>
+              <option value="">Choisir</option>
+              <option>Très mauvais — pas utilisés</option>
+              <option>Mauvais — usage occasionnel sans impact réel</option>
+              <option>Acceptable — utilisés sur certains besoins</option>
+              <option>Bon — utilisés régulièrement</option>
+              <option>Très bon — intégrés au pilotage avec vérification terrain</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">9</span>Livraisons</summary>
+        <div class="details-body">
+          <div class="grid-3">
+            <div class="field">
+              <label class="required">Livraisons avec une date/heure promise identifiable</label>
+              <input name="livraisons_total_evaluables" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Livrées dans le délai convenu</label>
+              <input name="livraisons_a_lheure" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Livrées en retard</label>
+              <input name="livraisons_en_retard" type="number" min="0" required>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="field">
+              <label class="required">Retards prévisibles signalés au client / Management avant l’échéance</label>
+              <input name="livraisons_retards_signales_avant" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Livraisons avec justificatif/décharge correctement récupéré</label>
+              <input name="livraisons_justificatifs_ok" type="number" min="0" required>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="section-number">10</span>Données, reporting et actions correctives</summary>
+        <div class="details-body">
+          <div class="grid-3">
+            <div class="field">
+              <label class="required">Rapports journaliers transmis au plus tard à J+1</label>
+              <input name="reporting_journalier_jplus1" type="number" min="0" max="23" required>
+            </div>
+            <div class="field">
+              <label class="required">Synthèses hebdomadaires formelles produites</label>
+              <input name="reporting_syntheses_hebdo" type="number" min="0" max="5" required>
+            </div>
+            <div class="field">
+              <label class="required">Jours où les fichiers opérationnels étaient à jour à J+1</label>
+              <input name="donnees_jours_a_jplus1" type="number" min="0" max="23" required>
+            </div>
+          </div>
+          <div class="grid-3">
+            <div class="field">
+              <label class="required">Actions correctives décidées</label>
+              <input name="actions_correctives_total" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Terminées dans le délai convenu</label>
+              <input name="actions_correctives_dans_delai" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label class="required">Encore ouvertes et en retard</label>
+              <input name="actions_correctives_en_retard" type="number" min="0" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="required">Fiabilité actuelle des données opérationnelles</label>
+            <select name="qualite_donnees_auto_evaluation" required>
+              <option value="">Choisir</option>
+              <option>Très mauvaise — données souvent absentes ou incohérentes</option>
+              <option>Mauvaise — plusieurs lacunes importantes</option>
+              <option>Acceptable — utilisables mais corrections fréquentes</option>
+              <option>Bonne — généralement fiables et à jour</option>
+              <option>Très bonne — fiables, à jour et facilement vérifiables</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <section class="card">
+        <div class="card-head">
+          <h2><span class="section-number">11</span>Éléments de preuve et conclusion</h2>
+          <p class="intro">Deux champs ouverts seulement. Réponses courtes.</p>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label for="preuves">Liens vers les fichiers utiles</label>
+            <textarea id="preuves" name="liens_preuves" placeholder="Ex. dossier Drive / fichiers inventaire / plan hebdomadaire / rapports régularisés"></textarea>
+          </div>
+          <div class="field">
+            <label class="required" for="priorites">Les 3 améliorations concrètes les plus importantes obtenues depuis le 17 août</label>
+            <textarea id="priorites" name="trois_ameliorations_principales" maxlength="700" required placeholder="1. …&#10;2. …&#10;3. …"></textarea>
+          </div>
+          <div class="field">
+            <label class="check-item">
+              <input type="checkbox" name="attestation_exactitude" value="Oui" required>
+              <span>Je confirme que les chiffres ci-dessus correspondent aux informations dont je dispose au 16 septembre et que j’ai indiqué « non mesuré » ou laissé vide lorsqu’une donnée n’était pas disponible.</span>
+            </label>
+          </div>
+          <div class="submit-row">
+            <button class="primary" type="submit">Envoyer la revue KPI</button>
+            <button class="secondary" type="button" onclick="window.print()">Imprimer / enregistrer en PDF</button>
+          </div>
+          <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+          <p class="tiny print-hide">Le brouillon est sauvegardé automatiquement dans ce navigateur jusqu’à l’envoi.</p>
+        </div>
+      </section>
+
+      <div class="footer-actions">
+        <div class="progress-wrap">
+          <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+          <div id="progressText" class="progress-text">0 % complété</div>
+        </div>
+        <button class="secondary" type="button" id="saveBtn">Sauvegarder le brouillon</button>
+        <button class="danger" type="button" id="clearBtn">Effacer le brouillon</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('kpiForm');
+    const statusBox = document.getElementById('formStatus');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const STORAGE_KEY = 'lesconfiotes_anaique_kpi_2026_09';
+
+    function serializableData(){
+      const data = {};
+      [...form.elements].forEach(el => {
+        if (!el.name || el.name === '_gotcha') return;
+        if (el.type === 'checkbox'){
+          if (!data[el.name]) data[el.name] = [];
+          if (el.checked) data[el.name].push(el.value);
+        } else if (el.type === 'radio'){
+          if (el.checked) data[el.name] = el.value;
+        } else {
+          data[el.name] = el.value;
+        }
+      });
+      return data;
+    }
+
+    function saveDraft(show=false){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(serializableData()));
+      if(show){
+        statusBox.className='status ok';
+        statusBox.textContent='Brouillon sauvegardé sur cet appareil.';
+        setTimeout(()=>statusBox.className='status',1800);
+      }
+    }
+
+    function loadDraft(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      try{
+        const data = JSON.parse(raw);
+        [...form.elements].forEach(el => {
+          if (!el.name || data[el.name] === undefined) return;
+          if (el.type === 'checkbox'){
+            el.checked = Array.isArray(data[el.name]) && data[el.name].includes(el.value);
+          } else if (el.type === 'radio'){
+            el.checked = data[el.name] === el.value;
+          } else if (!el.value || el.name !== 'nom'){
+            el.value = data[el.name];
+          }
+        });
+      }catch(e){}
+    }
+
+    function updateProgress(){
+      const required = [...form.querySelectorAll('[required]')];
+      const groups = new Map();
+      required.forEach(el => {
+        const key = (el.type==='radio' || el.type==='checkbox') ? el.name : el;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(el);
+      });
+      let done = 0;
+      groups.forEach(els => {
+        const el = els[0];
+        if(el.type==='radio' || el.type==='checkbox'){
+          if(els.some(x=>x.checked)) done++;
+        } else if(el.value.trim() !== '') done++;
+      });
+      const total = groups.size || 1;
+      const pct = Math.round(done/total*100);
+      progressBar.style.width = pct + '%';
+      progressText.textContent = pct + ' % complété';
+    }
+
+    loadDraft();
+    updateProgress();
+
+    form.addEventListener('input', ()=>{
+      saveDraft(false);
+      updateProgress();
+    });
+    form.addEventListener('change', ()=>{
+      saveDraft(false);
+      updateProgress();
+    });
+
+    document.getElementById('saveBtn').addEventListener('click',()=>saveDraft(true));
+    document.getElementById('clearBtn').addEventListener('click',()=>{
+      if(confirm('Effacer tout le brouillon enregistré sur cet appareil ?')){
+        localStorage.removeItem(STORAGE_KEY);
+        form.reset();
+        document.getElementById('nom').value='Danielle Anaïque Monkam Mangoua';
+        updateProgress();
+        statusBox.className='status ok';
+        statusBox.textContent='Brouillon effacé.';
+        setTimeout(()=>statusBox.className='status',1800);
+      }
+    });
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      if(!form.reportValidity()) return;
+      const submit = form.querySelector('button[type="submit"]');
+      submit.disabled = true;
+      submit.textContent = 'Envoi en cours…';
+      statusBox.className='status';
+      try{
+        const response = await fetch(form.action,{
+          method:'POST',
+          body:new FormData(form),
+          headers:{'Accept':'application/json'}
+        });
+        if(response.ok){
+          statusBox.className='status ok';
+          statusBox.textContent='Réponse envoyée avec succès. Merci. Vous pouvez maintenant enregistrer cette page en PDF si vous souhaitez garder une copie.';
+          localStorage.removeItem(STORAGE_KEY);
+          submit.textContent='Envoyé';
+        }else{
+          let msg='L’envoi a échoué. Vérifiez les champs puis réessayez.';
+          try{
+            const data=await response.json();
+            if(data?.errors?.length) msg=data.errors.map(x=>x.message).join(' ');
+          }catch(_){}
+          throw new Error(msg);
+        }
+      }catch(err){
+        statusBox.className='status err';
+        statusBox.textContent=err.message + ' Le brouillon reste sauvegardé sur cet appareil.';
+        submit.disabled=false;
+        submit.textContent='Envoyer la revue KPI';
+      }
+    });
+  </script>
+</body>
+</html>
