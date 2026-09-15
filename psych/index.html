@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive psychotherapy revision site aligned to the supplied VTI-AEDA course map and 2025 examination style." />
+  <meta name="theme-color" content="#5b4df5" />
+  <title>Psychotherapy Exam Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="Psychotherapy Exam Lab home">
+        <span class="brand-mark">Ψ</span>
+        <span class="brand-copy"><strong>Psychotherapy</strong><small>Exam Lab</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#dashboard" data-nav="dashboard"><span>⌂</span>Dashboard</a>
+        <a href="#course" data-nav="course"><span>▤</span>Learn</a>
+        <a href="#flashcards" data-nav="flashcards"><span>◫</span>Flashcards</a>
+        <a href="#quiz" data-nav="quiz"><span>?</span>Quiz Lab</a>
+        <a href="#cases" data-nav="cases"><span>✚</span>Case Lab</a>
+        <a href="#exams" data-nav="exams"><span>▧</span>Mock Exams</a>
+        <a href="#coverage" data-nav="coverage"><span>◎</span>Course Map</a>
+      </nav>
+      <div class="sidebar-card">
+        <div class="eyebrow">Exam target</div>
+        <strong>AEDA psychotherapy</strong>
+        <p>Learn the course, drill the cues, then practise the exact paper style.</p>
+      </div>
+      <div class="sidebar-footer">Progress stays on this device.</div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input id="globalSearch" type="search" placeholder="Search a disorder, technique, ethical rule…" autocomplete="off" aria-label="Search course" />
+          <kbd>/</kbd>
+          <div class="search-results" id="searchResults" hidden></div>
+        </div>
+        <button class="icon-button" id="themeBtn" aria-label="Toggle theme">☾</button>
+      </header>
+      <main id="page" tabindex="-1"></main>
+    </section>
+  </div>
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">This study site needs JavaScript enabled for quizzes, flashcards and progress tracking.</div></noscript>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

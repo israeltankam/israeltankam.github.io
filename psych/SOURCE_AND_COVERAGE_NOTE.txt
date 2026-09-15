@@ -1,0 +1,17 @@
+PSYCHOTHERAPY REVISION PACK - SOURCE AND COVERAGE NOTE
+
+This ZIP contains 10 examination papers and 10 corresponding detailed solution papers.
+
+FORMAT
+Each examination follows the structure of the supplied 2025 VTI-AEDA psychotherapy papers: a 3-hour Comprehensive Vocational Paper followed by a 1hr30 Simulation of Real Working Situation Paper. The comprehensive paper is standardized across all ten sets at 100 marks: Psychopathology 25; Theories/Techniques 25; Professional Orientation and Ethical/Legal Issues 25; Cultural Diversity/Group Therapy/Counseling Process/Treatment Planning 25. The simulation paper contains four 25-mark cases.
+
+AUDIO / COURSE GROUNDING
+The supplied fused audio is 62,862.62 seconds (about 17h27m43s). The local analysis reconstructed the source-lecture manifest used to create the fusion and identified 152 real source recordings (after excluding Apple metadata files). Their course sequence includes: Alfred Adler therapy; anxiety disorders; approaches to psychotherapy; assessment and diagnosis; brief history/goals/who seeks psychotherapy; case formulation; counseling as a helping profession and counseling skills; cultural identity; depression; duty to warn; eating disorders; ethical principles and professional issues; existential therapy; informed consent and termination; counseling theories and therapist characteristics; psychoanalytic therapy (Freud, ego defenses, interpretation, resistance, transference/countertransference, therapist role, group application); psychosis; record keeping; simulations including the Case of Stan; skilled/unskilled counselors; treatment planning; substance use disorders; technology ethics; and types/conditions for psychotherapy.
+
+The opening audio was independently decoded/checked and explicitly emphasizes Adlerian purposeful/goal-directed behavior, consciousness, social relatedness, choice and responsibility. The 2025 papers were also used as a second source of course-specific emphasis for CBT, REBT, Gestalt, person-centered therapy, behavioral techniques, DBT, group therapy, cultural competence, treatment planning and the specific style of clinical vignettes.
+
+LIMITATION
+A free high-accuracy verbatim ASR model was not available in the execution environment. A local PocketSphinx recognizer was therefore used for spot-checking, while the source-lecture manifest and the two supplied official-style 2025 papers were used to ensure complete curricular coverage. The pack is grounded in the supplied materials but is not represented as an official VTI-AEDA examination or answer key.
+
+STUDY METHOD
+Attempt each set under timed conditions, mark it with the corresponding solution, then build a personal error log organized by: diagnosis cue; therapy/technique; ethical rule; counseling-process step; cultural/group concept; and simulation-session structure.
