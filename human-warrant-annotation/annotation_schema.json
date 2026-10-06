@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Human Warrant Annotation Export",
+  "type": "object",
+  "required": ["schema_version", "annotator", "annotations"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "exported_at": {"type": "string"},
+    "annotator": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "background": {"type": "string"},
+        "consent": {"type": "boolean"}
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["case_id", "verdict", "relevant_evidence", "warrants", "contradictions", "dependencies", "action", "confidence"],
+        "properties": {
+          "case_id": {"type": "string"},
+          "verdict": {"enum": ["", "SUPPORT", "CONTRADICT", "INSUFFICIENT", "UNCERTAIN"]},
+          "relevant_evidence": {"type": "array", "items": {"type": "string"}},
+          "warrants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "evidence_ids": {"type": "array", "items": {"type": "string"}},
+                "sufficient": {"enum": ["yes", "no", "uncertain"]},
+                "minimal": {"enum": ["yes", "no", "uncertain"]}
+              }
+            }
+          },
+          "contradictions": {"type": "array", "items": {"type": "string"}},
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {"a": {"type": "string"}, "b": {"type": "string"}}
+            }
+          },
+          "action": {"enum": ["", "CERTIFY", "SEARCH_MORE", "ABSTAIN", "ESCALATE"]},
+          "confidence": {"type": "integer", "minimum": 1, "maximum": 5},
+          "notes": {"type": "string"},
+          "completed": {"type": "boolean"},
+          "started_at": {"type": ["string", "null"]},
+          "updated_at": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}
