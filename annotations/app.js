@@ -46,7 +46,148 @@ function restore(d){if(!d)return;const v=$(`input[name="verdict"][value="${d.ver
 async function startReal(){try{await ensureProfile();state.mode='real';setScreen('annotate');await refreshProgress();await loadReal()}catch(e){showWelcomeError(e.message);setScreen('welcome')}}
 async function loadReal(){state.mode='real';$('#annotationPanel').classList.add('hidden');$('#noCase').classList.add('hidden');$('#loadingCase').classList.remove('hidden');showErrors([]);try{const row=first(await rpc('assign_next_case',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token}));$('#loadingCase').classList.add('hidden');if(!row?.assignment_id){$('#noCase').classList.remove('hidden');return}state.currentAssignment=row;state.currentCase={id:row.case_id,domain:row.domain,stratum:row.stratum,difficulty:row.difficulty,...(typeof row.payload==='string'?JSON.parse(row.payload):row.payload)};state.currentStartedAt=now();state.lang='fr';renderCurrent();$('#annotationPanel').classList.remove('hidden')}catch(e){$('#loadingCase').classList.add('hidden');$('#noCase').classList.remove('hidden');$('#noCase h2').textContent='Impossible de charger un cas';$('#noCase p').textContent=e.message}}
 function startPractice(){validateLocalProfile();const available=TRAIN.filter(c=>!state.practice.done.includes(c.id));if(!available.length||state.practice.done.length>=5){startReal();return}state.mode='practice';state.currentAssignment=null;state.currentCase=JSON.parse(JSON.stringify(available[0]));state.currentCase.benchmark='Entraînement';state.currentStartedAt=now();state.lang='fr';setScreen('annotate');renderCurrent();$('#annotationPanel').classList.remove('hidden');$('#loadingCase').classList.add('hidden');$('#noCase').classList.add('hidden')}
-function practiceFeedback(a){const ans=state.currentCase.answer;const verdictMap={SUPPORT:'Soutenu',CONTRADICT:'Contredit',INSUFFICIENT:'Pas assez d’information',UNCERTAIN:'Impossible à trancher'};const actionMap={CERTIFY:'Certifier',SEARCH_MORE:'Chercher davantage',ABSTAIN:'S’abstenir',ESCALATE:'Demander une revue experte'};const sets=(ans.warrants||[]).length?ans.warrants.map(x=>`{${x.join(', ')}}`).join(' ou '):'Aucune justification suffisante';const deps=(ans.dependencies||[]).length?ans.dependencies.map(d=>`${d.a}–${d.b}`).join(', '):'Aucune';$('#practiceFeedback').innerHTML=`<p><span class="correct-chip">Correction</span></p><div class="feedback-grid"><div class="feedback-item"><strong>Jugement attendu</strong>${esc(verdictMap[ans.verdict])}</div><div class="feedback-item"><strong>Extraits utiles</strong>${esc((ans.relevant||[]).join(', ')||'Aucun')}</div><div class="feedback-item"><strong>Plus petit(s) ensemble(s) suffisant(s)</strong>${esc(sets)}</div><div class="feedback-item"><strong>Extrait(s) contradictoire(s)</strong>${esc((ans.contradictions||[]).join(', ')||'Aucun')}</div><div class="feedback-item"><strong>Sources dépendantes</strong>${esc(deps)}</div><div class="feedback-item"><strong>Action attendue</strong>${esc(actionMap[ans.action])}</div></div><p><strong>Pourquoi ?</strong> ${esc(ans.explanation_fr)}</p>`;$('#nextPracticeBtn').classList.toggle('hidden',state.practice.done.length>=5);setScreen('practice-feedback')}
+function practiceFeedback(a){
+  const ans=state.currentCase.answer;
+
+  const verdictMap={
+    SUPPORT:'Soutenu',
+    CONTRADICT:'Contredit',
+    INSUFFICIENT:'Pas assez d’information',
+    UNCERTAIN:'Impossible à trancher'
+  };
+
+  const actionMap={
+    CERTIFY:'Certifier',
+    SEARCH_MORE:'Chercher davantage',
+    ABSTAIN:'S’abstenir',
+    ESCALATE:'Demander une revue experte'
+  };
+
+  const fmtSets=ws=>{
+    if(!ws?.length)
+      return 'Aucune justification suffisante';
+
+    return ws.map(w=>{
+      const ids=Array.isArray(w)
+        ? w
+        : (w.evidence_ids||[]);
+
+      return `{${ids.join(', ')}}`;
+    }).join(' ou ');
+  };
+
+  const fmtDeps=ds=>
+    ds?.length
+      ? ds.map(d=>
+          `${d.a}–${d.b}${d.reason ? ` (${d.reason})` : ''}`
+        ).join(', ')
+      : 'Aucune';
+
+  const mine={
+    verdict:
+      verdictMap[a.verdict]||'Non renseigné',
+
+    relevant:
+      (a.relevant_evidence||[]).join(', ')||'Aucun',
+
+    sets:
+      fmtSets(a.warrants||[]),
+
+    contradictions:
+      (a.contradictions||[]).join(', ')||'Aucun',
+
+    dependencies:
+      fmtDeps(a.dependencies||[]),
+
+    action:
+      actionMap[a.action]||'Non renseigné'
+  };
+
+  const expected={
+    verdict:
+      verdictMap[ans.verdict]||'—',
+
+    relevant:
+      (ans.relevant||[]).join(', ')||'Aucun',
+
+    sets:
+      fmtSets(ans.warrants||[]),
+
+    contradictions:
+      (ans.contradictions||[]).join(', ')||'Aucun',
+
+    dependencies:
+      fmtDeps(ans.dependencies||[]),
+
+    action:
+      actionMap[ans.action]||'—'
+  };
+
+  const column=(title,x)=>`
+    <div class="card">
+      <h2>${esc(title)}</h2>
+
+      <div class="feedback-grid">
+
+        <div class="feedback-item">
+          <strong>Jugement</strong>
+          ${esc(x.verdict)}
+        </div>
+
+        <div class="feedback-item">
+          <strong>Extraits utiles</strong>
+          ${esc(x.relevant)}
+        </div>
+
+        <div class="feedback-item">
+          <strong>Plus petit(s) ensemble(s) suffisant(s)</strong>
+          ${esc(x.sets)}
+        </div>
+
+        <div class="feedback-item">
+          <strong>Extrait(s) contradictoire(s)</strong>
+          ${esc(x.contradictions)}
+        </div>
+
+        <div class="feedback-item">
+          <strong>Sources dépendantes</strong>
+          ${esc(x.dependencies)}
+        </div>
+
+        <div class="feedback-item">
+          <strong>Action</strong>
+          ${esc(x.action)}
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  $('#practiceFeedback').innerHTML=`
+    <p>
+      <span class="correct-chip">Correction</span>
+    </p>
+
+    <div class="grid two">
+      ${column('Ta réponse',mine)}
+      ${column('Réponse attendue',expected)}
+    </div>
+
+    <p>
+      <strong>Pourquoi ?</strong>
+      ${esc(ans.explanation_fr)}
+    </p>
+  `;
+
+  $('#nextPracticeBtn')
+    .classList
+    .toggle(
+      'hidden',
+      state.practice.done.length>=5
+    );
+
+  setScreen('practice-feedback');
+}
 async function submit(){if(state.submitting)return;const a=collect(),er=validate(a);if(er.length){showErrors(er);return}if(state.mode==='practice'){if(!state.practice.done.includes(state.currentCase.id))state.practice.done.push(state.currentCase.id);save(STORE.practice,state.practice);practiceFeedback(a);return}state.submitting=true;$('#submitBtn').disabled=true;$('#submitBtn').textContent='Envoi…';draft();try{const row=first(await rpc('submit_annotation',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token,p_assignment_id:state.currentAssignment.assignment_id,p_payload:a}));state.receipts.push({case_id:state.currentCase.id,submitted_at:now(),annotation:a});save(STORE.receipts,state.receipts);delete state.drafts[state.currentAssignment.assignment_id];save(STORE.drafts,state.drafts);state.session.count=Number(state.session.count||0)+1;save(STORE.session,state.session);state.profile.submitted_count=Number(row?.submitted_count??state.profile.submitted_count+1);save(STORE.profile,state.profile);state.currentAssignment=null;state.currentCase=null;updateProgress();setScreen('done')}catch(e){showErrors([`L’envoi a échoué : ${e.message}. Ton brouillon reste sauvegardé.`])}finally{state.submitting=false;$('#submitBtn').disabled=false;$('#submitBtn').textContent='Envoyer cette annotation →'}}
 async function skipReal(){if(state.mode!=='real'||!state.currentAssignment)return;$('#confirmSkipBtn').disabled=true;try{await rpc('skip_assignment',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token,p_assignment_id:state.currentAssignment.assignment_id});delete state.drafts[state.currentAssignment.assignment_id];save(STORE.drafts,state.drafts);state.currentAssignment=null;state.currentCase=null;$('#skipDialog').close();await loadReal()}catch(e){$('#skipDialog').close();showErrors([`Impossible de passer ce cas : ${e.message}`])}finally{$('#confirmSkipBtn').disabled=false}}
 function refreshDone(){$('#doneHeading').textContent='Ta contribution est enregistrée.';$('#continueBtn').classList.remove('hidden');$('#stopBtn').classList.remove('hidden');const s=Number(state.session.count||0);$('#doneSessionCount').textContent=String(s);$('#doneLifetimeCount').textContent=String(state.profile?.submitted_count||state.receipts.length||0);if(s>=5){$('#doneMessage').textContent=`Merci pour ces ${s} cas. Si ton attention baisse, le mieux est de t’arrêter ici.`;$('#restNote').textContent='La qualité compte plus que le nombre. Tout ce qui a déjà été envoyé est enregistré.'}else{$('#doneMessage').textContent='Merci. Une seule annotation est déjà utile. Tu peux t’arrêter ici sans aucun problème.';$('#restNote').textContent='Tu peux fermer cette page quand tu veux. Tout ce qui a déjà été envoyé est enregistré.'}}
