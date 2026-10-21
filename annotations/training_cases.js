@@ -185,7 +185,6 @@ window.TRAINING_CASES = [
       "verdict": "SUPPORT",
       "relevant": [
         "A",
-        "B",
         "C"
       ],
       "warrants": [
@@ -204,61 +203,61 @@ window.TRAINING_CASES = [
         }
       ],
       "action": "CERTIFY",
-      "explanation_fr": "A et C apportent chacun un résultat direct et peuvent chacun suffire. B est pertinent pour comprendre le dossier mais n’apporte pas de nouvelles données ; il dépend explicitement de l’essai Alpha. Le fait que deux sources soient d’accord ne suffit jamais, à lui seul, à dire qu’elles sont dépendantes : ici, la dépendance est écrite noir sur blanc."
+      "explanation_fr": "A et C apportent chacun un résultat direct sur l’effet du traitement et peuvent chacun suffire à soutenir le jugement. B ne fournit pas un nouveau résultat sur l’effet : il sert surtout à montrer que la revue dépend de l’essai Alpha. On ne le coche donc pas à l’étape 2, mais on utilise A–B à l’étape 5. Le fait que deux sources soient d’accord ne suffit jamais, à lui seul, à les rendre dépendantes."
     }
   },
   {
     "id": "TRAIN-04",
-    "title": "Deux extraits nécessaires ensemble",
+    "title": "Tous les extraits utiles ne forment pas un seul ensemble minimal",
     "case_type": "claim",
     "claim": {
-      "fr": "La nouvelle agence de l’entreprise a ouvert à Douala en 2020.",
-      "en": "The company’s new branch opened in Douala in 2020."
+      "fr": "L’agence AG-07 de l’entreprise a ouvert à Douala en 2020.",
+      "en": "The company’s AG-07 branch opened in Douala in 2020."
     },
     "evidence": [
       {
         "id": "A",
+        "source_title": {
+          "fr": "Registre officiel des ouvertures",
+          "en": "Official openings register"
+        },
+        "source_type": {
+          "fr": "Registre administratif",
+          "en": "Administrative register"
+        },
+        "text": {
+          "fr": "Agence AG-07 — Douala — date d’ouverture : 15 septembre 2020.",
+          "en": "Branch AG-07 — Douala — opening date: 15 September 2020."
+        }
+      },
+      {
+        "id": "B",
         "source_title": {
           "fr": "Rapport annuel 2020",
           "en": "2020 annual report"
         },
         "source_type": {
           "fr": "Rapport de l’entreprise",
-          "en": "Company report"
+          "en": "Company annual report"
         },
         "text": {
-          "fr": "La nouvelle agence a ouvert ses portes en septembre 2020.",
-          "en": "The new branch opened in September 2020."
-        }
-      },
-      {
-        "id": "B",
-        "source_title": {
-          "fr": "Annuaire des implantations",
-          "en": "Office directory"
-        },
-        "source_type": {
-          "fr": "Page institutionnelle",
-          "en": "Corporate page"
-        },
-        "text": {
-          "fr": "L’agence de Douala est la plus récente implantation de l’entreprise.",
-          "en": "The Douala branch is the company’s newest location."
+          "fr": "L’agence portant le code AG-07 a ouvert ses portes en septembre 2020.",
+          "en": "The branch identified as AG-07 opened in September 2020."
         }
       },
       {
         "id": "C",
         "source_title": {
-          "fr": "Archive 2019",
-          "en": "2019 archive"
+          "fr": "Annuaire des établissements",
+          "en": "Business locations directory"
         },
         "source_type": {
-          "fr": "Communiqué",
-          "en": "Press release"
+          "fr": "Annuaire de la chambre de commerce",
+          "en": "Chamber of commerce directory"
         },
         "text": {
-          "fr": "L’agence de Yaoundé a été inaugurée en 2019.",
-          "en": "The Yaoundé branch was inaugurated in 2019."
+          "fr": "Le code AG-07 correspond à l’agence située à Douala.",
+          "en": "Code AG-07 corresponds to the branch located in Douala."
         }
       }
     ],
@@ -266,18 +265,22 @@ window.TRAINING_CASES = [
       "verdict": "SUPPORT",
       "relevant": [
         "A",
-        "B"
+        "B",
+        "C"
       ],
       "warrants": [
         [
-          "A",
-          "B"
+          "A"
+        ],
+        [
+          "B",
+          "C"
         ]
       ],
       "contradictions": [],
       "dependencies": [],
       "action": "CERTIFY",
-      "explanation_fr": "A donne l’année mais pas la ville. B donne la ville et identifie cette agence comme la nouvelle implantation, mais pas l’année. A et B sont donc nécessaires ensemble. C concerne une autre agence et n’aide pas à justifier l’affirmation."
+      "explanation_fr": "Les trois extraits servent réellement au jugement. A contient à lui seul la ville et l’année : {A} est donc une justification minimale. B donne l’année pour AG-07 et C relie AG-07 à Douala : {B, C} constitue une seconde justification minimale. Il serait incomplet de ne garder que {A} à l’étape 3, puisque {B, C} suffit aussi. Les sources B et C ne sont pas dépendantes : le simple fait qu’elles parlent du même code d’agence ne montre pas une origine commune."
     }
   },
   {

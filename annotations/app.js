@@ -20,13 +20,14 @@ function updateProgress(){const c=Number(state.session.count||0);$('#sessionProg
 async function refreshProgress(){if(!state.profile?.annotator_id)return;try{const r=first(await rpc('get_my_progress',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token}));if(r){state.profile.submitted_count=Number(r.submitted_count||0);save(STORE.profile,state.profile);updateProgress()}}catch(e){console.warn(e)}}
 function showWelcomeError(m){const e=$('#welcomeError');e.textContent=m;e.classList.remove('hidden')} function clearWelcomeError(){$('#welcomeError').classList.add('hidden')}
 function tr(v){if(v==null)return'';if(typeof v==='string')return v;return v[state.lang]||v.fr||v.en||''}
+function caseHasFrench(c){if(!c)return false;if(c.translation_available_fr===false)return false;if(c.translation_available_fr===true)return true;const vals=[c.claim,c.question,c.proposed_answer,...(Array.isArray(c.evidence)?c.evidence.flatMap(e=>[e.source_title,e.source_type,e.text]):[])];return vals.some(v=>v&&typeof v==='object'&&typeof v.fr==='string'&&v.fr.trim())}
 function evid(){return Array.isArray(state.currentCase?.evidence)?state.currentCase.evidence:[]}
 function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))} const attr=esc;
 function labelEvidence(e){return `${e.id} — ${tr(e.source_type)||'Source'} — ${tr(e.source_title)||'Sans titre'}`}
 function cardBody(e){return `<div class="evidence-card-body"><div class="source-line"><span class="micro-label">Source</span><strong>${esc(tr(e.source_type))}${tr(e.source_title)?` · ${esc(tr(e.source_title))}`:''}</strong></div><div class="excerpt-line"><span class="micro-label">Ce qu’elle dit</span><span>${esc(tr(e.text))}</span></div></div>`}
-function renderCurrent(){const c=state.currentCase;$('#practiceBanner').classList.toggle('hidden',state.mode!=='practice');$('#skipCaseBtn').classList.toggle('hidden',state.mode==='practice');$('#pauseBtn').classList.toggle('hidden',state.mode==='practice');$('#caseModeEyebrow').textContent=state.mode==='practice'?'CAS D’ENTRAÎNEMENT':'CAS EN COURS';$('#caseDomainLine').textContent=state.mode==='practice'?`Entraînement ${state.practice.done.length+1} sur 5 maximum`:`${c.benchmark||c.domain||''}${c.difficulty?` · ${c.difficulty}`:''}`;
+function renderCurrent(){const c=state.currentCase;const hasFr=caseHasFrench(c);if(!hasFr)state.lang='en';$('#practiceBanner').classList.toggle('hidden',state.mode!=='practice');$('#skipCaseBtn').classList.toggle('hidden',state.mode==='practice');$('#pauseBtn').classList.toggle('hidden',state.mode==='practice');$('#caseModeEyebrow').textContent=state.mode==='practice'?'CAS D’ENTRAÎNEMENT':'CAS EN COURS';$('#caseDomainLine').textContent=state.mode==='practice'?`Entraînement ${state.practice.done.length+1} sur 5 maximum`:`${c.benchmark||c.domain||''}${c.difficulty?` · ${c.difficulty}`:''}`;
  const isQA=c.case_type==='qa';$('#questionWrap').classList.toggle('hidden',!isQA);$('#claimText').classList.toggle('hidden',isQA);$('#claimLabel').textContent=isQA?'Cas de question-réponse':'Affirmation à évaluer';if(isQA){$('#questionText').textContent=tr(c.question);$('#proposedAnswerText').textContent=tr(c.proposed_answer)}else{$('#claimText').textContent=tr(c.claim)}
- const note=$('#translationNote');if(c.translation_note_fr&&state.lang==='fr'){note.textContent=c.translation_note_fr;note.classList.remove('hidden')}else note.classList.add('hidden');$('#langBtn').textContent=state.lang==='fr'?'Voir l’original anglais':'Voir la traduction française';
+ const note=$('#translationNote'),langBtn=$('#langBtn');if(!hasFr){langBtn.classList.add('hidden');note.textContent=c.translation_note_fr||'Traduction française non disponible pour ce cas : le texte original anglais est affiché.';note.classList.remove('hidden')}else{langBtn.classList.remove('hidden');if(c.translation_note_fr&&state.lang==='fr'){note.textContent=c.translation_note_fr;note.classList.remove('hidden')}else note.classList.add('hidden');langBtn.textContent=state.lang==='fr'?'Voir l’original anglais':'Voir la traduction française'};
  const ov=$('#evidenceOverview');ov.innerHTML='';evid().forEach(e=>{const a=document.createElement('article');a.className='evidence-card overview-card';a.innerHTML=`<div class="evidence-head"><span class="evidence-id">${esc(e.id)}</span><span class="source-type">${esc(tr(e.source_type))}</span></div>${cardBody(e)}`;ov.appendChild(a)});
  const el=$('#evidenceList');el.innerHTML='';evid().forEach(e=>{const l=document.createElement('label');l.className='evidence-select';l.innerHTML=`<input type="checkbox" name="relevantEvidence" value="${attr(e.id)}"><div><div class="evidence-source"><strong>Extrait ${esc(e.id)}</strong></div>${cardBody(e)}</div>`;el.appendChild(l)});
  const cl=$('#contradictionList');cl.innerHTML='';evid().forEach(e=>{const l=document.createElement('label');l.className='evidence-select compact-select';l.innerHTML=`<input type="checkbox" name="contradictionEvidence" value="${attr(e.id)}"><div><div class="evidence-source"><strong>Extrait ${esc(e.id)}</strong></div>${cardBody(e)}</div>`;cl.appendChild(l)});
@@ -47,146 +48,22 @@ async function startReal(){try{await ensureProfile();state.mode='real';setScreen
 async function loadReal(){state.mode='real';$('#annotationPanel').classList.add('hidden');$('#noCase').classList.add('hidden');$('#loadingCase').classList.remove('hidden');showErrors([]);try{const row=first(await rpc('assign_next_case',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token}));$('#loadingCase').classList.add('hidden');if(!row?.assignment_id){$('#noCase').classList.remove('hidden');return}state.currentAssignment=row;state.currentCase={id:row.case_id,domain:row.domain,stratum:row.stratum,difficulty:row.difficulty,...(typeof row.payload==='string'?JSON.parse(row.payload):row.payload)};state.currentStartedAt=now();state.lang='fr';renderCurrent();$('#annotationPanel').classList.remove('hidden')}catch(e){$('#loadingCase').classList.add('hidden');$('#noCase').classList.remove('hidden');$('#noCase h2').textContent='Impossible de charger un cas';$('#noCase p').textContent=e.message}}
 function startPractice(){validateLocalProfile();const available=TRAIN.filter(c=>!state.practice.done.includes(c.id));if(!available.length||state.practice.done.length>=5){startReal();return}state.mode='practice';state.currentAssignment=null;state.currentCase=JSON.parse(JSON.stringify(available[0]));state.currentCase.benchmark='Entraînement';state.currentStartedAt=now();state.lang='fr';setScreen('annotate');renderCurrent();$('#annotationPanel').classList.remove('hidden');$('#loadingCase').classList.add('hidden');$('#noCase').classList.add('hidden')}
 function practiceFeedback(a){
-  const ans=state.currentCase.answer;
-
-  const verdictMap={
-    SUPPORT:'Soutenu',
-    CONTRADICT:'Contredit',
-    INSUFFICIENT:'Pas assez d’information',
-    UNCERTAIN:'Impossible à trancher'
-  };
-
-  const actionMap={
-    CERTIFY:'Certifier',
-    SEARCH_MORE:'Chercher davantage',
-    ABSTAIN:'S’abstenir',
-    ESCALATE:'Demander une revue experte'
-  };
-
-  const fmtSets=ws=>{
-    if(!ws?.length)
-      return 'Aucune justification suffisante';
-
-    return ws.map(w=>{
-      const ids=Array.isArray(w)
-        ? w
-        : (w.evidence_ids||[]);
-
-      return `{${ids.join(', ')}}`;
-    }).join(' ou ');
-  };
-
-  const fmtDeps=ds=>
-    ds?.length
-      ? ds.map(d=>
-          `${d.a}–${d.b}${d.reason ? ` (${d.reason})` : ''}`
-        ).join(', ')
-      : 'Aucune';
-
-  const mine={
-    verdict:
-      verdictMap[a.verdict]||'Non renseigné',
-
-    relevant:
-      (a.relevant_evidence||[]).join(', ')||'Aucun',
-
-    sets:
-      fmtSets(a.warrants||[]),
-
-    contradictions:
-      (a.contradictions||[]).join(', ')||'Aucun',
-
-    dependencies:
-      fmtDeps(a.dependencies||[]),
-
-    action:
-      actionMap[a.action]||'Non renseigné'
-  };
-
-  const expected={
-    verdict:
-      verdictMap[ans.verdict]||'—',
-
-    relevant:
-      (ans.relevant||[]).join(', ')||'Aucun',
-
-    sets:
-      fmtSets(ans.warrants||[]),
-
-    contradictions:
-      (ans.contradictions||[]).join(', ')||'Aucun',
-
-    dependencies:
-      fmtDeps(ans.dependencies||[]),
-
-    action:
-      actionMap[ans.action]||'—'
-  };
-
-  const column=(title,x)=>`
-    <div class="card">
-      <h2>${esc(title)}</h2>
-
-      <div class="feedback-grid">
-
-        <div class="feedback-item">
-          <strong>Jugement</strong>
-          ${esc(x.verdict)}
-        </div>
-
-        <div class="feedback-item">
-          <strong>Extraits utiles</strong>
-          ${esc(x.relevant)}
-        </div>
-
-        <div class="feedback-item">
-          <strong>Plus petit(s) ensemble(s) suffisant(s)</strong>
-          ${esc(x.sets)}
-        </div>
-
-        <div class="feedback-item">
-          <strong>Extrait(s) contradictoire(s)</strong>
-          ${esc(x.contradictions)}
-        </div>
-
-        <div class="feedback-item">
-          <strong>Sources dépendantes</strong>
-          ${esc(x.dependencies)}
-        </div>
-
-        <div class="feedback-item">
-          <strong>Action</strong>
-          ${esc(x.action)}
-        </div>
-
-      </div>
-    </div>
-  `;
-
-  $('#practiceFeedback').innerHTML=`
-    <p>
-      <span class="correct-chip">Correction</span>
-    </p>
-
-    <div class="grid two">
-      ${column('Ta réponse',mine)}
-      ${column('Réponse attendue',expected)}
-    </div>
-
-    <p>
-      <strong>Pourquoi ?</strong>
-      ${esc(ans.explanation_fr)}
-    </p>
-  `;
-
-  $('#nextPracticeBtn')
-    .classList
-    .toggle(
-      'hidden',
-      state.practice.done.length>=5
-    );
-
-  setScreen('practice-feedback');
+ const ans=state.currentCase.answer;
+ const verdictMap={SUPPORT:'Soutenu',CONTRADICT:'Contredit',INSUFFICIENT:'Pas assez d’information',UNCERTAIN:'Impossible à trancher'};
+ const actionMap={CERTIFY:'Certifier',SEARCH_MORE:'Chercher davantage',ABSTAIN:'S’abstenir',ESCALATE:'Demander une revue experte'};
+ const ids=x=>(x&&x.length?x.join(', '):'Aucun');
+ const sets=x=>(x&&x.length?x.map(w=>`{${(Array.isArray(w)?w:(w.evidence_ids||[])).join(', ')}}`).join(' ou '):'Aucune justification suffisante');
+ const deps=x=>(x&&x.length?x.map(d=>`${d.a}–${d.b}${d.reason?` (${d.reason})`:''}`).join(', '):'Aucune');
+ const rows=[
+  ['Jugement',verdictMap[a.verdict]||'Non répondu',verdictMap[ans.verdict]],
+  ['Extraits utilisés',ids(a.relevant_evidence),ids(ans.relevant)],
+  ['Plus petit(s) ensemble(s) suffisant(s)',sets(a.warrants),sets(ans.warrants)],
+  ['Extrait(s) contradictoire(s)',ids(a.contradictions),ids(ans.contradictions)],
+  ['Sources dépendantes',deps(a.dependencies),deps(ans.dependencies)],
+  ['Action',actionMap[a.action]||'Non répondu',actionMap[ans.action]]
+ ];
+ $('#practiceFeedback').innerHTML=`<p><span class="correct-chip">Correction</span></p><p class="soft-note">Compare simplement ton raisonnement à la correction. Une différence sert à comprendre la logique, pas à te noter.</p><div class="practice-compare"><div class="practice-compare-head"><div></div><strong>Ta réponse</strong><strong>Réponse attendue</strong></div>${rows.map(r=>`<div class="practice-compare-row"><strong>${esc(r[0])}</strong><div class="practice-user">${esc(r[1])}</div><div class="practice-expected">${esc(r[2])}</div></div>`).join('')}</div><p class="practice-why"><strong>Pourquoi ?</strong> ${esc(ans.explanation_fr)}</p>`;
+ $('#nextPracticeBtn').classList.toggle('hidden',state.practice.done.length>=5);setScreen('practice-feedback')
 }
 async function submit(){if(state.submitting)return;const a=collect(),er=validate(a);if(er.length){showErrors(er);return}if(state.mode==='practice'){if(!state.practice.done.includes(state.currentCase.id))state.practice.done.push(state.currentCase.id);save(STORE.practice,state.practice);practiceFeedback(a);return}state.submitting=true;$('#submitBtn').disabled=true;$('#submitBtn').textContent='Envoi…';draft();try{const row=first(await rpc('submit_annotation',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token,p_assignment_id:state.currentAssignment.assignment_id,p_payload:a}));state.receipts.push({case_id:state.currentCase.id,submitted_at:now(),annotation:a});save(STORE.receipts,state.receipts);delete state.drafts[state.currentAssignment.assignment_id];save(STORE.drafts,state.drafts);state.session.count=Number(state.session.count||0)+1;save(STORE.session,state.session);state.profile.submitted_count=Number(row?.submitted_count??state.profile.submitted_count+1);save(STORE.profile,state.profile);state.currentAssignment=null;state.currentCase=null;updateProgress();setScreen('done')}catch(e){showErrors([`L’envoi a échoué : ${e.message}. Ton brouillon reste sauvegardé.`])}finally{state.submitting=false;$('#submitBtn').disabled=false;$('#submitBtn').textContent='Envoyer cette annotation →'}}
 async function skipReal(){if(state.mode!=='real'||!state.currentAssignment)return;$('#confirmSkipBtn').disabled=true;try{await rpc('skip_assignment',{p_annotator_id:state.profile.annotator_id,p_access_token:state.profile.access_token,p_assignment_id:state.currentAssignment.assignment_id});delete state.drafts[state.currentAssignment.assignment_id];save(STORE.drafts,state.drafts);state.currentAssignment=null;state.currentCase=null;$('#skipDialog').close();await loadReal()}catch(e){$('#skipDialog').close();showErrors([`Impossible de passer ce cas : ${e.message}`])}finally{$('#confirmSkipBtn').disabled=false}}
