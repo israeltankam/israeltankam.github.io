@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Simulation &amp; management · NEMO-PCN</title><link rel="stylesheet" href="style.css"></head><body><header>🌱 NEMO-PCN<small><a style="color:#fff" href="https://github.com/israeltankam/nemo-pcn">Source repository ↗</a></small></header><nav><a href="index.html" class="">Home</a><a href="model.html" class="">Scientific model</a><a href="simulation.html" class="active">Simulation & management</a><a href="calibration.html" class="">Calibration</a><a href="api.html" class="">API reference</a><a href="publishing.html" class="">Installation & publishing</a></nav><main><h1>Simulation and management</h1>
+<pre><code>from nemo_pcn import Scenario, Parameters, simulate, compare_strategies
+
+scenario = Scenario(cycle=&quot;RSN&quot;, years=40, area_m2=.1,
+                    initial_virulence=.08, initial_density=15,
+                    biocontrol_by_year=tuple([.2,.7,.7]*13+[.2]))
+r = simulate(scenario, Parameters(), n_runs=5000, seed=2026)
+r.quantiles().to_csv(&quot;trajectory_quantiles.csv&quot;, index=False)
+r.summary(horizons=(5,10,20,30,40)).to_csv(&quot;outcomes.csv&quot;, index=False)</code></pre>
+<p>The <code>summary</code> method reports the probability of being below a density threshold at a given year separately from complete extinction. Frequencies after extinction remain undefined. Comparisons between <code>S</code>, <code>R</code>, <code>N</code>, <code>RN</code>, <code>RNN</code>, <code>RSN</code> and <code>SRN</code> should be made on common calendar horizons. Median trajectories must not be confused with an individual trajectory.</p><footer>NEMO-PCN · Scientific Python package for potato cyst nematode management</footer></main></body></html>

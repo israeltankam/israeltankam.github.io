@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Installation &amp; publishing · NEMO-PCN</title><link rel="stylesheet" href="style.css"></head><body><header>🌱 NEMO-PCN<small><a style="color:#fff" href="https://github.com/israeltankam/nemo-pcn">Source repository ↗</a></small></header><nav><a href="index.html" class="">Home</a><a href="model.html" class="">Scientific model</a><a href="simulation.html" class="">Simulation & management</a><a href="calibration.html" class="">Calibration</a><a href="api.html" class="">API reference</a><a href="publishing.html" class="active">Installation & publishing</a></nav><main><h1>Installation and publishing</h1>
+<h2>Local installation</h2>
+<pre><code>python -m venv .venv
+# Windows: .venv\Scripts\activate
+python -m pip install -e &quot;.[app,dev,docs]&quot;
+pytest -q
+streamlit run ../nemo-streamlit/app.py</code></pre>
+<h2>Publish package to PyPI</h2>
+<p>The maintainer must create and configure an account and trusted publishing, or an appropriately scoped API token.</p>
+<pre><code>python -m build
+python -m twine check dist/*
+python -m twine upload dist/*</code></pre>
+<h2>Publish documentation</h2>
+<pre><code>mkdocs build</code></pre>
+<p>The generated <code>site/</code> is suitable for deployment to GitHub Pages. For the existing <code>israeltankam.github.io</code> repository, copy the contents of <code>site/</code> into the <code>nemo/</code> folder and commit the change. Do not overwrite the <code>cropmix/</code> folder. If using a standalone source repository instead, <code>mkdocs gh-deploy</code> publishes into its GitHub Pages branch and may use a different URL depending on hosting configuration.</p><footer>NEMO-PCN · Scientific Python package for potato cyst nematode management</footer></main></body></html>
