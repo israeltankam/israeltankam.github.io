@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Stochastic simulation — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="active" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Stochastic and deterministic simulation</h1>
+<h2 id="core-api">Core API</h2>
+<pre><code class="language-python">nemo.run_simulation(parameters, schedule, initial_density=20,
+    virulence_frequency=.2, genotype_initial=None,
+    area_m2=1., n_replicates=1000, threshold=1., seed=42)
+</code></pre>
+<p>Each replicate uses a separately seeded random stream. Numba parallelises independent replicates while preserving the serial order of annual transitions within a replicate.</p>
+<p>The simulation result contains: <code>density</code>, <code>allele</code>, <code>homozygote</code>, <code>effective_size</code>, <code>females</code>, <code>males</code>, <code>schedule</code>, <code>parameters</code>, <code>initial_density</code>, <code>area_m2</code>, <code>threshold</code> and <code>seed</code>.</p>
+<p>Arrays use <code>replicate × year</code> dimensions. Breeder-related arrays have one value per crop-year transition; density and frequencies include year 0.</p>
+<h2 id="deterministic-mean-field-reference">Deterministic mean-field reference</h2>
+<pre><code class="language-python">reference = nemo.deterministic(parameters, schedule,
+                               initial_density=20,
+                               virulence_frequency=.2)
+</code></pre>
+<p>At large population size, stochastic density trajectories concentrate around the mean-field recursion under regularity assumptions. This does not imply that the deterministic curve is exactly the expected stochastic density in a finite population.</p>
+<h2 id="large-versus-small-reproductive-populations">Large versus small reproductive populations</h2>
+<p>When the expected number of reproductive <code>aa</code> females is large, the 95% band can be visually much narrower than the plotted ordinate range. For rare virulence and a small mating focus, female recruitment can fail in the first resistant crop, producing extinction even when a deterministic trajectory remains positive.</p>
+<h2 id="extracting-and-plotting-distributions">Extracting and plotting distributions</h2>
+<pre><code class="language-python">r = nemo.run_simulation(area_m2=.0054, n_replicates=2000, seed=9)
+print(r.summary('density')[['year','p025','median','p975']])
+
+from nemo_pcn.viz import plot_trajectories
+fig = plot_trajectories(r, 'density', show_replicates=20)
+</code></pre>
+<p>Use <code>result.raw('density')</code> for replicate-level data and <code>result.export(...,raw=True)</code> to save exact underlying trajectories. Very large arrays may consume substantial memory.</p>
+<h2 id="reproducibility-and-computational-limits">Reproducibility and computational limits</h2>
+<p>Record the model variant, genotype initialization, input units, calendar, soil scale and seed. The integer-valued algorithm can become costly for very large population sizes. A probability close to one in a finite ensemble is not a mathematical certainty.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#core-api">Core API</a><a href="#deterministic-mean-field-reference">Deterministic mean-field reference</a><a href="#large-versus-small-reproductive-populations">Large versus small reproductive populations</a><a href="#extracting-and-plotting-distributions">Extracting and plotting distributions</a><a href="#reproducibility-and-computational-limits">Reproducibility and computational limits</a></div></div><script src="assets/site.js"></script></body></html>

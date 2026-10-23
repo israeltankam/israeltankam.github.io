@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Genetic drift — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="active" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Virulence, drift and reproductive bottlenecks</h1>
+<h2 id="selected-and-neutral-frequencies">Selected and neutral frequencies</h2>
+<p>The virulence allele is selected on resistant hosts because only <code>aa</code> juveniles can recruit reproductive females. A neutral genetic marker, in contrast, has no direct effect on its carrier's sex or establishment probability. The neutral-marker module assumes free recombination between loci.</p>
+<pre><code class="language-python">result = nemo.simulate_neutral_marker(
+    parameters=nemo.Parameters(b=0),
+    schedule=nemo.Schedule('R',years=20),
+    initial_density=20,virulence_frequency=.2,
+    marker_frequency=.4,area_m2=.0054,
+    n_replicates=2000,seed=42)
+print(result.summary())
+</code></pre>
+<p>Frequencies are reported among <strong>surviving populations</strong>. The survival fraction is always retained, because excluding extinct replicates changes the conditioning of any frequency estimate.</p>
+<h2 id="sex-ratio-effective-size-proxy">Sex-ratio effective-size proxy</h2>
+<p>The quantity $N_e^{sex}=4MF/(M+F)$ summarises the effect of unequal reproductive sex numbers. It is not a generally exact genetic effective population size: variance of family size, consanguinity, selection and spatial mating structure may further alter true drift rates.</p>
+<h2 id="initial-reproductive-failure">Initial reproductive failure</h2>
+<p>The following expression is exact under the stated independent initial genotype assignment and establishment assumptions:</p>
+<pre><code class="language-python">risk = nemo.female_recruitment_risk(
+    q0=.01,area_m2=.0054,initial_density=80)
+print(risk)
+</code></pre>
+<p>The expected number of virulent females depends on both absolute population size and $q_0^2$. A small focal population can fail to recruit any females on the first resistant crop, even if the corresponding deterministic fraction remains positive.</p>
+<h2 id="contrasting-sources-of-variability">Contrasting sources of variability</h2>
+<pre><code class="language-python">experiments = nemo.compare_stochasticity_mechanisms(
+    schedule=nemo.Schedule('R',years=20),
+    area_m2=.0054,virulence_frequency=.2,n_replicates=2000)
+summary = nemo.summarize_stochasticity_comparison(experiments)
+</code></pre>
+<p>The partial-stochasticity models are explicit counterfactual numerical diagnostics. Their results depend on intervention definitions and integer rounding; they should not be described as a unique or exact causal decomposition of multi-generation variability. For the conditional allele-copy variance, <code>selected_allele_variance_components()</code> reports the algebraic separation between offspring-number randomness and genetic combination randomness, given the breeders.</p>
+<h2 id="fixation-and-evolutionary-rescue">Fixation and evolutionary rescue</h2>
+<pre><code class="language-python">print(nemo.fixation_window(nemo.Parameters(),r=4))
+</code></pre>
+<p>Fixation is not synonymous with evolutionary rescue. Demonstrating sustained rescue requires distinguishing fixation preceding extinction from fixation followed by long-term persistence, especially when the population has very few breeders.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#selected-and-neutral-frequencies">Selected and neutral frequencies</a><a href="#sex-ratio-effective-size-proxy">Sex-ratio effective-size proxy</a><a href="#initial-reproductive-failure">Initial reproductive failure</a><a href="#contrasting-sources-of-variability">Contrasting sources of variability</a><a href="#fixation-and-evolutionary-rescue">Fixation and evolutionary rescue</a></div></div><script src="assets/site.js"></script></body></html>

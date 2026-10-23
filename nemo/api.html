@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>API reference — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="active" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Public API reference</h1>
+<p>This page indexes the main functions. Signatures may gain optional parameters with later releases; use Python introspection for the installed version.</p>
+<h2 id="biological-objects">Biological objects</h2>
+<ul>
+<li><code>Parameters(e, s, mu, h, alpha, m, b, regulation)</code>: validated biological configuration.</li>
+<li><code>Schedule(cycle, years, biocontrol)</code>: annual crop programme and annual intervention efficacy.</li>
+<li><code>hardy_weinberg(q)</code>: three initial genotype proportions.</li>
+<li><code>genotype_proportions(values)</code>: validated custom proportions.</li>
+<li><code>male_genetic_combinations(males)</code>: three original maternal genotype-specific combination vectors.</li>
+<li><code>offspring_genotypes(females, males)</code>: expected offspring counts per genotype before survival and fecundity scaling.</li>
+<li><code>virulence_equilibrium(m)</code>: stable interior composition when <code>m &lt; 0.5</code>.</li>
+<li><code>soil_mass(area_m2, depth_m, bulk_density_g_cm3)</code>: convert focus area to simulated soil mass.</li>
+<li><code>reproduction_metrics(parameters, nonhost_years)</code>: reproduction multipliers and equilibrium diagnostics.</li>
+<li><code>treatment_timing(cycle, years, efficacy, mode)</code>: scheduled intervention timing.</li>
+</ul>
+<h2 id="simulation">Simulation</h2>
+<ul>
+<li><code>run_simulation(...)</code> → <code>SimulationResult</code>, including <code>summary</code>, <code>raw</code>, <code>outcomes</code> and <code>export</code> methods.</li>
+<li><code>deterministic(...)</code> → Pandas table of mean-field genotype densities and frequencies.</li>
+<li><code>simulate_neutral_marker(...)</code> → <code>NeutralMarkerResult</code> with selected and neutral allele frequencies.</li>
+<li><code>selected_allele_variance_components(...)</code> → conditional offspring allele-copy variance terms.</li>
+<li><code>compare_stochasticity_mechanisms(...)</code> → four explicitly labelled counterfactual stochastic processes.</li>
+<li><code>summarize_stochasticity_comparison(...)</code> → annual table of outcomes from these processes.</li>
+<li><code>compare_isolated_patches(...)</code> → no-migration patch subdivision diagnostic.</li>
+</ul>
+<h2 id="strategy-and-sensitivity">Strategy and sensitivity</h2>
+<ul>
+<li><code>compare_strategies(...)</code>: cross-product of crop programmes, annual efficacy values and initial allele frequencies.</li>
+<li><code>female_recruitment_risk(...)</code>: expected initial female recruitment and exact no-female probability under genotype sampling assumptions.</li>
+<li><code>fixation_window(...)</code>: comparison of polymorphic and fixed-virulence low-density multipliers.</li>
+<li><code>sensitivity_screen(...)</code>: first-order and total-order Jansen indices.</li>
+<li><code>calibration_robustness(...)</code>: compare model parameterisations under one specified programme.</li>
+<li><code>uncertainty_envelope(result,variable)</code>: selected quantiles and valid fractions.</li>
+</ul>
+<h2 id="parameter-fitting">Parameter fitting</h2>
+<ul>
+<li><code>fit_recruitment_fecundity(data, ...,fecundity='constant',bootstrap=0)</code></li>
+<li><code>fit_fecundity(data,curve='reciprocal')</code></li>
+<li><code>fit_hatching(data,model='constant')</code></li>
+<li><code>fit_egg_survival(data)</code></li>
+<li><code>fit_population_trajectory(data,parameters,cycle,fit)</code></li>
+<li><code>fit_allele_trajectory(data,parameters,cycle,fit)</code></li>
+<li><code>fit_reproduction_factor(data,parameters,fit)</code></li>
+</ul>
+<h2 id="visualization">Visualization</h2>
+<ul>
+<li><code>nemo_pcn.viz.plot_trajectories(result,variable,...)</code></li>
+<li><code>nemo_pcn.viz.plot_outcomes(result,...)</code></li>
+<li><code>nemo_pcn.viz.plot_strategy_heatmap(frame,metric,year,q0,...)</code></li>
+<li><code>nemo_pcn.viz.plot_fit(fit)</code></li>
+<li><code>nemo_pcn.viz.save_figure(fig,filename,dpi)</code></li>
+</ul>
+<p>All visualization functions return regular Matplotlib figures. Graphics are optional and the simulation package can be used without a graphical interface.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#biological-objects">Biological objects</a><a href="#simulation">Simulation</a><a href="#strategy-and-sensitivity">Strategy and sensitivity</a><a href="#parameter-fitting">Parameter fitting</a><a href="#visualization">Visualization</a></div></div><script src="assets/site.js"></script></body></html>

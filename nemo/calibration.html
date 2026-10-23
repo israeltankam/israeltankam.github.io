@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Calibration — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="active" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Estimating demographic and genetic parameters</h1>
+<p>Calibration must begin with the <strong>observation process</strong>. Pot-level egg counts, published means and standard errors, hatch counts, residual eggs in cysts, time series and population-genetic samples cannot share one universal likelihood.</p>
+<h2 id="summary-of-available-fitters">Summary of available fitters</h2>
+<table>
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Primary observation schema</th>
+  <th>Objective</th>
+  <th>Main limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>fit_recruitment_fecundity</code></td>
+  <td><code>Pi_eggs_per_g</code>, <code>cysts_per_g</code>, <code>cysts_se</code>, <code>eggs_per_cyst</code>, <code>eggs_per_cyst_se</code></td>
+  <td>Separate weighted recruitment and fecundity fits</td>
+  <td>Summary statistics are not raw pot counts</td>
+</tr>
+<tr>
+  <td><code>fit_fecundity</code></td>
+  <td><code>Pi_eggs_per_g</code>, <code>eggs_per_cyst</code>, <code>eggs_per_cyst_se</code></td>
+  <td>Weighted constant or reciprocal fecundity</td>
+  <td>Does not identify establishment</td>
+</tr>
+<tr>
+  <td><code>fit_hatching</code></td>
+  <td><code>hatched</code>, <code>tested</code> and optional <code>exposure</code></td>
+  <td>Binomial constant or exposure-dependent hatching</td>
+  <td>Does not identify survival in soil</td>
+</tr>
+<tr>
+  <td><code>fit_egg_survival</code></td>
+  <td><code>alive</code>, <code>tested</code>, <code>years</code></td>
+  <td>Binomial cumulative annual survival</td>
+  <td>Cannot separate natural mortality and hatching</td>
+</tr>
+<tr>
+  <td><code>fit_population_trajectory</code></td>
+  <td><code>year</code>, <code>density</code> and optional <code>se</code></td>
+  <td>Weighted deterministic trajectory</td>
+  <td>Depends on initial condition and fixed parameters</td>
+</tr>
+<tr>
+  <td><code>fit_allele_trajectory</code></td>
+  <td><code>year</code>, <code>a_copies</code>, <code>allele_copies</code></td>
+  <td>Binomial genetic observation fit</td>
+  <td>Does not include process-noise likelihood</td>
+</tr>
+<tr>
+  <td><code>fit_reproduction_factor</code></td>
+  <td><code>Pi_eggs_per_g</code>, <code>Pf_eggs_per_g</code> and optional <code>Pf_se</code></td>
+  <td>Weighted one-crop Pi/Pf response</td>
+  <td>Identifiability depends on fixed biological assumptions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="greenhouse-calibration-compatible-with-the-manuscript">Greenhouse calibration compatible with the manuscript</h2>
+<p>The package includes the published summary data from Contina, Dandurand and Knudsen (2019), <em>Plant Disease</em>, doi:10.1094/PDIS-04-19-0717-RE. The trial 1 and pooled trials 2/3 are preserved separately. The observations concern initial eggs per g soil, cysts per g soil and eggs per cyst.</p>
+<pre><code class="language-python">import pandas as pd
+import nemo_pcn as nemo
+obs = pd.read_csv('nemo-pcn/data/published_greenhouse_summary.csv')
+group = obs[obs.trial=='trials_2_3']
+fit = nemo.fit_recruitment_fecundity(
+    group, hatch_viability=.45, m=.35,
+    fecundity='constant',bootstrap=500,seed=12)
+print(fit.estimates)
+print(fit.diagnostics)
+fit.export('outputs/greenhouse_fit')
+</code></pre>
+<p>The recruitment equation is:</p>
+<p>\[C(P_i)=\frac{0.45 P_i s(1-m)}{1+\alpha(0.45 P_i)}.\]</p>
+<p>The constant eggs-per-cyst observation model is $E(P_i)=e$, and the alternative reciprocal model is $E(P_i)=e_0/(1+\theta P_i)$. Recruitment parameters cannot generally be uniquely recovered from final eggs per g alone. Parameters that are held fixed must be recorded.</p>
+<h2 id="fitting-hatching-assays">Fitting hatching assays</h2>
+<pre><code class="language-python">h = pd.DataFrame({'hatched':[18,37,54],
+                  'tested':[100,100,100],
+                  'exposure':[2,5,10]})
+fit = nemo.fit_hatching(h,model='exponential')
+print(fit.estimates)
+</code></pre>
+<p>This illustrates a binomial likelihood, not a claim that exposure time is the sole determinant of experimental hatch response.</p>
+<h2 id="fitting-genetic-samples">Fitting genetic samples</h2>
+<pre><code class="language-python">genetic = pd.DataFrame({'year':[0,1,2,3],
+                        'a_copies':[40,58,85,105],
+                        'allele_copies':[200,200,200,200]})
+fit = nemo.fit_allele_trajectory(genetic,cycle='R',fit=('m',))
+</code></pre>
+<p>This is a conditional sampling likelihood against deterministic trajectories. At low population sizes, state-space particle methods would be needed to jointly infer selection and process drift.</p>
+<h2 id="identifiability-and-validation">Identifiability and validation</h2>
+<p>A successful optimiser is not evidence that every biological parameter is identified. Inspect residuals, profile surfaces, alternative mortality decompositions and fitted predictions on omitted experimental levels. Transferability to a different population requires data collected under the target soil, cultivar and management context.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#summary-of-available-fitters">Summary of available fitters</a><a href="#greenhouse-calibration-compatible-with-the-manuscript">Greenhouse calibration compatible with the manuscript</a><a href="#fitting-hatching-assays">Fitting hatching assays</a><a href="#fitting-genetic-samples">Fitting genetic samples</a><a href="#identifiability-and-validation">Identifiability and validation</a></div></div><script src="assets/site.js"></script></body></html>

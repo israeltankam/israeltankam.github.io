@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Home — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="active" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>NEMO-PCN</h1>
+<p><em>Stochastic demo-genetic modelling and integrated management of the potato cyst nematode.</em></p>
+<p><strong>NEMO-PCN</strong> is a scientific Python library for the simulation, calibration and quantitative comparison of population management programmes targeting <em>Globodera pallida</em>. It follows individual offspring counts by genotype, within annual programmes of susceptible or resistant potato cultivation, nonhost rotations and suicide-hatching biocontrol.</p>
+<p>The modelling components are intended to work together without becoming inseparable: demographic observations are fitted under a declared biological model, stochastic and deterministic trajectories are evaluated under identical crop programmes, and management outcomes are summarised at explicit planning horizons.</p>
+<h2 id="principal-operations">Principal operations</h2>
+<pre><code class="language-python">import nemo_pcn as nemo
+
+result = nemo.run_simulation(
+    nemo.Parameters(),
+    nemo.Schedule('RNN', years=30),
+    virulence_frequency=0.2,
+    initial_density=20,
+    area_m2=0.05,
+    n_replicates=1000, seed=42)
+print(result.outcomes((5,10,20,30)))
+</code></pre>
+<ul>
+<li><strong>Simulate:</strong> stochastic population trajectories and a deterministic reference.</li>
+<li><strong>Estimate:</strong> demographic and genetic parameters from observation-specific data.</li>
+<li><strong>Compare:</strong> susceptible cultivation, masculinizing resistance, host-free rotation and suicide-hatching efficacy.</li>
+<li><strong>Explore drift:</strong> selected virulence, a separate neutral marker, the reproductive bottleneck and demographic-noise diagnostics.</li>
+<li><strong>Export:</strong> reproducible data tables, scenario metadata and publication-quality graphs.</li>
+</ul>
+<h2 id="scientific-foundations">Scientific foundations</h2>
+<p>The life cycle and genetic response are based on the model of Tankam Chedjou et al. (2024), <em>Evolutionary Applications</em>. The greenhouse aggregate example is based on Contina, Dandurand and Knudsen (2019), <em>Plant Disease</em>. Results are conditional predictions, not field-validated quarantine clearance probabilities.</p>
+<h2 id="documentation-map">Documentation map</h2>
+<p>Start with <a href="installation.html">Installation</a> and <a href="quick-start.html">Quick start</a>. Study <a href="model.html">The biological model</a> for its equations, then <a href="simulation.html">Simulation</a>, <a href="management.html">Management</a>, <a href="calibration.html">Parameter estimation</a> and <a href="genetics.html">Genetic drift</a>. The <a href="api.html">API reference</a> contains public signatures and links to detailed workflows.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#principal-operations">Principal operations</a><a href="#scientific-foundations">Scientific foundations</a><a href="#documentation-map">Documentation map</a></div></div><script src="assets/site.js"></script></body></html>

@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Sensitivity and robustness — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="active" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Parameter sensitivity and robust decisions</h1>
+<h2 id="global-sensitivity">Global sensitivity</h2>
+<p><code>nemo_pcn.sensitivity_screen()</code> implements a Saltelli/Jansen design over independent continuous parameter ranges. It estimates first-order and total-order sensitivity indices for final density and extinction probability.</p>
+<pre><code class="language-python">sens = nemo.sensitivity_screen(
+    bounds={'e':(300,500),'s':(.15,.35),
+            'alpha':(.08,.30),'b':(.20,.90),
+            'q0':(.05,.80)},
+    cycles='RNN',years=35,n_base=128,
+    n_replicates=500,seed=42)
+</code></pre>
+<p>The expected response at each parameter vector is estimated by Monte Carlo. The final indices are therefore affected by stochastic response noise. Evaluate convergence in both the Sobol base size and the replications per design; small negative or greater-than-one finite-sample estimates should not be silently truncated or treated as proven effects.</p>
+<h2 id="robustness-across-parameterisations">Robustness across parameterisations</h2>
+<pre><code class="language-python">models = {
+ 'establishment': nemo.ESTABLISHMENT_REFERENCE,
+ 'fecundity': nemo.ORIGINAL_FECUNDITY,
+}
+compare = nemo.calibration_robustness(
+    models,cycle='RNNNN',horizon=50,
+    q0=.20,replications=1000)
+</code></pre>
+<p>Comparing two structural models fitted to different data contexts is an examination of model uncertainty; it is not a fair predictive contest unless each is refitted to comparable observations and evaluated on independent data.</p>
+<h2 id="local-population-subdivision">Local population subdivision</h2>
+<pre><code class="language-python">patches = nemo.compare_isolated_patches(
+    area_m2=.05,patch_counts=[1,2,4,8],
+    schedule=nemo.Schedule('RNN',50),
+    n_replicates=500)
+</code></pre>
+<p>Each patch is closed and internally panmictic. This diagnostic does not model dispersal, migration or the actual geography of a potato field. A connected spatial model would require explicit movement parameters and spatial validation.</p>
+<h2 id="decision-horizons">Decision horizons</h2>
+<p>It is generally useful to evaluate 5, 10, 20, 30 and 50 years on the same simulation ensemble. Longer extinction tails may be relevant to mathematical extinction theory but need not dominate agricultural decision making. Report crop exposure, initial infestation, virulence and parameter uncertainty alongside predicted probabilities.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#global-sensitivity">Global sensitivity</a><a href="#robustness-across-parameterisations">Robustness across parameterisations</a><a href="#local-population-subdivision">Local population subdivision</a><a href="#decision-horizons">Decision horizons</a></div></div><script src="assets/site.js"></script></body></html>

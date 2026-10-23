@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Worked examples — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="active" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Worked examples</h1>
+<h2 id="rare-virulence-and-reproductive-failure">Rare virulence and reproductive failure</h2>
+<pre><code class="language-python">p=nemo.Parameters(b=0)
+small=nemo.run_simulation(p,nemo.Schedule('R',20),
+  initial_density=80,virulence_frequency=.01,
+  area_m2=.0054,n_replicates=2000,seed=42)
+large=nemo.run_simulation(p,nemo.Schedule('R',20),
+  initial_density=80,virulence_frequency=.2,
+  area_m2=1.,n_replicates=2000,seed=42)
+print(small.outcomes((5,10,20)))
+print(large.outcomes((5,10,20)))
+</code></pre>
+<p>The scenarios do not isolate the effect of initial frequency because population area also changes. A proper factorial contrast fixes each factor in turn. Use <code>female_recruitment_risk()</code> to relate both factors to the expected initial number of reproductive females.</p>
+<h2 id="annual-suicide-hatching-schedule">Annual suicide-hatching schedule</h2>
+<pre><code class="language-python">b = [.1,.8,.7] * 10
+s = nemo.Schedule('RNN',30,biocontrol=b)
+r = nemo.run_simulation(nemo.Parameters(),s,area_m2=.01,
+                        n_replicates=2000,seed=8)
+print(s.table().head(9))
+</code></pre>
+<h2 id="quantifying-uncertainty-around-an-intervention-threshold">Quantifying uncertainty around an intervention threshold</h2>
+<pre><code class="language-python">bs = [round(x,2) for x in np.arange(0,.951,.05)]
+frame = nemo.compare_strategies(['RN','RNN','RNNN'],bs,[.05,.2,.6],
+                                years=50,n_replicates=1000)
+subset = frame[(frame.q0==.2)&amp;(frame.year==50)]
+print(subset[['cycle','b','p_below','p_sustained','p_extinct']])
+</code></pre>
+<h2 id="independent-mating-neighbourhoods">Independent mating neighbourhoods</h2>
+<pre><code class="language-python">out = nemo.compare_isolated_patches(
+    patch_counts=[1,2,4,8],area_m2=.05,
+    schedule=nemo.Schedule('RNN',30),
+    n_replicates=1000)
+</code></pre>
+<p>Each experiment should be reported with the population scale and assumptions that generated it. Different patch counts do not independently identify real migration processes.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#rare-virulence-and-reproductive-failure">Rare virulence and reproductive failure</a><a href="#annual-suicide-hatching-schedule">Annual suicide-hatching schedule</a><a href="#quantifying-uncertainty-around-an-intervention-threshold">Quantifying uncertainty around an intervention threshold</a><a href="#independent-mating-neighbourhoods">Independent mating neighbourhoods</a></div></div><script src="assets/site.js"></script></body></html>

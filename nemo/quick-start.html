@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Quick start — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="active" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Quick start</h1>
+<h2 id="step-1-describe-the-biology">Step 1: describe the biology</h2>
+<pre><code class="language-python">import nemo_pcn as nemo
+
+biology = nemo.Parameters(
+    e=398.5188, s=0.25, alpha=0.1438,
+    mu=0.10, h=0.17, m=0.35, b=0.45,
+    regulation='establishment')
+</code></pre>
+<p>Here <code>e</code> denotes eggs per female, <code>s</code> the establishment probability, <code>m</code> the male probability on a susceptible cultivar, <code>mu</code> yearly natural egg mortality, <code>h</code> spontaneous hatching without host and <code>b</code> an additional yearly biocontrol loss probability. The default parameterisation is a working example, not a universal field estimate.</p>
+<h2 id="step-2-choose-a-management-programme">Step 2: choose a management programme</h2>
+<p><code>S</code> denotes susceptible potato; <code>R</code> denotes masculinizing-resistant potato; <code>N</code> denotes a nonhost year. <code>'RNN'</code> produces a resistant crop every three calendar years.</p>
+<pre><code class="language-python">calendar = nemo.Schedule('RNN', years=30)
+print(calendar.table(biology.b).head())
+</code></pre>
+<h2 id="step-3-simulate">Step 3: simulate</h2>
+<pre><code class="language-python">result = nemo.run_simulation(
+    biology, calendar,
+    initial_density=20,
+    virulence_frequency=.20,
+    area_m2=.05,
+    n_replicates=1000, seed=21)
+</code></pre>
+<h2 id="step-4-inspect-annual-density-and-allele-frequencies">Step 4: inspect annual density and allele frequencies</h2>
+<pre><code class="language-python">print(result.summary('density'))
+print(result.summary('allele'))
+print(result.summary('homozygote'))
+</code></pre>
+<p>Frequencies are undefined after extinction and stored as missing values. Density is zero after extinction. Shaded trajectory intervals are <strong>prediction intervals across independent replicate populations</strong>, not uncertainty intervals around their mean.</p>
+<h2 id="step-5-evaluate-agricultural-endpoints">Step 5: evaluate agricultural endpoints</h2>
+<pre><code class="language-python">print(result.outcomes((5,10,20,30)))
+</code></pre>
+<p>The table distinguishes the probability of ending below the chosen density threshold, of remaining below it for the specified verification window, and of reaching the absorbing extinction state.</p>
+<h2 id="step-6-save-an-analysis">Step 6: save an analysis</h2>
+<pre><code class="language-python">from nemo_pcn.viz import plot_trajectories, save_figure
+result.export('outputs/demo',raw=False)
+fig = plot_trajectories(result)
+save_figure(fig,'outputs/demo/density.pdf')
+</code></pre>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#step-1-describe-the-biology">Step 1: describe the biology</a><a href="#step-2-choose-a-management-programme">Step 2: choose a management programme</a><a href="#step-3-simulate">Step 3: simulate</a><a href="#step-4-inspect-annual-density-and-allele-frequencies">Step 4: inspect annual density and allele frequencies</a><a href="#step-5-evaluate-agricultural-endpoints">Step 5: evaluate agricultural endpoints</a><a href="#step-6-save-an-analysis">Step 6: save an analysis</a></div></div><script src="assets/site.js"></script></body></html>

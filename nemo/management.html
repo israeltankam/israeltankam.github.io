@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Management programmes — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="active" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Rotations and suicide-hatching biocontrol</h1>
+<h2 id="repeating-crop-sequences">Repeating crop sequences</h2>
+<p>A schedule is a sequence of <strong>calendar years</strong>. For example, <code>RN</code> means one resistant potato year followed by one nonhost year; <code>RNN</code> means one resistant year in three. <code>RSN</code> introduces a susceptible potato year between resistant cultivation and the nonhost period. The number of potato crops is an explicit consequence of the schedule rather than an implicitly assumed rotation index.</p>
+<pre><code class="language-python">for cycle in ('R','RN','RNN','RNNN','RNNNN','RSN','SRN'):
+    print(cycle, nemo.Schedule(cycle,years=12).crops)
+</code></pre>
+<h2 id="annual-biocontrol-efficacy">Annual biocontrol efficacy</h2>
+<p><code>b</code> represents additional loss in the current year due to a treatment such as suicide hatching. It is distinct from the physical proportion of eggs that hatch and distinct from an efficacy observed after one field application. High values should be interpreted as scenarios unless independently validated for the proposed repeated programme.</p>
+<pre><code class="language-python">constant = nemo.Schedule('RNN', years=30, biocontrol=.45)
+annual = nemo.Schedule('RNN', years=6,
+                       biocontrol=[.20,.70,.85,.20,.60,.75])
+</code></pre>
+<h2 id="treatment-timing">Treatment timing</h2>
+<pre><code class="language-python">s1 = nemo.treatment_timing('RNNNN',50,.8,'every_year')
+s2 = nemo.treatment_timing('RNNNN',50,.8,'nonhost_years')
+s3 = nemo.treatment_timing('RNNNN',50,.8,'once_per_cycle')
+s4 = nemo.treatment_timing('RNNNN',50,.8,'first_year_only')
+</code></pre>
+<h2 id="comparing-strategies">Comparing strategies</h2>
+<pre><code class="language-python">results = nemo.compare_strategies(
+    cycles=['RN','RNN','RNNN','RNNNN','RSN','SRN'],
+    biocontrol=[0,.2,.4,.6,.8,.9],
+    virulence=[.05,.2,.6],
+    years=50,horizons=[5,10,20,30,40,50],
+    n_replicates=1000,area_m2=.05)
+</code></pre>
+<p>The returned table reports estimated probability of being below threshold, sustained suppression, eradication, number of potato crops and mean density. It permits transparent comparison of rapidity and agricultural exposure; it does not estimate economic costs without additional data.</p>
+<h2 id="management-endpoints">Management endpoints</h2>
+<ul>
+<li><strong>Below threshold:</strong> density at a specific horizon is below the chosen agronomic threshold.</li>
+<li><strong>Ever below threshold:</strong> the threshold was crossed at least once before the horizon.</li>
+<li><strong>Sustained suppression:</strong> a full window of consecutive years was observed under the threshold.</li>
+<li><strong>Eradication:</strong> the integer population reached the absorbing state zero in the closed system.</li>
+</ul>
+<p>Official quarantine release and post-treatment sampling require procedures outside this model.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#repeating-crop-sequences">Repeating crop sequences</a><a href="#annual-biocontrol-efficacy">Annual biocontrol efficacy</a><a href="#treatment-timing">Treatment timing</a><a href="#comparing-strategies">Comparing strategies</a><a href="#management-endpoints">Management endpoints</a></div></div><script src="assets/site.js"></script></body></html>

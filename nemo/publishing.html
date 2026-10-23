@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Publishing — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="active" href="publishing.html">Publishing</a></aside><main><article><h1>Package and documentation publishing</h1>
+<h2 id="build-the-python-distribution">Build the Python distribution</h2>
+<pre><code class="language-bash">python -m pip install build twine
+python -m build nemo-pcn
+python -m twine check nemo-pcn/dist/*
+</code></pre>
+<p>Use TestPyPI to validate the distribution and dependencies before publishing on PyPI. Never commit publishing tokens. Stable publication can be automated using PyPI Trusted Publishing tied to an authorised GitHub workflow.</p>
+<h2 id="publish-documentation-on-github-pages">Publish documentation on GitHub Pages</h2>
+<p>Copy the self-contained <code>nemo/</code> directory to the root of the repository <code>israeltankam.github.io</code> beside the existing <code>cropmix/</code> directory. Commit and push to the GitHub Pages publishing branch. The relative paths in the site permit direct access at <code>https://israeltankam.github.io/nemo/</code>.</p>
+<p>The package also contains Markdown sources under <code>docs/</code>, plus <code>mkdocs.yml</code> for teams that prefer maintaining the documentation with Material for MkDocs.</p>
+<pre><code class="language-bash">python -m pip install 'mkdocs-material&gt;=9'
+cd nemo-pcn
+mkdocs serve
+mkdocs build
+</code></pre>
+<p>The output of MkDocs can be deployed instead of the prebuilt static files. Choose one canonical source for ongoing edits to avoid documentation divergence.</p>
+<h2 id="release-checklist">Release checklist</h2>
+<ul>
+<li>All tests pass on an explicitly supported Python version.</li>
+<li>Source and binary distributions pass <code>twine check</code>.</li>
+<li>Reference parameter values and any imported calibration data carry provenance.</li>
+<li>The published documentation corresponds to the tagged code release.</li>
+<li>Public examples produce their described outcomes without depending on unpublished files.</li>
+</ul>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#build-the-python-distribution">Build the Python distribution</a><a href="#publish-documentation-on-github-pages">Publish documentation on GitHub Pages</a><a href="#release-checklist">Release checklist</a></div></div><script src="assets/site.js"></script></body></html>

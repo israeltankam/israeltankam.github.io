@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Installation — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="active" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Installation</h1>
+<h2 id="python-requirements">Python requirements</h2>
+<p>NEMO-PCN supports Python 3.10 or newer and uses NumPy, SciPy, Pandas and Numba. Matplotlib and Plotly are optional visual dependencies. On a computer without network access, the necessary wheels must be installed in advance.</p>
+<h2 id="install-from-a-local-folder">Install from a local folder</h2>
+<p>After extracting the distribution archive, open a terminal in its root:</p>
+<pre><code class="language-bash">python -m venv .venv
+# Windows
+.venv\Scripts\python -m pip install --upgrade pip
+.venv\Scripts\python -m pip install -e &quot;./nemo-pcn[viz]&quot;
+# Linux or macOS
+# .venv/bin/python -m pip install -e './nemo-pcn[viz]'
+</code></pre>
+<p>An editable installation allows changes to the package source to take effect without a new wheel build. After packaging on PyPI, install with:</p>
+<pre><code class="language-bash">python -m pip install &quot;nemo-pcn[viz]&quot;
+</code></pre>
+<h2 id="check-the-environment">Check the environment</h2>
+<pre><code class="language-python">import nemo_pcn as nemo
+print(nemo.__version__)
+assert nemo.hardy_weinberg(0.2).sum() == 1
+</code></pre>
+<p>Run the included suite:</p>
+<pre><code class="language-bash">python -m pip install pytest
+python -m pytest nemo-pcn/tests -q
+</code></pre>
+<h2 id="numba-compilation">Numba compilation</h2>
+<p>A Numba kernel compiles on first execution. The compilation takes longer than later calls and is not included in comparisons of steady-state simulation speed. Thousands of trajectories can be simulated efficiently because replicates are parallelised. Runtime still increases with larger populations and longer calendars.</p>
+<h2 id="build-a-wheel">Build a wheel</h2>
+<pre><code class="language-bash">python -m pip install build twine
+python -m build nemo-pcn
+python -m twine check nemo-pcn/dist/*
+</code></pre>
+<p>Always publish from a clean version-controlled release and verify installation in a fresh virtual environment.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#python-requirements">Python requirements</a><a href="#install-from-a-local-folder">Install from a local folder</a><a href="#check-the-environment">Check the environment</a><a href="#numba-compilation">Numba compilation</a><a href="#build-a-wheel">Build a wheel</a></div></div><script src="assets/site.js"></script></body></html>

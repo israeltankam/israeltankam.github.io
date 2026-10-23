@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Visualization and export — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="active" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Figures and data export</h1>
+<h2 id="trajectories-and-uncertainty">Trajectories and uncertainty</h2>
+<pre><code class="language-python">from nemo_pcn.viz import plot_trajectories,save_figure
+fig = plot_trajectories(result,'density',show_replicates=20)
+save_figure(fig,'density.pdf')
+</code></pre>
+<p>The curve is the median across independent populations. The band uses the 2.5% and 97.5% pointwise quantiles. In an abundant population, it may be too narrow to see without numeric quantiles, and should not be exaggerated for appearance.</p>
+<h2 id="agricultural-endpoints">Agricultural endpoints</h2>
+<pre><code class="language-python">from nemo_pcn.viz import plot_outcomes
+fig=plot_outcomes(result)
+save_figure(fig,'outcomes.png')
+</code></pre>
+<h2 id="compare-rotations">Compare rotations</h2>
+<pre><code class="language-python">comparison=nemo.compare_strategies(
+    cycles=['RN','RNN','RNNN','RNNNN'],
+    biocontrol=[.2,.4,.6,.8],virulence=[.2],years=50)
+from nemo_pcn.viz import plot_strategy_heatmap
+fig=plot_strategy_heatmap(comparison,metric='p_extinct',year=50,q0=.2)
+save_figure(fig,'strategy_heatmap.pdf')
+</code></pre>
+<h2 id="export-all-numerical-outputs">Export all numerical outputs</h2>
+<pre><code class="language-python">result.export('outputs/scenario_B',raw=True)
+</code></pre>
+<p>The output folder includes one CSV per summary variable, optional replicate-level CSVs, <code>outcomes.csv</code>, <code>annual_schedule.csv</code> and a JSON file containing the full scenario. Each file retains the measurement time and variable names. PDF figures are vector-based and PNG figures support presentation and reports.</p>
+<h2 id="interpretation-checklist">Interpretation checklist</h2>
+<p>Before reporting results, specify units, parameterisation, soil area, random seed, genotype initialization, Monte Carlo sample size, threshold and complete calendar. State whether an interval represents variation among populations or uncertainty in estimated mean/probability.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#trajectories-and-uncertainty">Trajectories and uncertainty</a><a href="#agricultural-endpoints">Agricultural endpoints</a><a href="#compare-rotations">Compare rotations</a><a href="#export-all-numerical-outputs">Export all numerical outputs</a><a href="#interpretation-checklist">Interpretation checklist</a></div></div><script src="assets/site.js"></script></body></html>

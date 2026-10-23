@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEMO-PCN: stochastic demo-genetic modelling and PCN management in Python"><title>Development — NEMO-PCN</title><link rel="stylesheet" href="assets/style.css"><script>window.MathJax={tex:{inlineMath:[['\(','\)'],['$','$']],displayMath:[['$$','$$'],['\[','\]']]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script></head><body><header><a class="brand" href="index.html">NEMO<span>–PCN</span></a><a class="toplink" href="https://github.com/israeltankam/nemo-pcn">Source code ↗</a><div class="searchbox"><input id="doc-search" type="search" aria-label="Search documentation" placeholder="Search documentation..." autocomplete="off"></div></header><div class="search-results"></div><div class="wrapper"><aside><div class="aside-title">Documentation</div><a class="" href="index.html">Home</a><a class="" href="installation.html">Installation</a><a class="" href="quick-start.html">Quick start</a><a class="" href="model.html">Biological model</a><a class="" href="simulation.html">Stochastic simulation</a><a class="" href="management.html">Management programmes</a><a class="" href="genetics.html">Genetic drift</a><a class="" href="calibration.html">Calibration</a><a class="" href="sensitivity.html">Sensitivity and robustness</a><a class="" href="visualization.html">Visualization and export</a><a class="" href="examples.html">Worked examples</a><a class="" href="api.html">API reference</a><a class="" href="limitations.html">Modelling scope</a><a class="" href="references.html">References</a><a class="active" href="development.html">Development</a><a class="" href="publishing.html">Publishing</a></aside><main><article><h1>Development and validation</h1>
+<h2 id="repository-structure">Repository structure</h2>
+<pre><code class="language-text">nemo-pcn/
+  pyproject.toml
+  src/nemo_pcn/
+    model.py
+    engine.py
+    genetics.py
+    experiments.py
+    analysis.py
+    calibration.py
+    viz.py
+  data/
+    published_greenhouse_summary.csv
+  examples/
+  tests/
+  docs/
+</code></pre>
+<h2 id="running-tests">Running tests</h2>
+<pre><code class="language-bash">python -m pip install -e './nemo-pcn[dev,viz]'
+python -m pytest nemo-pcn/tests -q
+</code></pre>
+<p>The tests verify genotype combination probabilities, calendars, reproducible independent random draws, extinction as an absorbing state, agreement with a deterministic large-population benchmark and parameter-fitting interfaces. A passing software test does not establish biological validity outside the calibration context.</p>
+<h2 id="scientific-checks-before-publication">Scientific checks before publication</h2>
+<ol>
+<li>Reproduce published formulae and use dimensions consistently.</li>
+<li>Compare stochastic medians with deterministic trajectories in the large-population regime.</li>
+<li>Quantify prediction intervals in small reproductive populations and evaluate extinction events.</li>
+<li>Retain extinct replicates when estimating survival probabilities, but exclude undefined allele frequencies from frequency summaries.</li>
+<li>Check fitted residuals, parameter identifiability and alternative regulation hypotheses.</li>
+<li>Run sensitivity convergence diagnostics and independent-parameter seed checks.</li>
+<li>Validate management predictions on independent experimental or field measurements when available.</li>
+</ol>
+<h2 id="versioning-and-publication">Versioning and publication</h2>
+<p>Release tags should record changes in model equations, fit assumptions, random generator behaviour and export schema. An apparent parameter improvement from one experimental data set should not silently replace a reference parameter set in an existing reproducible study.</p>
+<div class="footer">NEMO-PCN · Scientific Python documentation · <a href="references.html">References and sources</a></div></article></main><div id="toc"><b>On this page</b><a href="#repository-structure">Repository structure</a><a href="#running-tests">Running tests</a><a href="#scientific-checks-before-publication">Scientific checks before publication</a><a href="#versioning-and-publication">Versioning and publication</a></div></div><script src="assets/site.js"></script></body></html>
