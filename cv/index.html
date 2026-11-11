@@ -15,9 +15,9 @@
   <title>CV — Israël Tankam Chedjou, PhD</title>
 
   <!-- Tailwind v3 CDN + minimal config (blue-blog palette) -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind = {
-      config: {
+    tailwind.config = {
         theme: {
           extend: {
             colors: {
@@ -44,10 +44,8 @@
             backdropBlur: { sm: '4px' }
           }
         }
-      }
-    }
+    };
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Link to separated stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -71,12 +69,12 @@
             PhD in Applied Mathematics, trained in scientific research and the management of international projects. My background connects research, entrepreneurship, and industrial engagement. 
             I have developed and led projects funded by European and international institutions in the field of plant health, epidemiology and crop yield improvement. 
             Today, I aim to leverage this experience to support economic development through innovation and the structuring of sustainable productive ecosystems. 
-            <br /> <br /> In parallel, I am an R&D and data scientist with experience in designing mathematical models and digital products for agriculture, the environment, and complex systems. I am proficient across the solution-development cycle, from scientific modelling and data valorisation to software deployment. I am currently launching <a href="https://scale-ag.tech/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">scale.ag</a>, an initiative that helps agricultural and agri-food organisations transform their data into practical decision-support tools and digital solutions.
+            <br /> <br /> In parallel, I am an R&D and data scientist with experience in designing mathematical models and digital products for agriculture, the environment, and complex systems. I am proficient across the solution-development cycle, from scientific modelling and data valorisation to software deployment. I founded <a href="https://scale-ag.tech/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">scale.ag</a>, an initiative for helping agricultural and agri-food organisations turn data into practical decision-support tools and digital solutions. The venture is currently paused.
           </p>
           <h3 class="mt-6 text-lg font-semibold text-blue-700">Plum Profile:</h3> Innovation – Persuasion – Embracing Diversity (<a href="https://secure.plum.io/en/p/824gDm6EoX5zPrtoHSRxlg" class="text-blue-600">link</a>)
           <div class="mt-4 flex flex-wrap items-center gap-3">
             <a href="mailto:israeltankam@gmail.com" class="px-4 py-2 rounded-xl bg-white/70 border border-blue-200 hover:border-blue-400 text-sm font-medium shadow-sm">israeltankam@gmail.com</a>
-            <span class="px-3 py-2 rounded-xl bg-blue-50 text-blue-700 text-sm font-medium">Paris, France</span>
+            <span class="px-3 py-2 rounded-xl bg-blue-50 text-blue-700 text-sm font-medium">Sophia Antipolis, France</span>
             <span id="last-edited" class="px-3 py-2 rounded-xl bg-white/70 border border-blue-100 text-sm">Last edited: <strong class="text-blue-600">—</strong></span>
           </div>
         </div>
@@ -104,7 +102,7 @@
                  class="text-blue-600 hover:underline font-semibold">
                 scale.ag
               </a>
-              <span class="text-gray-500"> — Digital agriculture & data innovation</span>
+              <span class="text-gray-500"> — Digital agriculture & data innovation (paused)</span>
             </li>
             <li><a href="https://github.com/israeltankam" class="text-blue-600 hover:underline">GitHub</a></li>
             <li><a href="https://share.streamlit.io/user/israeltankam" class="text-blue-600 hover:underline">Streamlit apps</a></li>
@@ -116,7 +114,7 @@
         <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-5 shadow-md">
           <h3 class="text-sm font-semibold text-blue-900 mb-3">Quick facts</h3>
           <div class="text-sm text-gray-700 space-y-2">
-            <p><strong>Fields:</strong> Research and Innovation • Mathematical Modelling • Epidemiology • Precision Agriculture • Decision Support Systems</p>
+            <p><strong>Fields:</strong> Research and Innovation • Mathematical Modelling • Epidemiology • Statistics • Population Genetics • Precision Agriculture • Decision Support Systems</p>
             <p><strong>Languages:</strong> French (fluent), English (fluent), German (basic)</p>
             <p><strong>Awards:</strong> Marie Curie Fellow, Ovide Arino Outreach Award (2021), EMS-Simons for Africa Scholarship (2019)</p>
           </div>
@@ -158,14 +156,136 @@
 
             <h3 class="mt-6 text-lg font-semibold text-blue-700">Fields</h3>
             <p class="text-gray-700">
-              Mathematical Modelling, Epidemiology, Ecological Modelling, Plant disease epidemiology, Dynamical Systems, Biomathematics, Computational Modelling and Simulations, Optimal Control, Optimization, Numerical Analysis, Decision Support Systems, Computational Biology
+              Mathematical Modelling, Epidemiology, Ecological Modelling, Plant disease epidemiology, Dynamical Systems, Biomathematics, Computational Modelling and Simulations, Optimal Control, Optimization, Numerical Analysis, Decision Support Systems, Computational Biology, Statistics, Population Genetics
             </p>
           </div>
         </section>
 
-        <!-- Experience (keeps role names) -->
+        <!-- Experience -->
         <section id="experience" class="mb-8">
           <h2 class="text-2xl font-bold mb-4 gradient-text">Professional Experience</h2>
+          <h3 class="text-xl font-bold text-blue-700 mb-4">Academic & Research</h3>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Research Scientist — NEM-EMERGE</h3>
+                  <p class="text-sm text-blue-600">Institut Sophia Agrobiotech - INRAE, M2P2, Sophia Antipolis, France — Nov 2026 – Present | Fixed-term contract (through Oct 2027)</p>
+                  <p class="mt-2 text-gray-700">
+                    Develop mathematical models of plant–nematode interactions and virulence dynamics.
+                    <br /> Investigate surveillance-informed strategies for resistance deployment and adaptive crop-health management.
+                  </p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Project:</strong> <a href="https://nem-emerge.eu/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">NEM-EMERGE</a>
+                  <br /><strong>Work packages:</strong>
+                  <br /><a href="https://nem-emerge.eu/project/work-packages/#collapse-6972-4" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">WP4 — Genetic selection: Managing new virulent potato cyst nematode populations</a>
+                  <br /><a href="https://nem-emerge.eu/project/work-packages/#collapse-6972-5" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">WP5 — Nematode control based on native soil suppressiveness supported by biocontrol measures</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">MSCA Bienvenüe Postdoctoral Fellow & Project Coordinator</h3>
+                  <p class="text-sm text-blue-600">Institut Agro Rennes-Angers / INRAE, Rennes, France — Jan 2023 – Jan 2025</p>
+                  <p class="mt-2 text-gray-700">
+                  Developed demogenetic models and a decision-support tool for sustainable deployment of potato varieties resistant to cyst nematodes.
+<br /> Led scientific and technical coordination of the project.
+<br /> Managed funding, budget monitoring, and reporting to European and regional funders.
+<br /> Supervised students and collaborated with public and private partners.  
+                  </p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Supervisors:</strong> Frédéric Hamelin <br /> Josselin Montarry
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Postdoctoral Researcher — Cassava Virus Epidemiology</h3>
+                  <p class="text-sm text-blue-600">University of Cambridge (Department of Plant Sciences, United Kingdom) — Jan 2022 – Dec 2022</p>
+                  <p class="mt-2 text-gray-700">
+                    <i>Visiting researcher at the WAVE Center of Excellence (Central and West African Virus Epidemiology for Food Security), Félix Houphouët-Boigny University, Bingerville, Côte d’Ivoire.</i>
+                    <br /> Modelled cassava virus epidemics and varietal-mixture deployment for improved crop health and yields.
+                    <br /> Contributed to field surveillance, pathogen profiling and decision-support methods for cassava disease management.
+                    <br /> Project funded by the Bill & Melinda Gates Foundation.</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Supervisor:</strong> Prof. Chris A. Gilligan
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Research Associate</h3>
+                  <p class="text-sm text-blue-600">Center of Excellence in Information and Communication Technology (CETIC), National Advanced School of Engineering, Yaoundé, Cameroon — Jan 2021 – Dec 2021</p>
+                  <p class="mt-2 text-gray-700">Conducted quantitative research on crop health and yield improvement.
+                  <br /> Trained early-career researchers in quantitative methods and scientific project management.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Doctoral Researcher</h3>
+                  <p class="text-sm text-blue-600">University of Yaoundé I and INRIA Sophia Antipolis (France) — 2016 – 2020 </p>
+                  <p class="mt-2 text-gray-700">
+                    Led an applied research project on plant health and the sustainable optimization of banana and plantain yields. 
+                    Conducted joint Cameroon–France doctoral research. Secured research funding and coordinated scientific activities.
+                    Trained students at the National Advanced School of Engineering, Yaoundé.
+                  </p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Project</strong> Modelling, analysis and control of plantain plant-parasitic nematodes
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <h3 class="text-xl font-bold text-blue-700 mb-4">Industrial & Management</h3>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">General Manager & Board Member (Contract part-time)</h3>
+                  <p class="text-sm text-blue-600">Les Confiotes, Douala, Cameroon — Jan 2025 – Present | Remote</p>
+                  <p class="mt-2 text-gray-700">Coordinate team operations, production follow-up and commercial priorities for a beverage-processing business.
+                  <br /> Lead operational reporting, data-driven planning and the development of standard operating procedures.
+                  <br /> Support sales, stock, cash-flow monitoring and management decisions.  
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="mb-6">
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold">External Data Consultant (Remote, Contract part-time)</h3>
+                  <p class="text-sm text-blue-600">Les Confiotes, Douala, Cameroon — Mar 2020 – Dec 2021</p>
+                  <p class="mt-2 text-gray-700">Designed data pipelines, performance dashboards and forecasting tools to support production and sales planning.
+                  <br /> Analysed stock, orders and operational performance to improve management decisions.
+                  </p>
+                </div>
+                <div class="text-sm text-gray-500">
+                  <strong>Project</strong> Digital Production & Sales Intelligence System (end-to-end data architecture for a small-scale beverage manufacturer).
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <h3 class="text-xl font-bold text-blue-700 mb-4">Startup Ventures</h3>
           <article class="mb-6">
           <div class="bg-gradient-to-br from-white/90 to-blue-50/70 backdrop-blur-sm rounded-2xl border border-blue-200 shadow-md p-6 hover:shadow-2xl transition">
             <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
@@ -178,15 +298,15 @@
                  class="font-medium hover:underline">
                 scale.ag
               </a>
-              — Africa–Europe | April 2026 – Present
+              — Africa–Europe | Apr 2026 – Present (venture paused)
             </p>
         
             <p class="mt-2 text-gray-700 leading-relaxed">
-              Launching a digital agriculture and data innovation initiative that helps agricultural and agri-food organisations transform their data into practical operational and strategic decisions.
+              Developed a digital agriculture initiative to turn research and operational data into practical decisions for agricultural and agri-food organisations. The venture is currently paused.
               <br />
-              Leading scientific direction, solution architecture, digital product development, and partnership building.
+              Led scientific direction, solution architecture, early digital product development and partnership outreach.
               <br />
-              Developing solutions that combine mathematical modelling, remote sensing, machine learning, digital twins, and decision-support systems, with a particular focus on African and resource-constrained contexts.
+              Prototyped solutions combining mathematical modelling, remote sensing, machine learning, digital twins and decision-support systems for African agricultural contexts.
             </p>
           </div>
         
@@ -194,116 +314,13 @@
             <strong>Focus:</strong> Digital agriculture, data valorisation, AI-enabled decision support, training, and technical consulting.
           </div>
         </div>
-        
-          </div>
         </article>
-
           <article class="mb-6">
             <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
-                  <h3 class="text-xl font-semibold"> Member of the Board of Directors, Team Manager, and Data Lead</h3>
-                  <p class="text-sm text-blue-600">Les Confiotes, Douala — Jan 2025 – Present</p>
-                  <p class="mt-2 text-gray-700">Agro-food company specializing in local processing, production of syrups, purées, and liqueurs.
-                  <br /> Contributing to strategic decision-making and implemented production monitoring and decision-support tools.
-                  Supporting organizational structuring, production management, and commercial performance analysis.  
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div>
-                  <h3 class="text-xl font-semibold">Postdoctoral Researcher and Project Coordinator</h3>
-                  <p class="text-sm text-blue-600">Institut Agro Rennes-Angers / INRAE, Rennes, France — Jan 2023 – Jan 2025</p>
-                  <p class="mt-2 text-gray-700">
-                  Developed a decision-support tool to improve potato crop management and yields.
-<br /> Led scientific and technical coordination of the project.
-<br /> Managed funding, budget monitoring, and reporting to European and regional funders.
-<br /> Supervised students and collaborated with public and private partners.  
-                  </p>
-                </div>
-                <div class="text-sm text-gray-500">
-                  <strong>Supervisors:</strong> Frédéric Hamelin <br /> Josselin Montarry
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div>
-                  <h3 class="text-xl font-semibold">Postdoctoral Researcher </h3>
-                  <p class="text-sm text-blue-600">University of Cambridge (Department of Plant Sciences, United Kingdom) — Jan 2022 – Dec 2022</p>
-                  <p class="mt-2 text-gray-700">
-                    <i>Visiting researcher at the WAVE Center of Excellence (Central and West African Virus Epidemiology for Food Security), Félix Houphouët-Boigny University, Bingerville, Côte d’Ivoire.</i>
-                    <br /> Conducted applied research on cassava health and yield improvement.
-                    <br /> Coordinated field surveillance activities and developed decision-support tools for farmers.
-                    <br /> Project funded by the Bill & Melinda Gates Foundation.</p>
-                </div>
-                <div class="text-sm text-gray-500">
-                  <strong>Supervisor:</strong> Prof. Chris A. Gilligan
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div>
-                  <h3 class="text-xl font-semibold">Research Associate</h3>
-                  <p class="text-sm text-blue-600">Center of Excellence in Information and Communication Technology (CETIC), National Advanced School of Engineering, Yaoundé, Yaoundé — Jan 2021 – Dec 2021</p>
-                  <p class="mt-2 text-gray-700">Conducted research on crop health and yield improvement.
-Trained early-career researchers in quantitative methods and scientific project management.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div>
-                  <h3 class="text-xl font-semibold"> External Data Consultant (remote)</h3>
-                  <p class="text-sm text-blue-600">Les Confiotes, Douala — Mar 2020 – Dec 2021</p>
-                  <p class="mt-2 text-gray-700">Agro-food company specializing in local processing, production of syrups, purées, and liqueurs.
-                  <br /> Designed data pipelines, performance dashboards, and forecasting tools to optimize supply planning and reduce operational downtime. 
-                    oversaw digital transformation initiatives, and supported leadership in evidence-based decision-making.
-                  </p>
-                </div>
-                <div class="text-sm text-gray-500">
-                  <strong>Project</strong> Digital Production & Sales Intelligence System (end-to-end data architecture for a small-scale beverage manufacturer).
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div>
-                  <h3 class="text-xl font-semibold"> PhD Candidate</h3>
-                  <p class="text-sm text-blue-600">University of Yaoundé I and INRIA Sophia Antipolis (France) — 2016 – 2020 </p>
-                  <p class="mt-2 text-gray-700">
-                    Led an applied research project on plant health and the sustainable optimization of banana and plantain yields. 
-                    Conducted a bilateral Cameroon–France doctoral program. Secured research funding and coordinated scientific activities.
-                    Trained students at the National Advanced School of Engineering, Yaoundé.
-                  </p>
-                </div>
-                <div class="text-sm text-gray-500">
-                  <strong>Project</strong> Modelling, analysis and control of plantain plant-parasitic nematodes
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mb-6">
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6 hover:shadow-2xl transition">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div>
-                  <h3 class="text-xl font-semibold">Root-Consulting, Yaoundé – Co-founder and Software Engineer</h3>
-                  <p class="text-sm text-blue-600">ROOT-consulting, Yaoundé, Jan 2015 – Dec 2015</p>
+                  <h3 class="text-xl font-semibold">Co-founder & Software Engineer</h3>
+                  <p class="text-sm text-blue-600">ROOT-consulting, Yaoundé, Cameroon — Jan 2015 – Dec 2015</p>
                   <p class="mt-2 text-gray-700">Founded a digital services company. Developed a medical software application (HemoVigile). 
                     First entrepreneurial experience: project management, client relations, and technical and organizational structuring.</p>
                 </div>
@@ -351,7 +368,7 @@ Trained early-career researchers in quantitative methods and scientific project 
         </section>
 
        <!-- Funding history  -->
-        <section id="Funding & Responsibilities " class="mb-8">
+        <section id="funding-responsibilities" class="mb-8">
           <h2 class="text-2xl font-bold mb-4">Funding & Responsibilities </h2>
             <div class="bg-white/70 backdrop-blur-sm rounded-xl border border-blue-100 p-4 shadow-sm">
               <ul>
@@ -387,7 +404,7 @@ Trained early-career researchers in quantitative methods and scientific project 
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-md p-6">
             <ul class="space-y-4 text-gray-700">
               <li><strong>Contract part-time teacher</strong> — AFTEC, Rennes, France (2023–2024). Mathematics for BTS SIO.</li>
-              <li><strong>Part-time teacher</strong> — Institut Agro Rennes-Angers (Fall & Winter 2023). Introduction à la démarche scientifique.</li>
+              <li><strong>Contract part-time teacher</strong> — Institut Agro Rennes-Angers (Fall & Winter 2023). Introduction à la démarche scientifique.</li>
               <li><strong>Teaching assistant</strong> — National Advanced School of Engineering, Yaoundé (2016–2021). Courses: Probability & Statistics, Numerical Analysis, Computer Science for Mathematics, Real Analysis.</li>
               <li><strong>Mentorship:</strong> Supervised and mentored PhD students on model formulation, parameter inference and reproducible code.</li>
             </ul>
@@ -420,27 +437,32 @@ Trained early-career researchers in quantitative methods and scientific project 
             <div class="bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-100 p-6 shadow-sm"><div class="grid grid-cols-1 gap-3">
                 <div>
                   <strong class="text-sm text-gray-800">Programming & Platforms</strong>
-                  <p class="text-sm text-gray-700">Python, R, Java, JavaScript, HTML/CSS, NetLogo, Streamlit, Tableau, MySQL, Git</p>
+                  <p class="text-sm text-gray-700">Python, R, Java, JavaScript, HTML/CSS, NetLogo, Streamlit, Tableau, MySQL, Git, PHP, SQL, Jupyter Notebook/JupyterLab, GitHub, Anaconda/Conda, Bash</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Libraries & ML / Statistical</strong>
-                  <p class="text-sm text-gray-700">TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas</p>
+                  <p class="text-sm text-gray-700">TensorFlow, Keras, PyTorch, Scikit-learn, PyMC, Pandas, NumPy, SciPy, Matplotlib</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Modelling & Methods</strong>
-                  <p class="text-sm text-gray-700">Dynamical systems, epidemiological models, population genetics / demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis</p>
+                  <p class="text-sm text-gray-700">Dynamical systems, epidemiological models, population genetics / demo-genetics, time-series forecasting, Bayesian inference, optimal control, numerical analysis, stochastic simulation (Gillespie algorithms), Monte Carlo methods, spatial epidemiology, parameter inference and model calibration, sensitivity and uncertainty analysis, statistical modelling, experimental design, adaptive surveillance, spatial optimisation</p>
+                </div>
+
+                <div>
+                  <strong class="text-sm text-gray-800">Spatial Analysis & Statistics</strong>
+                  <p class="text-sm text-gray-700">Spatial and spatiotemporal data analysis, geostatistics, spatial autocorrelation and point-pattern analysis, geospatial statistics, spatial sampling and experimental design, regression and mixed-effects models, multivariate statistics, statistical inference, hierarchical and Bayesian models, bootstrap and resampling, uncertainty quantification, spatial visualisation and mapping</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Cloud & DevOps</strong>
-                  <p class="text-sm text-gray-700">AWS, Google Cloud, MLOps principles, Docker, reproducible research (notebooks, CI-friendly code)</p>
+                  <p class="text-sm text-gray-700">AWS, Google Cloud, MLOps principles, Docker, reproducible research (notebooks, CI-friendly code), version-controlled research workflows, reproducible computational environments, parallel and HPC-oriented simulation workflows</p>
                 </div>
 
                 <div>
                   <strong class="text-sm text-gray-800">Other tools</strong>
-                  <p class="text-sm text-gray-700">MATLAB, Scilab, Streamlit, Kaggle, Excel</p>
+                  <p class="text-sm text-gray-700">MATLAB, Scilab, Streamlit, Kaggle, Excel, LaTeX, GIS/geospatial data processing, remote-sensing data analysis, scientific Python package development, data visualisation and interactive dashboards</p>
                 </div>
 
                 <div>
@@ -459,11 +481,11 @@ Trained early-career researchers in quantitative methods and scientific project 
             <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
               <li>Machine Learning (Stanford University) — <a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">creds</a></li>
               <li>Neural Networks and Deep Learning — <a href="https://coursera.org/share/9630d466ac63f461aae96c96968dbde6" class="text-blue-600">creds</a></li>
-              <li>Introduction to Genetics and Evolution (Duke University) — <a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">creds</a></li>
+              <li>Introduction to Genetics and Evolution (Duke University) — <a href="https://coursera.org/share/c5ccf99578aae8419cc368eb0a231f90" class="text-blue-600">creds</a></li>
               <li>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization, and Optimization — <a href="https://coursera.org/share/dc4925e926d2cd73d6c4dd8cf7f49378" class="text-blue-600">creds</a></li>
               <li>Deep Learning Specialization (deeplearning.ai) — <a href="https://coursera.org/share/c5ccf99578aae8419cc368eb0a231f90" class="text-blue-600">creds</a></li>
               <li>Industrial IoT with Google Cloud Platform (Google Cloud) — <a href="https://coursera.org/share/e31ec4b2411a6e2f7bac9a931ef1d474" class="text-blue-600">creds</a></li>
-              <li>Getting Started with AWS Machine Learning (AWS) — <a href="https://coursera.org/share/8bf05a4be353a7141a501115b5a55fae" class="text-blue-600">creds</a></li>
+              <li>Getting Started with AWS Machine Learning (AWS) — <a href="https://coursera.org/share/dc4925e926d2cd73d6c4dd8cf7f49378" class="text-blue-600">creds</a></li>
             </ul>
 
             <h3 class="mt-4 text-lg font-semibold text-blue-700 mb-2">Udemy & other</h3>
